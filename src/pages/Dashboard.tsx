@@ -1,7 +1,6 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../lib/AuthContext';
-import { Sparkles, LogOut, User, Plus, BarChart3, Settings } from 'lucide-react';
+import { Sparkles, LogOut, User, Plus, BarChart3, Settings as SettingsIcon, Crown } from 'lucide-react';
 
 export function Dashboard() {
   const { user, signOut } = useAuth();
@@ -78,6 +77,7 @@ export function Dashboard() {
           </button>
 
           <button
+            onClick={() => navigate('/my-charts')}
             className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gold/20
                        hover:border-gold/40 hover:shadow-lg transition-all duration-200
                        text-left group"
@@ -96,6 +96,7 @@ export function Dashboard() {
           </button>
 
           <button
+            onClick={() => navigate('/settings')}
             className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gold/20
                        hover:border-gold/40 hover:shadow-lg transition-all duration-200
                        text-left group"
@@ -103,13 +104,32 @@ export function Dashboard() {
             <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-lg
                             flex items-center justify-center mb-4 group-hover:scale-110
                             transition-transform duration-200">
-              <Settings className="w-6 h-6 text-white" />
+              <SettingsIcon className="w-6 h-6 text-white" />
             </div>
             <h3 className="text-lg font-semibold text-text-primary mb-2">
               Settings
             </h3>
             <p className="text-sm text-text-primary/60">
               Manage your account and preferences
+            </p>
+          </button>
+
+          <button
+            onClick={() => navigate('/pricing')}
+            className="bg-gradient-to-br from-gold/15 to-purple/15 backdrop-blur-sm rounded-xl p-6 border border-gold/30
+                       hover:border-gold/60 hover:shadow-lg transition-all duration-200
+                       text-left group"
+          >
+            <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-lg
+                            flex items-center justify-center mb-4 group-hover:scale-110
+                            transition-transform duration-200">
+              <Crown className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-lg font-semibold text-text-primary mb-2">
+              Go Cosmic
+            </h3>
+            <p className="text-sm text-text-primary/60">
+              Unlimited AI readings and more
             </p>
           </button>
         </div>

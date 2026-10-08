@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../components/auth/LoginForm';
 import { SignupForm } from '../components/auth/SignupForm';
 import { useAuth } from '../lib/AuthContext';
+import { ConfigNotice } from '../components/ConfigNotice';
 import { Sparkles } from 'lucide-react';
 
 export function Auth() {
@@ -47,6 +48,7 @@ export function Auth() {
         </div>
 
         <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gold/20">
+          <ConfigNotice />
           {isLogin ? (
             <LoginForm onSwitchToSignup={() => setIsLogin(false)} />
           ) : (

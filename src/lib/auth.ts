@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+import { requireSupabase } from './supabase';
 import type { User, Session, AuthError } from '@supabase/supabase-js';
 
 export type AuthResponse = {
@@ -8,6 +8,7 @@ export type AuthResponse = {
 };
 
 export async function signUp(email: string, password: string): Promise<AuthResponse> {
+  const supabase = requireSupabase();
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -35,6 +36,7 @@ export async function signUp(email: string, password: string): Promise<AuthRespo
 }
 
 export async function signIn(email: string, password: string): Promise<AuthResponse> {
+  const supabase = requireSupabase();
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -48,16 +50,19 @@ export async function signIn(email: string, password: string): Promise<AuthRespo
 }
 
 export async function signOut(): Promise<{ error: AuthError | null }> {
+  const supabase = requireSupabase();
   const { error } = await supabase.auth.signOut();
   return { error };
 }
 
 export async function getCurrentUser(): Promise<User | null> {
+  const supabase = requireSupabase();
   const { data: { user } } = await supabase.auth.getUser();
   return user;
 }
 
 export async function getCurrentSession(): Promise<Session | null> {
+  const supabase = requireSupabase();
   const { data: { session } } = await supabase.auth.getSession();
   return session;
 }

@@ -1,13 +1,27 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
+/**
+ * True when the Supabase environment variables are present.
+ * Public pages (landing, demo, shared charts) work without them;
+ * auth and cloud features show a friendly setup notice instead.
+ */
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+
+export const supabase: SupabaseClient | null = isSupabaseConfigured
+  ? createClient(supabaseUrl!, supabaseAnonKey!)
+  : null;
+
+export function requireSupabase(): SupabaseClient {
+  if (!supabase) {
+    throw new Error(
+      'Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to enable this feature.'
+    );
+  }
+  return supabase;
 }
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export type Profile = {
   id: string;
@@ -21,7 +35,7 @@ export type Profile = {
   created_at: string;
 };
 
-export type Chart = {
+export type ChartRow = {
   id: string;
   user_id: string;
   person_name: string;
@@ -30,6 +44,6 @@ export type Chart = {
   chart_type?: string;
   notes?: string;
   is_shared: boolean;
-  shared_link?: string;
+  shared_link?: string | null;
   created_at: string;
 };

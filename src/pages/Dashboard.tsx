@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../lib/AuthContext';
-import { Sparkles, LogOut, User, Plus, BarChart3, Settings as SettingsIcon, Crown } from 'lucide-react';
+import { Sparkles, LogOut, User, Plus, BarChart3, Settings as SettingsIcon, Crown, HeartHandshake, Wrench } from 'lucide-react';
 
 export function Dashboard() {
   const { user, signOut } = useAuth();
@@ -130,6 +130,44 @@ export function Dashboard() {
             </h3>
             <p className="text-sm text-text-primary/60">
               Unlimited AI readings and more
+            </p>
+          </button>
+
+          <button
+            onClick={() => navigate('/tools/compatibility')}
+            className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gold/20
+                       hover:border-gold/40 hover:shadow-lg transition-all duration-200
+                       text-left group"
+          >
+            <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-lg
+                            flex items-center justify-center mb-4 group-hover:scale-110
+                            transition-transform duration-200">
+              <HeartHandshake className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-lg font-semibold text-text-primary mb-2">
+              Compatibility
+            </h3>
+            <p className="text-sm text-text-primary/60">
+              Merge two charts into one couple's reading
+            </p>
+          </button>
+
+          <button
+            onClick={() => navigate('/tools')}
+            className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gold/20
+                       hover:border-gold/40 hover:shadow-lg transition-all duration-200
+                       text-left group"
+          >
+            <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-lg
+                            flex items-center justify-center mb-4 group-hover:scale-110
+                            transition-transform duration-200">
+              <Wrench className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-lg font-semibold text-text-primary mb-2">
+              All Tools
+            </h3>
+            <p className="text-sm text-text-primary/60">
+              Forecasts, numerology, moon phases and more
             </p>
           </button>
         </div>

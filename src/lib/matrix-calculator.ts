@@ -21,18 +21,19 @@ export type DestinyMatrixResult = {
   lifePath: { left: number; center: number; right: number };
 };
 
+/** Reduce a number to a 1–22 arcana (0 becomes 22, The Fool). */
+export function reduceToArcana(n: number): number {
+  if (n === 0) return 22;
+  while (n > 22) {
+    n = Math.floor(n / 10) + (n % 10);
+  }
+  return n;
+}
+
 export function calculateDestinyMatrix(birthDate: Date): DestinyMatrixResult {
   const day = birthDate.getDate();
   const month = birthDate.getMonth() + 1;
   const year = birthDate.getFullYear();
-
-  const reduceToArcana = (n: number): number => {
-    if (n === 0) return 22;
-    while (n > 22) {
-      n = Math.floor(n / 10) + (n % 10);
-    }
-    return n;
-  };
 
   const A = reduceToArcana(day);
   const B = reduceToArcana(month);

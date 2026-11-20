@@ -57,8 +57,12 @@ const TOOLS = [
     text: 'All 144 sign pairings with a harmony score and an honest read on the match.', tag: 'New tool',
   },
   {
-    to: '/tools/daily-arcana', icon: Shapes, title: 'Daily Arcana Draw',
-    text: 'One arcana for today — your daily guidance card, drawn from the date itself.', tag: 'Daily',
+    to: '/tools/daily-arcana', icon: Shapes, title: 'Daily Tarot Card',
+    text: "Today's arcana, drawn from the date itself — a one-card daily tarot reading.", tag: 'Daily',
+  },
+  {
+    to: '/tools/how-to-read-destiny-matrix', icon: BookOpen, title: 'How to Read Your Chart',
+    text: 'New to the Destiny Matrix? This guide walks your chart point by point — centre, love line, money line, karmic foundation.', tag: 'Guide',
   },
 ];
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../lib/AuthContext';
 import { requireSupabase } from '../lib/supabase';
@@ -8,7 +8,10 @@ import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { ArcanaModal, SelectedArcana } from '../components/chart/ArcanaModal';
 import { AIReading } from '../components/chart/AIReading';
-import { Sparkles, ArrowLeft, Save, Heart, Coins, Compass, Share2, Copy, Check } from 'lucide-react';
+import { ChakraMap } from '../components/chart/ChakraMap';
+import { reduceToArcana } from '../lib/matrix-calculator';
+import { exportChartPng } from '../lib/export-chart';
+import { Sparkles, ArrowLeft, Save, Heart, Coins, Compass, Share2, Copy, Check, Download, Target } from 'lucide-react';
 
 export function Chart() {
   const { user, configured } = useAuth();
@@ -17,6 +20,12 @@ export function Chart() {
   const [personName, setPersonName] = useState('');
   const [birthDate, setBirthDate] = useState<Date | null>(null);
   const [selectedArcana, setSelectedArcana] = useState<SelectedArcana | null>(null);
+  const chartRef = useRef<HTMLDivElement>(null);
+
+  // Purpose by life stage (Destiny Matrix method)
+  const purpose20_40 = matrixResult ? reduceToArcana(matrixResult.A + matrixResult.C) : 0;
+  const purpose40_60 = matrixResult ? reduceToArcana(matrixResult.B + matrixResult.D) : 0;
+  const purpose60plus = matrixResult ? reduceToArcana(purpose20_40 + purpose40_60) : 0;
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [savedChartId, setSavedChartId] = useState<string | null>(null);
@@ -180,7 +189,7 @@ export function Chart() {
               </p>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 mb-6 shadow-lg border border-purple/20">
+            <div ref={chartRef} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 mb-6 shadow-lg border border-purple/20">
               <DestinyMatrixChart result={matrixResult} onNodeClick={handleNodeClick} />
             </div>
 
@@ -300,6 +309,55 @@ export function Chart() {
               </div>
             </div>
 
+            {/* Purpose by life stage */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-gold/20 p-6 mb-6">
+              <div className="flex items-center gap-3 mb-1">
+                <div className="w-10 h-10 bg-purple/15 rounded-full flex items-center justify-center">
+                  <Target className="w-5 h-5 text-purple" />
+                </div>
+                <h3 className="font-serif font-semibold text-xl text-text-primary">Your Purpose, by Life Stage</h3>
+              </div>
+              <p className="text-sm text-text-primary/60 mb-5">
+                In the Destiny Matrix method, your mission unfolds in chapters — each stage of life has its own guiding arcana.
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                {[
+                  { stage: 'Ages 20–40', label: 'Personal purpose', value: purpose20_40, hint: 'Sky + Earth: who you are becoming' },
+                  { stage: 'Ages 40–60', label: 'Social purpose', value: purpose40_60, hint: 'Male + female lines: what you give the world' },
+                  { stage: 'Ages 60+', label: 'Spiritual purpose', value: purpose60plus, hint: 'The general mission of the soul' },
+                ].map((p) => {
+                  const arcana = getArcana(p.value);
+                  return (
+                    <button
+                      key={p.stage}
+                      onClick={() => handleNodeClick(p.label, arcana)}
+                      className="text-left bg-gradient-to-br from-purple/5 to-gold/5 rounded-xl p-5 border border-purple/10 hover:border-gold/40 transition-all"
+                    >
+                      <p className="text-xs font-semibold tracking-widest uppercase text-purple">{p.stage}</p>
+                      <p className="text-xs text-text-primary/50 mb-2">{p.label}</p>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="w-11 h-11 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white font-bold">
+                          {p.value}
+                        </span>
+                        <span className="font-serif font-semibold text-lg">{arcana.name}</span>
+                      </div>
+                      <p className="text-sm text-text-primary/70">{arcana.karmicLesson}</p>
+                      <p className="text-[11px] text-text-primary/40 mt-2">{p.hint}</p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Chakra Health Map */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple/20 p-6 mb-6">
+              <h3 className="font-serif font-semibold text-xl text-text-primary mb-1">Chakra Health Map</h3>
+              <p className="text-sm text-text-primary/60 mb-6">
+                Your seven energy centres read three ways — physical, energy and emotions. Tap a chakra, then a column, for the full reading.
+              </p>
+              <ChakraMap result={matrixResult} onArcanaClick={handleNodeClick} />
+            </div>
+
             {matrixResult && birthDate && (
               <AIReading result={matrixResult} personName={personName || 'Unknown'} birthDate={birthDate} />
             )}
@@ -351,6 +409,16 @@ export function Chart() {
                       Share Chart
                     </>
                   )}
+                </button>
+
+                <button
+                  onClick={() => exportChartPng(chartRef.current, `${(personName || 'destiny-matrix').toLowerCase().replace(/\s+/g, '-')}-matrix.png`)}
+                  className="px-6 py-3 rounded-lg font-medium transition-all duration-200
+                             flex items-center gap-2 bg-white/80 border border-purple/30 text-text-primary
+                             hover:border-purple/60 hover:shadow-lg"
+                >
+                  <Download className="w-5 h-5" />
+                  Download PNG (free)
                 </button>
               </div>
 

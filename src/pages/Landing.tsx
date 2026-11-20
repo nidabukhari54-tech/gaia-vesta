@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Sparkles, ArrowRight, Heart, Coins, Compass, Share2, BrainCircuit,
-  ChevronDown, Menu, X, Star,
+  ChevronDown, Menu, X, Star, HeartHandshake, CalendarClock, Baby, Hash, Moon,
 } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
 import { calculateDestinyMatrix, DestinyMatrixResult } from '../lib/matrix-calculator';
 import { getArcana } from '../lib/arcana-meanings';
+import { dailyArcana } from '../lib/numerology';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { ArcanaModal, SelectedArcana } from '../components/chart/ArcanaModal';
@@ -21,6 +22,7 @@ function Nav() {
     { label: 'How it works', href: '#how' },
     { label: 'Try it free', href: '#demo' },
     { label: 'Features', href: '#features' },
+    { label: 'Tools', href: '/tools' },
     { label: 'Pricing', href: '#pricing' },
   ];
 
@@ -296,6 +298,55 @@ function Features() {
   );
 }
 
+function ToolsSection() {
+  const todayArcana = getArcana(dailyArcana(new Date()));
+
+  const tools = [
+    { icon: HeartHandshake, title: 'Compatibility Matrix', text: 'Two birth dates, one shared chart — with love, money and purpose scores.', to: '/tools/compatibility' },
+    { icon: CalendarClock, title: 'Year Forecast', text: 'Your matrix for any year, plus your Personal Year theme and lessons.', to: '/tools/year-forecast' },
+    { icon: Baby, title: "Children's Matrix", text: 'Your child\'s talents, emotional needs and learning style, decoded for parents.', to: '/tools/child-matrix' },
+    { icon: Hash, title: 'Life Path & Name Numbers', text: 'Classic numerology: Life Path, Expression, Soul Urge and Personality numbers.', to: '/tools/life-path' },
+    { icon: Moon, title: 'Moon Phase & Angel Numbers', text: 'Tonight\'s live moon phase, plus the meanings behind 111, 444, 1111 and more.', to: '/tools/moon-phase' },
+    { icon: Sparkles, title: "Today's Arcana", text: `${todayArcana.id} · ${todayArcana.name} — "${todayArcana.description}"`, to: '/tools/daily-arcana' },
+  ];
+
+  return (
+    <section id="tools" className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-text-primary mb-4">A full suite of free cosmic tools</h2>
+          <p className="text-text-primary/60 max-w-2xl mx-auto">
+            Compatibility charts, year forecasts, children's matrices and classic numerology calculators — free, instant, no account needed.
+          </p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {tools.map((t) => (
+            <Link
+              key={t.title}
+              to={t.to}
+              className="bg-white/80 rounded-2xl p-6 border border-gold/20 hover:border-gold/50 hover:shadow-lg transition-all group"
+            >
+              <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <t.icon className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-text-primary mb-2">{t.title}</h3>
+              <p className="text-sm text-text-primary/60">{t.text}</p>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-purple mt-3">
+                Try it free <ArrowRight className="w-4 h-4" />
+              </span>
+            </Link>
+          ))}
+        </div>
+        <div className="text-center mt-10">
+          <Link to="/tools" className="inline-flex items-center gap-2 px-7 py-3 bg-gradient-to-r from-gold to-purple text-white font-medium rounded-xl hover:shadow-lg transition-all">
+            Browse all 13 tools <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   return (
     <section id="pricing" className="py-20">
@@ -379,6 +430,7 @@ export function Landing() {
         <HowItWorks />
         <Demo />
         <Features />
+        <ToolsSection />
         <Pricing />
       </main>
       <Footer />

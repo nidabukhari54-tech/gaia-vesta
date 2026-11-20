@@ -23,6 +23,7 @@ import { AngelNumberDetail } from './pages/AngelNumberDetail';
 import { MoonPhase } from './pages/MoonPhase';
 import { PythagoreanSquare } from './pages/PythagoreanSquare';
 import { ZodiacCompatibility } from './pages/ZodiacCompatibility';
+import { ZodiacPairDetail } from './pages/ZodiacPairDetail';
 import { DailyArcana } from './pages/DailyArcana';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/tools/moon-phase" element={<MoonPhase />} />
           <Route path="/tools/pythagorean-square" element={<PythagoreanSquare />} />
           <Route path="/tools/zodiac-compatibility" element={<ZodiacCompatibility />} />
+          <Route path="/tools/zodiac-compatibility/:pair" element={<ZodiacPairDetail />} />
           <Route path="/tools/daily-arcana" element={<DailyArcana />} />
 
           {/* Arcana encyclopedia */}

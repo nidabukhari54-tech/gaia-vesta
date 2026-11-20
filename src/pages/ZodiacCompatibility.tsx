@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
 import { ZODIAC_SIGNS, zodiacCompatibility, type ZodiacSign } from '../lib/numerology';
@@ -89,6 +90,27 @@ export function ZodiacCompatibility() {
           Want the deeper version? The <a href="/tools/compatibility" className="text-purple font-medium hover:underline">Destiny Matrix compatibility</a> reads
           both partners' full birth charts — not just sun signs.
         </p>
+
+        <div className="mt-14">
+          <h2 className="text-2xl font-serif font-bold text-center mb-2">Browse all zodiac pairs</h2>
+          <p className="text-center text-sm text-text-primary/55 mb-6">Every sign pairing has its own page — score, strengths and friction points.</p>
+          <div className="space-y-4">
+            {ZODIAC_SIGNS.map((s1, i) => (
+              <div key={s1.name} className="flex flex-wrap items-center gap-2">
+                <span className="w-28 shrink-0 font-serif font-semibold text-sm">{s1.symbol} {s1.name} +</span>
+                {ZODIAC_SIGNS.slice(i).map((s2) => (
+                  <Link
+                    key={s2.name}
+                    to={`/tools/zodiac-compatibility/${s1.name.toLowerCase()}-${s2.name.toLowerCase()}`}
+                    className="px-3 py-1.5 rounded-full text-xs font-medium bg-purple/10 hover:bg-purple/20 transition-all"
+                  >
+                    {s2.name}
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </PublicLayout>
   );

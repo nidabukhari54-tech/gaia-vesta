@@ -80,6 +80,14 @@ export function AngelNumbers() {
                 <p className="text-sm text-text-primary/75">{active.money}</p>
               </div>
             </div>
+            <div className="text-center mt-5">
+              <Link
+                to={`/tools/angel-numbers/${active.number}`}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-purple hover:text-text-primary transition-colors"
+              >
+                Open the full {active.number} meaning page →
+              </Link>
+            </div>
           </div>
         )}
 

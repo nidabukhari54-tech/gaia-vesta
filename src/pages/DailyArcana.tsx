@@ -18,9 +18,9 @@ export function DailyArcana() {
   return (
     <PublicLayout>
       <ToolHero
-        eyebrow="Daily guidance"
-        title="Arcana of the Day"
-        subtitle="Every date carries an arcana of its own. This is today's — drawn from the date itself, the same for everyone, and different tomorrow."
+        eyebrow="Daily tarot · Guidance"
+        title="Daily Tarot Card — Arcana of the Day"
+        subtitle="Every date carries an arcana of its own — your daily tarot draw. This is today's card, drawn from the date itself, the same for everyone, and different tomorrow."
       />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

@@ -19,6 +19,7 @@ import { LifePath } from './pages/LifePath';
 import { NameNumerology } from './pages/NameNumerology';
 import { PersonalYear } from './pages/PersonalYear';
 import { AngelNumbers } from './pages/AngelNumbers';
+import { AngelNumberDetail } from './pages/AngelNumberDetail';
 import { MoonPhase } from './pages/MoonPhase';
 import { PythagoreanSquare } from './pages/PythagoreanSquare';
 import { ZodiacCompatibility } from './pages/ZodiacCompatibility';
@@ -42,6 +43,7 @@ function App() {
           <Route path="/tools/name-numerology" element={<NameNumerology />} />
           <Route path="/tools/personal-year" element={<PersonalYear />} />
           <Route path="/tools/angel-numbers" element={<AngelNumbers />} />
+          <Route path="/tools/angel-numbers/:number" element={<AngelNumberDetail />} />
           <Route path="/tools/moon-phase" element={<MoonPhase />} />
           <Route path="/tools/pythagorean-square" element={<PythagoreanSquare />} />
           <Route path="/tools/zodiac-compatibility" element={<ZodiacCompatibility />} />

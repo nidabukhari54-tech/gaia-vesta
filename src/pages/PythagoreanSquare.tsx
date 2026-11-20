@@ -20,8 +20,8 @@ export function PythagoreanSquare() {
     <PublicLayout>
       <ToolHero
         eyebrow="Numerology · Psychomatrix"
-        title="Pythagorean Square Calculator"
-        subtitle="The ancient psychomatrix: every digit of your birth date placed in a 3×3 grid. Repeated digits amplify a trait; empty cells show the lessons you are here to develop."
+        title="Pythagoras Square (Psychomatrix) Calculator"
+        subtitle="The ancient psychomatrix of Pythagoras: every digit of your birth date placed in a 3×3 grid. Repeated digits amplify a trait; empty cells show the lessons you are here to develop."
       />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

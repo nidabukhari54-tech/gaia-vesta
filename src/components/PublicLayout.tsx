@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
@@ -75,6 +75,10 @@ export function ToolHero({
   title: string;
   subtitle: string;
 }) {
+  useEffect(() => {
+    document.title = `${title} | Gaia Vesta`;
+  }, [title]);
+
   return (
     <section className="pt-14 pb-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

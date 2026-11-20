@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { SalesCTA } from '../components/SalesCTA';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
 import { dailyArcana, moonPhase } from '../lib/numerology';
 import { getArcana } from '../lib/arcana-meanings';
@@ -78,6 +79,10 @@ export function DailyArcana() {
             </Link>
           </div>
         </div>
+        <SalesCTA
+          headline="Today's card is a hint. Your chart is the whole message."
+          context="The daily tarot card speaks to everyone. Your AI deep reading speaks only to you — your love line, money line and karmic pattern, read from your own birth date."
+        />
       </section>
 
       <ArcanaModal selected={selected} onClose={() => setSelected(null)} />

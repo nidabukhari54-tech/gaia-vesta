@@ -8,6 +8,7 @@ import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { ArcanaModal, SelectedArcana } from '../components/chart/ArcanaModal';
 import { AIReading } from '../components/chart/AIReading';
+import { SalesCTA } from '../components/SalesCTA';
 import { ChakraMap } from '../components/chart/ChakraMap';
 import { reduceToArcana } from '../lib/matrix-calculator';
 import { exportChartPng } from '../lib/export-chart';
@@ -453,6 +454,14 @@ export function Chart() {
                 </div>
               )}
             </div>
+          </div>
+        )}
+        {matrixResult && (
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+            <SalesCTA
+              headline="This is your map. Now read the story behind it."
+              context="You have seen the numbers. The AI deep reading connects them — why love repeats its pattern, where your money energy leaks, and which lesson this year is asking of you."
+            />
           </div>
         )}
       </main>

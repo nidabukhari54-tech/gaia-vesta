@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Sparkles, ArrowRight, Heart, Coins, Compass, Share2, BrainCircuit,
   ChevronDown, Menu, X, Star, HeartHandshake, CalendarClock, Baby, Hash, Moon,
+  Check, Minus,
 } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
 import { calculateDestinyMatrix, DestinyMatrixResult } from '../lib/matrix-calculator';
@@ -109,8 +110,10 @@ function Hero() {
             Your Cosmic <span className="bg-gradient-to-r from-gold to-purple bg-clip-text text-transparent">Blueprint</span>, Decoded
           </h1>
           <p className="text-lg text-text-primary/70 mb-8 max-w-lg">
-            Enter your birth date and Gaia Vesta maps your Destiny Matrix — 22 Major Arcana revealing
-            your soul purpose, love patterns, money energy, and life path.
+            Why do you keep falling for the same kind of person? Why does money arrive — then quietly
+            disappear? Your birth date holds the pattern. Gaia Vesta decodes your Destiny Matrix:
+            22 Major Arcana mapping your soul purpose, love patterns, money energy, and the lessons
+            you came here to learn.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="#demo" className="px-8 py-3.5 bg-gradient-to-r from-gold to-purple text-white font-medium rounded-xl hover:shadow-xl transition-all flex items-center justify-center gap-2">
@@ -347,6 +350,52 @@ function ToolsSection() {
   );
 }
 
+function WhyGaia() {
+  const rows: { label: string; gaia: string; others: string }[] = [
+    { label: 'Full Destiny Matrix chart', gaia: 'Free', others: 'Free' },
+    { label: 'Deep personal reading', gaia: 'AI reading — 5 free every month', others: '$9 per reading' },
+    { label: 'Compatibility matrix for couples', gaia: 'Free', others: 'Locked in a $29 bundle' },
+    { label: 'Chart image export', gaia: 'Free', others: 'Paywalled' },
+    { label: 'Angel numbers, moon phase, forecasts & 10+ more tools', gaia: 'All free', others: '€9–14 each, or $8/week plans' },
+  ];
+  return (
+    <section className="py-20 bg-white/50">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-text-primary mb-4">
+            Everything they charge for. <span className="bg-gradient-to-r from-gold to-purple bg-clip-text text-transparent">Free here.</span>
+          </h2>
+          <p className="text-text-primary/60 max-w-2xl mx-auto">
+            Leading Destiny Matrix sites give you the chart for free — then paywall every answer.
+            Gaia Vesta gives you the answers too.
+          </p>
+        </div>
+        <div className="bg-white/80 rounded-2xl border border-gold/30 overflow-hidden shadow-sm">
+          <div className="grid grid-cols-[1.2fr_1fr_1fr] text-sm font-semibold bg-gradient-to-r from-gold/15 to-purple/15 px-5 py-3">
+            <span></span>
+            <span className="text-center">Gaia Vesta</span>
+            <span className="text-center text-text-primary/55">Typical paid sites</span>
+          </div>
+          {rows.map((r) => (
+            <div key={r.label} className="grid grid-cols-[1.2fr_1fr_1fr] items-center px-5 py-3.5 border-t border-purple/10 text-sm">
+              <span className="font-medium text-text-primary/80 pr-3">{r.label}</span>
+              <span className="flex items-center justify-center gap-1.5 text-center font-medium text-text-primary">
+                <Check className="w-4 h-4 text-gold shrink-0" /> {r.gaia}
+              </span>
+              <span className="flex items-center justify-center gap-1.5 text-center text-text-primary/50">
+                <Minus className="w-4 h-4 shrink-0" /> {r.others}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p className="text-center text-xs text-text-primary/40 mt-4">
+          Comparison based on the public pricing of leading Destiny Matrix sites, November 2026.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Pricing() {
   return (
     <section id="pricing" className="py-20">
@@ -431,6 +480,7 @@ export function Landing() {
         <Demo />
         <Features />
         <ToolsSection />
+        <WhyGaia />
         <Pricing />
       </main>
       <Footer />

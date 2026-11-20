@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Heart, Flame, ArrowRight } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
+import { SalesCTA } from '../components/SalesCTA';
 import { ZODIAC_SIGNS, zodiacCompatibility, type ZodiacSign } from '../lib/numerology';
 
 const ELEMENT_DYNAMICS: Record<string, { strengths: string; watchOut: string }> = {
@@ -166,7 +167,12 @@ export function ZodiacPairDetail() {
           </Link>
         </div>
 
-        <h2 className="font-serif font-semibold text-xl mb-4 text-center">More pairs</h2>
+        <SalesCTA
+          headline={`${a.name} + ${b.name} is the surface. Your charts go deeper.`}
+          context="Sun-sign scores are a first glance. The AI deep reading compares your full Destiny Matrix charts — love lines, money lines and shared karmic lessons — and tells the real story of this pairing."
+        />
+
+        <h2 className="font-serif font-semibold text-xl mb-4 text-center mt-14">More pairs</h2>
         <div className="flex flex-wrap justify-center gap-2">
           {aPairs.slice(0, 6).map((s) => {
             const [x, y] = ZODIAC_SIGNS.indexOf(a) <= ZODIAC_SIGNS.indexOf(s) ? [a, s] : [s, a];

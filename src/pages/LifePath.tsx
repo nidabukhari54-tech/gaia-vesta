@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Hash, Heart, Briefcase } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { SalesCTA } from '../components/SalesCTA';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { lifePathNumber } from '../lib/numerology';
 import { lifePathMeaning } from '../lib/numerology-meanings';
@@ -87,6 +88,10 @@ export function LifePath() {
             </div>
           )
         )}
+        <SalesCTA
+          headline="One number is a clue. Your full chart is the answer."
+          context="Your Life Path number is a single thread. The AI deep reading pulls the whole tapestry — love, money, karma and the year ahead — from your complete Destiny Matrix."
+        />
       </section>
     </PublicLayout>
   );

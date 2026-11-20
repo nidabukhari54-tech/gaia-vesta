@@ -1,6 +1,7 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Heart, Coins, ArrowRight } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
+import { SalesCTA } from '../components/SalesCTA';
 import { ANGEL_NUMBERS, ANGEL_NUMBER_LIST } from '../lib/numerology-meanings';
 import { useEffect } from 'react';
 
@@ -68,7 +69,12 @@ export function AngelNumberDetail() {
           </Link>
         </div>
 
-        <h2 className="font-serif font-semibold text-xl mb-4 text-center">All angel number meanings</h2>
+        <SalesCTA
+          headline={`Why do you keep seeing ${meaning.number}? Your birth chart knows.`}
+          context="Angel numbers are the universe knocking. Your Destiny Matrix explains what it is knocking about — the AI deep reading decodes your love line, money line and karmic lesson in one personal story."
+        />
+
+        <h2 className="font-serif font-semibold text-xl mb-4 text-center mt-14">All angel number meanings</h2>
         <div className="flex flex-wrap justify-center gap-2">
           {others.map((n) => (
             <Link

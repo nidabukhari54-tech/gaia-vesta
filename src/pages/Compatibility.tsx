@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Coins, Compass, Download, Sparkles, HeartHandshake } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { SalesCTA } from '../components/SalesCTA';
 import { PersonForm } from '../components/chart/PersonForm';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartLines } from '../components/chart/ChartLines';
@@ -132,6 +133,13 @@ export function Compatibility() {
           </div>
         )}
       </section>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <SalesCTA
+          headline="Two charts. One story. Read yours together."
+          context="Compatibility scores tell you the weather. The AI deep reading tells you the climate — how your love lines, money lines and karmic lessons interact as a couple, and what this year holds for you both."
+        />
+      </div>
 
       <ArcanaModal selected={selected} onClose={() => setSelected(null)} />
     </PublicLayout>

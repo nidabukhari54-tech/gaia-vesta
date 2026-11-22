@@ -67,23 +67,23 @@ export function AngelNumbers() {
               <p className="text-5xl font-serif font-bold bg-gradient-to-r from-gold to-purple bg-clip-text text-transparent">
                 {active.number}
               </p>
-              <h2 className="text-2xl font-serif font-bold mt-1">{active.title}</h2>
+              <h2 className="text-2xl font-serif font-bold text-cream mt-1">{active.title}</h2>
             </div>
-            <p className="text-text-primary/80 leading-relaxed text-center max-w-2xl mx-auto mb-6">{active.meaning}</p>
+            <p className="text-lav/85 leading-relaxed text-center max-w-2xl mx-auto mb-6">{active.meaning}</p>
             <div className="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-              <div className="bg-white/75 rounded-xl p-4">
-                <p className="text-xs font-semibold tracking-wide uppercase text-purple mb-1">In love</p>
-                <p className="text-sm text-text-primary/75">{active.love}</p>
+              <div className="bg-white/[0.06] border border-white/10 rounded-xl p-4">
+                <p className="text-xs font-semibold tracking-wide uppercase text-goldlight mb-1">In love</p>
+                <p className="text-sm text-lav/80">{active.love}</p>
               </div>
-              <div className="bg-white/75 rounded-xl p-4">
-                <p className="text-xs font-semibold tracking-wide uppercase text-gold mb-1">Money & work</p>
-                <p className="text-sm text-text-primary/75">{active.money}</p>
+              <div className="bg-white/[0.06] border border-white/10 rounded-xl p-4">
+                <p className="text-xs font-semibold tracking-wide uppercase text-goldlight mb-1">Money & work</p>
+                <p className="text-sm text-lav/80">{active.money}</p>
               </div>
             </div>
             <div className="text-center mt-5">
               <Link
                 to={`/tools/angel-numbers/${active.number}`}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-purple hover:text-text-primary transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-goldlight hover:text-cream transition-colors"
               >
                 Open the full {active.number} meaning page →
               </Link>
@@ -93,13 +93,13 @@ export function AngelNumbers() {
 
         <div className="grid md:grid-cols-2 gap-6 items-start">
           <div>
-            <h2 className="text-2xl font-serif font-bold mb-2">Your personal angel number</h2>
-            <p className="text-text-primary/65 mb-5">
+            <h2 className="text-2xl font-serif font-bold text-cream mb-2">Your personal angel number</h2>
+            <p className="text-lav/75 mb-5">
               Your birth date reduces to one guardian digit, repeated three times. When this number keeps
               appearing for you, it is rarely random — it is your personal sign.
             </p>
             {personal && (
-              <div className="bg-white/80 rounded-2xl border border-gold/30 p-6 text-center animate-fadeIn">
+              <div className="bg-white/80 rounded-2xl border border-gold/30 p-6 text-center animate-fadeIn text-text-primary">
                 <p className="text-sm text-text-primary/55 mb-1">Your angel number is</p>
                 <p className="text-5xl font-serif font-bold bg-gradient-to-r from-gold to-purple bg-clip-text text-transparent mb-2">
                   {personal}
@@ -120,7 +120,7 @@ export function AngelNumbers() {
         <div className="text-center mt-12">
           <Link
             to="/tools"
-            className="inline-flex items-center gap-2 text-sm font-medium text-purple hover:text-text-primary transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-medium text-goldlight hover:text-cream transition-colors"
           >
             <Sparkles className="w-4 h-4" /> Explore all free tools
           </Link>

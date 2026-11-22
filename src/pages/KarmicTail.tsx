@@ -55,20 +55,20 @@ export function KarmicTail() {
                 setName(personName);
               }}
             />
-            <p className="text-center text-xs text-text-primary/45 mt-5 max-w-md mx-auto">
+            <p className="text-center text-xs text-lavdim mt-5 max-w-md mx-auto">
               Enter your birth date. Nothing is stored — your tail is calculated in your browser.
             </p>
           </>
         ) : (
           <div className="animate-fadeIn">
             <div className="text-center mb-8">
-              <p className="text-xs font-semibold tracking-widest uppercase text-purple mb-2">
+              <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">
                 {name ? `${name}'s karmic tail` : 'Your karmic tail'}
               </p>
               <p className="text-6xl sm:text-7xl font-serif font-bold bg-gradient-to-r from-gold to-purple bg-clip-text text-transparent leading-tight">
                 {tail.code}
               </p>
-              <p className="text-text-primary/60 mt-2 max-w-lg mx-auto">
+              <p className="text-lav/75 mt-2 max-w-lg mx-auto">
                 Three arcana, one story: what you carried in, how it keeps returning, and the lesson that ends the loop.
               </p>
             </div>
@@ -77,7 +77,7 @@ export function KarmicTail() {
               {tail.points.map((p, i) => {
                 const Icon = ROLE_ICONS[i];
                 return (
-                  <div key={p.key} className="bg-white/80 rounded-2xl border border-purple/15 p-7">
+                  <div key={p.key} className="bg-white/80 rounded-2xl border border-purple/15 p-7 text-text-primary">
                     <div className="flex items-start gap-4">
                       <span className="w-11 h-11 rounded-xl bg-gradient-to-br from-gold/25 to-purple/25 flex items-center justify-center shrink-0">
                         <Icon className="w-5 h-5 text-purple" />
@@ -113,7 +113,7 @@ export function KarmicTail() {
               })}
             </div>
 
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 mb-6 shadow-xl border border-purple/20">
+            <div className="bg-[#FAF5EA] backdrop-blur-sm rounded-[1.75rem] p-5 sm:p-8 mb-6 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] border border-purple/20 text-text-primary">
               <p className="text-center text-sm font-medium text-text-primary/60 mb-2">
                 Your tail inside the full chart — the chain runs down the lower-left edge
               </p>
@@ -123,7 +123,7 @@ export function KarmicTail() {
             <div className="text-center mb-4">
               <button
                 onClick={() => setResult(null)}
-                className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold transition-all"
+                className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all"
               >
                 Calculate another tail
               </button>
@@ -137,24 +137,24 @@ export function KarmicTail() {
         )}
 
         <div className="mt-16">
-          <h2 className="text-2xl font-serif font-bold mb-6 text-center">Karmic tail questions</h2>
+          <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">Karmic tail questions</h2>
           <div className="space-y-4">
             {FAQS.map((f) => (
-              <div key={f.q} className="bg-white/80 rounded-2xl border border-gold/25 p-6">
-                <h3 className="font-serif font-semibold text-lg mb-2">{f.q}</h3>
-                <p className="text-text-primary/75 leading-relaxed">{f.a}</p>
+              <div key={f.q} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+                <h3 className="font-serif font-semibold text-lg text-cream mb-2">{f.q}</h3>
+                <p className="text-lav/80 leading-relaxed">{f.a}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <p className="text-center text-sm text-text-primary/55 mt-10">
+        <p className="text-center text-sm text-lavdim mt-10">
           New to the matrix? Read the{' '}
-          <Link to="/tools/how-to-read-destiny-matrix" className="text-purple font-medium hover:underline">
+          <Link to="/tools/how-to-read-destiny-matrix" className="text-goldlight font-medium hover:underline">
             guide to reading your full chart
           </Link>{' '}
           — or calculate the{' '}
-          <Link to="/#demo" className="text-purple font-medium hover:underline inline-flex items-center gap-1">
+          <Link to="/#demo" className="text-goldlight font-medium hover:underline inline-flex items-center gap-1">
             complete Destiny Matrix <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </p>

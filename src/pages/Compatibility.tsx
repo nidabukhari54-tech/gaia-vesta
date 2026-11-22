@@ -76,8 +76,8 @@ export function Compatibility() {
         {result && (
           <div className="animate-fadeIn">
             <div className="text-center mb-6">
-              <p className="text-sm text-text-primary/55">Combined chart for</p>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold">
+              <p className="text-sm text-lavdim">Combined chart for</p>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-cream">
                 {nameA} <span className="text-gold">&</span> {nameB}
               </h2>
               <p className="mt-2 inline-block bg-gradient-to-r from-gold to-purple text-white font-semibold px-5 py-1.5 rounded-full">
@@ -91,7 +91,7 @@ export function Compatibility() {
               <ScoreBar label="Shared purpose" icon={Compass} score={result.purposeScore} color="#7A6AAE" />
             </div>
 
-            <div ref={chartRef} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 mb-6 shadow-xl border border-purple/20">
+            <div ref={chartRef} className="bg-[#FAF5EA] backdrop-blur-sm rounded-[1.75rem] p-5 sm:p-8 mb-6 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] border border-purple/20 text-text-primary">
               <DestinyMatrixChart result={result.combined} onNodeClick={handleNodeClick} />
               <p className="text-center text-sm text-text-primary/50 mt-2">Tap any node for its meaning</p>
             </div>
@@ -106,7 +106,7 @@ export function Compatibility() {
                 { title: 'Money as a couple', arcana: moneyArcana, text: moneyArcana?.moneyMeaning },
                 { title: 'Why you met', arcana: purposeArcana, text: purposeArcana?.karmicLesson },
               ].map((card) => (
-                <div key={card.title} className="bg-white/80 rounded-2xl p-5 border border-gold/20">
+                <div key={card.title} className="bg-white/80 rounded-2xl p-5 border border-gold/20 text-text-primary">
                   <p className="text-xs font-semibold tracking-wide uppercase text-purple mb-1">{card.title}</p>
                   <p className="font-serif font-semibold text-lg mb-2">
                     {card.arcana?.id} · {card.arcana?.name}
@@ -119,7 +119,7 @@ export function Compatibility() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => exportChartPng(chartRef.current, 'compatibility-matrix.png')}
-                className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold hover:shadow transition-all flex items-center justify-center gap-2"
+                className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 hover:shadow transition-all flex items-center justify-center gap-2"
               >
                 <Download className="w-5 h-5" /> Download chart (free)
               </button>

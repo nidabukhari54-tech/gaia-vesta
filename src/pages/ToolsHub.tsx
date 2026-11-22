@@ -89,19 +89,19 @@ export function ToolsHub() {
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
         <div className="grid md:grid-cols-2 gap-4 mb-10">
-          <Link to="/tools/daily-arcana" className="bg-gradient-to-br from-gold/15 to-purple/15 rounded-2xl p-6 border border-gold/30 hover:shadow-lg transition-all">
-            <p className="text-xs font-semibold tracking-widest uppercase text-purple mb-2">Today's arcana</p>
-            <p className="text-2xl font-serif font-bold text-text-primary mb-1">
+          <Link to="/tools/daily-arcana" className="bg-white/[0.04] rounded-2xl p-6 border border-goldlight/30 hover:border-goldlight/60 hover:shadow-lg transition-all">
+            <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">Today's arcana</p>
+            <p className="text-2xl font-serif font-bold text-cream mb-1">
               {arcana.id} · {arcana.name}
             </p>
-            <p className="text-sm text-text-primary/65 italic">"{arcana.description}"</p>
+            <p className="text-sm text-lav/70 italic">"{arcana.description}"</p>
           </Link>
-          <Link to="/tools/moon-phase" className="bg-white/70 rounded-2xl p-6 border border-purple/20 hover:shadow-lg transition-all">
-            <p className="text-xs font-semibold tracking-widest uppercase text-purple mb-2">Tonight's moon</p>
-            <p className="text-2xl font-serif font-bold text-text-primary mb-1">
+          <Link to="/tools/moon-phase" className="bg-white/[0.04] rounded-2xl p-6 border border-white/10 hover:border-goldlight/50 hover:shadow-lg transition-all">
+            <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">Tonight's moon</p>
+            <p className="text-2xl font-serif font-bold text-cream mb-1">
               {moon.emoji} {moon.name}
             </p>
-            <p className="text-sm text-text-primary/65">
+            <p className="text-sm text-lav/70">
               {Math.round(moon.illumination * 100)}% illuminated · {moon.age.toFixed(1)} days into the cycle
             </p>
           </Link>
@@ -112,26 +112,26 @@ export function ToolsHub() {
             <Link
               key={t.title}
               to={t.hash ? { pathname: t.to, hash: t.hash } : t.to}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gold/20 hover:border-gold/50 hover:shadow-lg transition-all group"
+              className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-goldlight/50 hover:shadow-lg transition-all group"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                   <t.icon className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-[11px] font-semibold tracking-wide uppercase bg-purple/10 text-purple px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-semibold tracking-wide uppercase bg-goldlight/10 text-goldlight px-2.5 py-1 rounded-full">
                   {t.tag}
                 </span>
               </div>
-              <h2 className="text-lg font-semibold text-text-primary mb-1.5">{t.title}</h2>
-              <p className="text-sm text-text-primary/60">{t.text}</p>
+              <h2 className="text-lg font-semibold text-cream mb-1.5">{t.title}</h2>
+              <p className="text-sm text-lav/70">{t.text}</p>
             </Link>
           ))}
         </div>
 
-        <div className="bg-white/70 rounded-2xl border border-gold/20 p-8 text-center mb-16">
-          <Download className="w-8 h-8 text-gold mx-auto mb-3" />
-          <h2 className="text-xl font-serif font-semibold mb-2">Every chart is downloadable</h2>
-          <p className="text-text-primary/60 max-w-xl mx-auto">
+        <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-8 text-center mb-16">
+          <Download className="w-8 h-8 text-goldlight mx-auto mb-3" />
+          <h2 className="text-xl font-serif font-semibold text-cream mb-2">Every chart is downloadable</h2>
+          <p className="text-lav/70 max-w-xl mx-auto">
             Unlike other Destiny Matrix sites that charge for downloads, Gaia Vesta lets you save any chart
             as a high-resolution image — free, forever.
           </p>

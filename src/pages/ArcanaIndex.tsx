@@ -20,19 +20,19 @@ export function ArcanaIndex() {
             <Link
               key={a.id}
               to={`/arcana/${a.id}`}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gold/20 hover:border-gold/50 hover:shadow-lg transition-all group"
+              className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-goldlight/50 hover:shadow-lg transition-all group"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform">
                   {a.id}
                 </div>
-                <span className="text-xs font-serif text-text-primary/40">{ROMAN[a.id - 1] ?? a.id}</span>
+                <span className="text-xs font-serif text-lavdim">{ROMAN[a.id - 1] ?? a.id}</span>
               </div>
-              <h2 className="font-serif font-semibold text-lg text-text-primary mb-1">{a.name}</h2>
-              <p className="text-sm text-text-primary/60 italic">"{a.description}"</p>
+              <h2 className="font-serif font-semibold text-lg text-cream mb-1">{a.name}</h2>
+              <p className="text-sm text-lav/70 italic">"{a.description}"</p>
               <div className="flex flex-wrap gap-1.5 mt-4">
                 {a.strengths.slice(0, 3).map((s) => (
-                  <span key={s} className="text-[11px] bg-green-50 text-green-700 px-2 py-0.5 rounded-full">{s}</span>
+                  <span key={s} className="text-[11px] bg-white/[0.06] border border-white/10 text-lav px-2 py-0.5 rounded-full">{s}</span>
                 ))}
               </div>
             </Link>

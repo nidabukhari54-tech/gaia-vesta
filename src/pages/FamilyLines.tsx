@@ -40,11 +40,11 @@ const FAQS = [
 function LineSection({ line }: { line: ChartLine }) {
   return (
     <div className="mb-10">
-      <h2 className="font-serif font-semibold text-2xl mb-2">{line.title}</h2>
-      <p className="text-text-primary/65 leading-relaxed mb-5 max-w-2xl">{line.intro}</p>
+      <h2 className="font-serif font-semibold text-2xl text-cream mb-2">{line.title}</h2>
+      <p className="text-lav/75 leading-relaxed mb-5 max-w-2xl">{line.intro}</p>
       <div className={`grid gap-4 ${line.points.length === 4 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
         {line.points.map((p) => (
-          <div key={p.key} className="bg-white/80 rounded-2xl border border-purple/15 p-6">
+          <div key={p.key} className="bg-white/80 rounded-2xl border border-purple/15 p-6 text-text-primary">
             <p className="text-xs font-semibold tracking-widest uppercase text-purple">
               {p.role} · Arcana {p.arcana.id}
             </p>
@@ -58,12 +58,12 @@ function LineSection({ line }: { line: ChartLine }) {
         ))}
       </div>
       {line.supporting.length > 0 && (
-        <p className="text-sm text-text-primary/55 mt-4">
+        <p className="text-sm text-lavdim mt-4">
           Supporting points on this line:{' '}
           {line.supporting.map((s, i) => (
             <span key={s.key}>
               {i > 0 && ' · '}
-              <strong className="text-text-primary/75">{s.arcana.id}</strong> {s.arcana.name}
+              <strong className="text-lav/85">{s.arcana.id}</strong> {s.arcana.name}
             </span>
           ))}
         </p>
@@ -116,7 +116,7 @@ export function FamilyLines() {
                 );
               }}
             />
-            <p className="text-center text-xs text-text-primary/45 mt-5 max-w-md mx-auto">
+            <p className="text-center text-xs text-lavdim mt-5 max-w-md mx-auto">
               Enter your birth date. Nothing is stored — your lines are calculated in your browser.
             </p>
           </>
@@ -124,12 +124,12 @@ export function FamilyLines() {
           <div className="animate-fadeIn">
             <div className="text-center mb-10">
               <span className="inline-flex w-12 h-12 rounded-2xl bg-gradient-to-br from-gold/25 to-purple/25 items-center justify-center mb-3">
-                <Users className="w-6 h-6 text-purple" />
+                <Users className="w-6 h-6 text-goldlight" />
               </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold">
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-cream">
                 {name ? `${name}'s family lines` : 'Your family lines'}
               </h2>
-              <p className="text-text-primary/60 mt-2 max-w-xl mx-auto">
+              <p className="text-lav/70 mt-2 max-w-xl mx-auto">
                 Two inheritances, one crossing point — you. Read each line in order: what arrived, where it meets your centre, and where it lands.
               </p>
             </div>
@@ -140,12 +140,12 @@ export function FamilyLines() {
             <LineSection line={talent} />
 
             <div className="mb-10">
-              <h2 className="font-serif font-semibold text-2xl mb-2">Your Numbers, Analysed</h2>
-              <p className="text-text-primary/65 leading-relaxed mb-5 max-w-2xl">
+              <h2 className="font-serif font-semibold text-2xl text-cream mb-2">Your Numbers, Analysed</h2>
+              <p className="text-lav/75 leading-relaxed mb-5 max-w-2xl">
                 Across all sixteen points of your chart, some arcana speak more than once — and some never appear. Both facts mean something.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-white/80 rounded-2xl border border-gold/25 p-6">
+                <div className="bg-white/80 rounded-2xl border border-gold/25 p-6 text-text-primary">
                   <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-purple mb-3">
                     <Repeat className="w-4 h-4" /> Repeated — your loud energies
                   </p>
@@ -166,7 +166,7 @@ export function FamilyLines() {
                     </p>
                   )}
                 </div>
-                <div className="bg-white/80 rounded-2xl border border-purple/15 p-6">
+                <div className="bg-white/80 rounded-2xl border border-purple/15 p-6 text-text-primary">
                   <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-purple mb-3">
                     <CircleDashed className="w-4 h-4" /> Missing — your growth edges
                   </p>
@@ -188,7 +188,7 @@ export function FamilyLines() {
               </div>
             </div>
 
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 mb-6 shadow-xl border border-purple/20">
+            <div className="bg-[#FAF5EA] backdrop-blur-sm rounded-[1.75rem] p-5 sm:p-8 mb-6 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] border border-purple/20 text-text-primary">
               <p className="text-center text-sm font-medium text-text-primary/60 mb-2">
                 Your full chart — the two diagonals are your family lines
               </p>
@@ -206,13 +206,13 @@ export function FamilyLines() {
                 </button>
                 <button
                   onClick={() => setResult(null)}
-                  className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold transition-all"
+                  className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all"
                 >
                   Calculate another chart
                 </button>
               </div>
-              {pdfNote && <p className="text-sm text-text-primary/55 mt-3 max-w-md mx-auto">{pdfNote}</p>}
-              <p className="text-xs text-text-primary/45 mt-2">
+              {pdfNote && <p className="text-sm text-lavdim mt-3 max-w-md mx-auto">{pdfNote}</p>}
+              <p className="text-xs text-lavdim mt-2">
                 The PDF is your complete reading — every line in this page, plus love, money, karmic tail and purposes. Free, no card.
               </p>
             </div>
@@ -225,24 +225,24 @@ export function FamilyLines() {
         )}
 
         <div className="mt-16">
-          <h2 className="text-2xl font-serif font-bold mb-6 text-center">Family line questions</h2>
+          <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">Family line questions</h2>
           <div className="space-y-4">
             {FAQS.map((f) => (
-              <div key={f.q} className="bg-white/80 rounded-2xl border border-gold/25 p-6">
-                <h3 className="font-serif font-semibold text-lg mb-2">{f.q}</h3>
-                <p className="text-text-primary/75 leading-relaxed">{f.a}</p>
+              <div key={f.q} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+                <h3 className="font-serif font-semibold text-lg text-cream mb-2">{f.q}</h3>
+                <p className="text-lav/80 leading-relaxed">{f.a}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <p className="text-center text-sm text-text-primary/55 mt-10">
+        <p className="text-center text-sm text-lavdim mt-10">
           Follow the thread further with the{' '}
-          <Link to="/tools/karmic-tail" className="text-purple font-medium hover:underline">
+          <Link to="/tools/karmic-tail" className="text-goldlight font-medium hover:underline">
             Karmic Tail Calculator
           </Link>{' '}
           — or read the{' '}
-          <Link to="/tools/how-to-read-destiny-matrix" className="text-purple font-medium hover:underline inline-flex items-center gap-1">
+          <Link to="/tools/how-to-read-destiny-matrix" className="text-goldlight font-medium hover:underline inline-flex items-center gap-1">
             guide to your full chart <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </p>

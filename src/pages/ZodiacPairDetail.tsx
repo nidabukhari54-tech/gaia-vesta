@@ -86,7 +86,7 @@ export function ZodiacPairDetail() {
   const bPairs = ZODIAC_SIGNS.filter((s) => s.name !== b.name && s.name !== a.name);
 
   const signCard = (s: ZodiacSign) => (
-    <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-left">
+    <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-left text-text-primary">
       <div className="flex items-center gap-3 mb-3">
         <span className="text-4xl">{s.symbol}</span>
         <div>
@@ -106,18 +106,18 @@ export function ZodiacPairDetail() {
     <PublicLayout>
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20">
         <div className="text-center mb-8">
-          <p className="text-xs font-semibold tracking-widest uppercase text-purple mb-3">Zodiac compatibility</p>
+          <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">Zodiac compatibility</p>
           <p className="text-6xl mb-3">{a.symbol} {b.symbol}</p>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold">
+          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-cream">
             {a.name} and {b.name} Compatibility
           </h1>
           <div className="mt-5 inline-flex flex-col items-center">
             <span className="text-5xl font-serif font-bold bg-gradient-to-r from-gold to-purple bg-clip-text text-transparent">
               {match.score}%
             </span>
-            <span className="text-sm font-medium text-text-primary/60 mt-1">{match.verdict}</span>
+            <span className="text-sm font-medium text-lavdim mt-1">{match.verdict}</span>
           </div>
-          <div className="w-64 max-w-full h-2.5 bg-purple/15 rounded-full mx-auto mt-3 overflow-hidden">
+          <div className="w-64 max-w-full h-2.5 bg-white/10 rounded-full mx-auto mt-3 overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-gold to-purple rounded-full"
               style={{ width: `${match.score}%` }}
@@ -126,10 +126,10 @@ export function ZodiacPairDetail() {
         </div>
 
         <div className="bg-gradient-to-br from-gold/12 to-purple/12 rounded-2xl border border-gold/30 p-7 mb-6">
-          <h2 className="font-serif font-semibold text-xl mb-3">
+          <h2 className="font-serif font-semibold text-xl text-cream mb-3">
             Are {a.name} and {b.name} a good match?
           </h2>
-          <p className="text-text-primary/80 leading-relaxed">{match.summary}</p>
+          <p className="text-lav/85 leading-relaxed">{match.summary}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5 mb-6">
@@ -138,14 +138,14 @@ export function ZodiacPairDetail() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5 mb-10">
-          <div className="bg-white/80 rounded-2xl p-6 border border-gold/25">
+          <div className="bg-white/80 rounded-2xl p-6 border border-gold/25 text-text-primary">
             <div className="flex items-center gap-2 mb-2">
               <Heart className="w-5 h-5 text-gold" />
               <h2 className="font-serif font-semibold text-lg">Where this pair shines</h2>
             </div>
             <p className="text-text-primary/75 leading-relaxed">{dynamics.strengths}</p>
           </div>
-          <div className="bg-white/80 rounded-2xl p-6 border border-purple/20">
+          <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-text-primary">
             <div className="flex items-center gap-2 mb-2">
               <Flame className="w-5 h-5 text-purple" />
               <h2 className="font-serif font-semibold text-lg">What to watch</h2>
@@ -154,9 +154,9 @@ export function ZodiacPairDetail() {
           </div>
         </div>
 
-        <div className="bg-white/70 rounded-2xl border border-gold/25 p-7 text-center mb-10">
-          <h2 className="font-serif font-semibold text-xl mb-2">Go deeper than sun signs</h2>
-          <p className="text-text-primary/60 mb-5 max-w-md mx-auto">
+        <div className="bg-white/[0.04] rounded-2xl border border-goldlight/30 p-7 text-center mb-10">
+          <h2 className="font-serif font-semibold text-xl text-cream mb-2">Go deeper than sun signs</h2>
+          <p className="text-lav/70 mb-5 max-w-md mx-auto">
             Sun signs are only the surface. Compare your full Destiny Matrix charts — love line, money line and shared purpose.
           </p>
           <Link
@@ -172,12 +172,12 @@ export function ZodiacPairDetail() {
           context="Sun-sign scores are a first glance. The AI deep reading compares your full Destiny Matrix charts — love lines, money lines and shared karmic lessons — and tells the real story of this pairing."
         />
 
-        <h2 className="font-serif font-semibold text-xl mb-4 text-center mt-14">More pairs</h2>
+        <h2 className="font-serif font-semibold text-xl text-cream mb-4 text-center mt-14">More pairs</h2>
         <div className="flex flex-wrap justify-center gap-2">
           {aPairs.slice(0, 6).map((s) => {
             const [x, y] = ZODIAC_SIGNS.indexOf(a) <= ZODIAC_SIGNS.indexOf(s) ? [a, s] : [s, a];
             return (
-              <Link key={`a-${s.name}`} to={`/tools/zodiac-compatibility/${pairSlug(x, y)}`} className="px-4 py-2 rounded-full font-medium text-sm bg-purple/10 hover:bg-purple/20 transition-all">
+              <Link key={`a-${s.name}`} to={`/tools/zodiac-compatibility/${pairSlug(x, y)}`} className="px-4 py-2 rounded-full font-medium text-sm bg-white/[0.06] border border-white/10 text-lav hover:bg-white/[0.12] hover:text-cream transition-all">
                 {a.name} + {s.name}
               </Link>
             );
@@ -185,7 +185,7 @@ export function ZodiacPairDetail() {
           {bPairs.slice(0, 6).map((s) => {
             const [x, y] = ZODIAC_SIGNS.indexOf(b) <= ZODIAC_SIGNS.indexOf(s) ? [b, s] : [s, b];
             return (
-              <Link key={`b-${s.name}`} to={`/tools/zodiac-compatibility/${pairSlug(x, y)}`} className="px-4 py-2 rounded-full font-medium text-sm bg-gold/15 hover:bg-gold/25 transition-all">
+              <Link key={`b-${s.name}`} to={`/tools/zodiac-compatibility/${pairSlug(x, y)}`} className="px-4 py-2 rounded-full font-medium text-sm bg-goldlight/10 border border-goldlight/20 text-lav hover:bg-goldlight/20 hover:text-cream transition-all">
                 {b.name} + {s.name}
               </Link>
             );

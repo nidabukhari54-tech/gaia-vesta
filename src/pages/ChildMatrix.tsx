@@ -39,23 +39,23 @@ export function ChildMatrix() {
                 setChildName(name);
               }}
             />
-            <p className="text-center text-xs text-text-primary/45 mt-5 max-w-md mx-auto">
+            <p className="text-center text-xs text-lavdim mt-5 max-w-md mx-auto">
               Enter your child's birth date. Nothing is stored — the chart is calculated in your browser.
             </p>
           </>
         ) : (
           <div className="animate-fadeIn">
             <div className="text-center mb-6">
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold">{childName}'s Matrix</h2>
-              <p className="text-text-primary/60 text-sm mt-1">Tap any point to read what it means for your child</p>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-cream">{childName}'s Matrix</h2>
+              <p className="text-lav/70 text-sm mt-1">Tap any point to read what it means for your child</p>
             </div>
 
-            <div ref={chartRef} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 mb-6 shadow-xl border border-purple/20">
+            <div ref={chartRef} className="bg-[#FAF5EA] backdrop-blur-sm rounded-[1.75rem] p-5 sm:p-8 mb-6 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] border border-purple/20 text-text-primary">
               <DestinyMatrixChart result={result} onNodeClick={handleNodeClick} />
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white/80 rounded-2xl p-5 border border-gold/20">
+              <div className="bg-white/80 rounded-2xl p-5 border border-gold/20 text-text-primary">
                 <div className="flex items-center gap-2 mb-2">
                   <Compass className="w-5 h-5 text-purple" />
                   <p className="text-xs font-semibold tracking-wide uppercase text-purple">Core nature</p>
@@ -63,7 +63,7 @@ export function ChildMatrix() {
                 <p className="font-serif font-semibold text-lg mb-2">{core?.id} · {core?.name}</p>
                 <p className="text-sm text-text-primary/70">{core?.personality}</p>
               </div>
-              <div className="bg-white/80 rounded-2xl p-5 border border-gold/20">
+              <div className="bg-white/80 rounded-2xl p-5 border border-gold/20 text-text-primary">
                 <div className="flex items-center gap-2 mb-2">
                   <GraduationCap className="w-5 h-5 text-gold" />
                   <p className="text-xs font-semibold tracking-wide uppercase text-gold">Talents & learning</p>
@@ -74,7 +74,7 @@ export function ChildMatrix() {
                   connects to these natural gifts rather than fighting them.
                 </p>
               </div>
-              <div className="bg-white/80 rounded-2xl p-5 border border-gold/20">
+              <div className="bg-white/80 rounded-2xl p-5 border border-gold/20 text-text-primary">
                 <div className="flex items-center gap-2 mb-2">
                   <Heart className="w-5 h-5 text-purple" />
                   <p className="text-xs font-semibold tracking-wide uppercase text-purple">Emotional comfort</p>
@@ -87,7 +87,7 @@ export function ChildMatrix() {
               </div>
             </div>
 
-            <div className="bg-white/70 rounded-2xl border border-purple/20 p-6 mb-8">
+            <div className="bg-[#FAF5EA] rounded-[1.75rem] border border-purple/20 p-5 sm:p-8 mb-8 text-text-primary shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)]">
               <h3 className="font-serif font-semibold text-xl mb-1">Chakra map</h3>
               <p className="text-sm text-text-primary/60 mb-6">
                 Your child's energy centres — where they are naturally strong, and where they may need extra gentleness.
@@ -98,13 +98,13 @@ export function ChildMatrix() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => exportChartPng(chartRef.current, 'child-matrix.png')}
-                className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold hover:shadow transition-all flex items-center justify-center gap-2"
+                className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 hover:shadow transition-all flex items-center justify-center gap-2"
               >
                 <Download className="w-5 h-5" /> Download chart (free)
               </button>
               <button
                 onClick={() => setResult(null)}
-                className="px-6 py-3 bg-white/80 border border-purple/30 text-text-primary font-medium rounded-xl hover:border-purple/60 transition-all"
+                className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all"
               >
                 Another child
               </button>

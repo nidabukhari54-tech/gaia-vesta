@@ -54,10 +54,10 @@ export function HowToRead() {
         subtitle="Your chart looks like a constellation of numbers — but it reads in a clear order. This guide walks you through it, point by point, the same way a practitioner would."
       />
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-white/70 border border-gold/30 rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-center gap-4">
-          <MousePointerClick className="w-8 h-8 text-purple shrink-0" />
-          <p className="text-text-primary/75 leading-relaxed">
-            <span className="font-semibold text-text-primary">No chart yet?</span> Generate yours first —
+        <div className="bg-white/[0.04] border border-goldlight/30 rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-center gap-4">
+          <MousePointerClick className="w-8 h-8 text-goldlight shrink-0" />
+          <p className="text-lav/85 leading-relaxed">
+            <span className="font-semibold text-cream">No chart yet?</span> Generate yours first —
             it takes ten seconds and it is free — then come back and read it with this guide.
           </p>
           <Link
@@ -70,7 +70,7 @@ export function HowToRead() {
 
         <div className="space-y-6">
           {STEPS.map((s) => (
-            <div key={s.title} className="bg-white/80 rounded-2xl border border-purple/15 p-7">
+            <div key={s.title} className="bg-white/80 rounded-2xl border border-purple/15 p-7 text-text-primary">
               <h2 className="font-serif font-semibold text-xl mb-3">{s.title}</h2>
               <p className="text-text-primary/75 leading-relaxed">{s.body}</p>
             </div>
@@ -78,20 +78,20 @@ export function HowToRead() {
         </div>
 
         <div className="mt-12">
-          <h2 className="text-2xl font-serif font-bold mb-6 text-center">Common questions</h2>
+          <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">Common questions</h2>
           <div className="space-y-4">
             {FAQS.map((f) => (
-              <div key={f.q} className="bg-white/80 rounded-2xl border border-gold/25 p-6">
-                <h3 className="font-serif font-semibold text-lg mb-2">{f.q}</h3>
-                <p className="text-text-primary/75 leading-relaxed">{f.a}</p>
+              <div key={f.q} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+                <h3 className="font-serif font-semibold text-lg text-cream mb-2">{f.q}</h3>
+                <p className="text-lav/80 leading-relaxed">{f.a}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <p className="text-center text-sm text-text-primary/55 mt-10">
+        <p className="text-center text-sm text-lavdim mt-10">
           Want the meaning of a specific number? Browse the{' '}
-          <Link to="/arcana" className="text-purple font-medium hover:underline">Arcana Encyclopedia</Link>{' '}
+          <Link to="/arcana" className="text-goldlight font-medium hover:underline">Arcana Encyclopedia</Link>{' '}
           — all 22 Major Arcana, decoded.
         </p>
 

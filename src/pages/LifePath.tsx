@@ -32,16 +32,16 @@ export function LifePath() {
                 <div className="w-24 h-24 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-4 shadow-lg">
                   {meaning.number}
                 </div>
-                <p className="text-sm text-text-primary/55">{result.name}'s Life Path</p>
-                <h2 className="text-3xl font-serif font-bold">{meaning.title}</h2>
+                <p className="text-sm text-lavdim">{result.name}'s Life Path</p>
+                <h2 className="text-3xl font-serif font-bold text-cream">{meaning.title}</h2>
                 <div className="flex flex-wrap justify-center gap-2 mt-3">
                   {meaning.keywords.map((k) => (
-                    <span key={k} className="text-xs bg-purple/10 text-purple px-3 py-1 rounded-full font-medium">{k}</span>
+                    <span key={k} className="text-xs bg-white/[0.06] border border-white/10 text-goldlight px-3 py-1 rounded-full font-medium">{k}</span>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-white/80 rounded-2xl p-6 border border-gold/20 mb-5">
+              <div className="bg-white/80 rounded-2xl p-6 border border-gold/20 mb-5 text-text-primary">
                 <p className="text-text-primary/80 leading-relaxed">{meaning.description}</p>
               </div>
 
@@ -61,11 +61,11 @@ export function LifePath() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-5 mb-8">
-                <div className="bg-white/80 rounded-2xl p-5 border border-purple/20">
+                <div className="bg-white/80 rounded-2xl p-5 border border-purple/20 text-text-primary">
                   <div className="flex items-center gap-2 mb-2"><Heart className="w-5 h-5 text-purple" /><h3 className="font-semibold">In love</h3></div>
                   <p className="text-sm text-text-primary/75">{meaning.love}</p>
                 </div>
-                <div className="bg-white/80 rounded-2xl p-5 border border-purple/20">
+                <div className="bg-white/80 rounded-2xl p-5 border border-purple/20 text-text-primary">
                   <div className="flex items-center gap-2 mb-2"><Briefcase className="w-5 h-5 text-gold" /><h3 className="font-semibold">Career paths</h3></div>
                   <p className="text-sm text-text-primary/75">{meaning.career}</p>
                 </div>
@@ -74,7 +74,7 @@ export function LifePath() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
                   onClick={() => setResult(null)}
-                  className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold transition-all flex items-center justify-center gap-2"
+                  className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all flex items-center justify-center gap-2"
                 >
                   <Hash className="w-5 h-5" /> Calculate another
                 </button>

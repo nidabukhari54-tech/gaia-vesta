@@ -29,7 +29,7 @@ export function PythagoreanSquare() {
           <ChartCalculator onCalculate={(date) => setBirthDate(date)} />
         ) : (
           <div className="animate-fadeIn">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gold/20 shadow mb-6">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gold/20 shadow mb-6 text-text-primary">
               <div className="grid grid-cols-3 gap-3 max-w-md mx-auto">
                 {GRID_ORDER.map((d) => {
                   const count = result.counts[d];
@@ -56,7 +56,7 @@ export function PythagoreanSquare() {
               </p>
             </div>
 
-            <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 mb-6">
+            <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 mb-6 text-text-primary">
               <h3 className="font-serif font-semibold text-lg mb-3">Reading your square</h3>
               <ul className="space-y-2.5 text-sm text-text-primary/75">
                 {Object.entries(result.counts)
@@ -81,7 +81,7 @@ export function PythagoreanSquare() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => setBirthDate(null)}
-                className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold transition-all"
+                className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all"
               >
                 Different birth date
               </button>

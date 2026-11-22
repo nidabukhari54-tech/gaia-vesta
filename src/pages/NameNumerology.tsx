@@ -68,7 +68,7 @@ export function NameNumerology() {
         {result && (
           <div className="animate-fadeIn space-y-5">
             {cards.map((c) => (
-              <div key={c.kind} className="bg-white/80 rounded-2xl p-6 border border-gold/20 flex gap-5">
+              <div key={c.kind} className="bg-white/80 rounded-2xl p-6 border border-gold/20 flex gap-5 text-text-primary">
                 <div className="shrink-0">
                   <div className="w-16 h-16 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white text-2xl font-bold shadow">
                     {c.value}

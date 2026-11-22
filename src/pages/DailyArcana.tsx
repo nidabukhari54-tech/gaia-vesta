@@ -25,7 +25,7 @@ export function DailyArcana() {
       />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-gold/25 shadow-xl p-8 text-center mb-6">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-gold/25 shadow-xl p-8 text-center mb-6 text-text-primary">
           <p className="text-sm text-text-primary/55 mb-4">
             {today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
             {' '}· Moon: {moon.emoji} {moon.name}
@@ -54,27 +54,27 @@ export function DailyArcana() {
         </div>
 
         <div className="grid grid-cols-2 gap-4 mb-10">
-          <div className="bg-white/60 rounded-2xl border border-purple/15 p-5 text-center">
-            <p className="text-xs font-semibold tracking-widest uppercase text-text-primary/45 mb-1.5">Yesterday</p>
-            <p className="font-serif font-semibold">{yesterday.id} · {yesterday.name}</p>
+          <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-5 text-center">
+            <p className="text-xs font-semibold tracking-widest uppercase text-lavdim mb-1.5">Yesterday</p>
+            <p className="font-serif font-semibold text-cream">{yesterday.id} · {yesterday.name}</p>
           </div>
-          <div className="bg-white/60 rounded-2xl border border-purple/15 p-5 text-center">
-            <p className="text-xs font-semibold tracking-widest uppercase text-text-primary/45 mb-1.5">Tomorrow</p>
-            <p className="font-serif font-semibold">{tomorrow.id} · {tomorrow.name}</p>
+          <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-5 text-center">
+            <p className="text-xs font-semibold tracking-widest uppercase text-lavdim mb-1.5">Tomorrow</p>
+            <p className="font-serif font-semibold text-cream">{tomorrow.id} · {tomorrow.name}</p>
           </div>
         </div>
 
-        <div className="bg-white/70 rounded-2xl border border-gold/25 p-7 text-center">
-          <Moon className="w-7 h-7 text-purple mx-auto mb-2" />
-          <h2 className="font-serif font-semibold text-xl mb-2">Your personal daily number is different</h2>
-          <p className="text-text-primary/60 mb-5 max-w-md mx-auto">
+        <div className="bg-white/[0.04] rounded-2xl border border-goldlight/30 p-7 text-center">
+          <Moon className="w-7 h-7 text-goldlight mx-auto mb-2" />
+          <h2 className="font-serif font-semibold text-xl text-cream mb-2">Your personal daily number is different</h2>
+          <p className="text-lav/75 mb-5 max-w-md mx-auto">
             The Arcana of the Day is collective. Your <em>Personal Day</em> number is yours alone — see both, every day.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link to="/tools/personal-year" className="px-6 py-3 bg-gradient-to-r from-gold to-purple text-white font-medium rounded-xl hover:shadow-lg transition-all">
               My Personal Day number
             </Link>
-            <Link to="/#demo" className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold transition-all inline-flex items-center justify-center gap-2">
+            <Link to="/#demo" className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all inline-flex items-center justify-center gap-2">
               <Sparkles className="w-4 h-4" /> My full Destiny Matrix
             </Link>
           </div>

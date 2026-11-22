@@ -47,10 +47,10 @@ export function YearForecast() {
           <div className="animate-fadeIn">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
               <div>
-                <h2 className="text-2xl font-serif font-bold">
+                <h2 className="text-2xl font-serif font-bold text-cream">
                   {personName}'s {targetYear} Forecast
                 </h2>
-                <p className="text-sm text-text-primary/60">
+                <p className="text-sm text-lav/70">
                   Turning {forecast?.turningAge} this year · Personal Year {forecast?.personalYear}
                 </p>
               </div>
@@ -70,19 +70,19 @@ export function YearForecast() {
 
             {pyMeaning && (
               <div className="bg-gradient-to-br from-gold/15 to-purple/15 rounded-2xl p-6 border border-gold/30 mb-6">
-                <p className="text-xs font-semibold tracking-widest uppercase text-purple mb-1">
+                <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-1">
                   Personal Year {pyMeaning.year} theme
                 </p>
-                <h3 className="text-xl font-serif font-bold mb-2">{pyMeaning.theme}</h3>
-                <p className="text-text-primary/75 mb-4">{pyMeaning.description}</p>
+                <h3 className="text-xl font-serif font-bold text-cream mb-2">{pyMeaning.theme}</h3>
+                <p className="text-lav/85 mb-4">{pyMeaning.description}</p>
                 <div className="grid sm:grid-cols-2 gap-3 text-sm">
-                  <p className="bg-white/70 rounded-lg p-3"><span className="font-semibold text-green-700">Lean in:</span> {pyMeaning.focus}</p>
-                  <p className="bg-white/70 rounded-lg p-3"><span className="font-semibold text-red-600">Watch out:</span> {pyMeaning.avoid}</p>
+                  <p className="bg-white/[0.06] border border-white/10 rounded-lg p-3 text-lav/85"><span className="font-semibold text-emerald-300">Lean in:</span> {pyMeaning.focus}</p>
+                  <p className="bg-white/[0.06] border border-white/10 rounded-lg p-3 text-lav/85"><span className="font-semibold text-rose-300">Watch out:</span> {pyMeaning.avoid}</p>
                 </div>
               </div>
             )}
 
-            <div ref={chartRef} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 mb-6 shadow-xl border border-purple/20">
+            <div ref={chartRef} className="bg-[#FAF5EA] backdrop-blur-sm rounded-[1.75rem] p-5 sm:p-8 mb-6 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] border border-purple/20 text-text-primary">
               <DestinyMatrixChart result={forecast!.matrix} onNodeClick={handleNodeClick} />
               <p className="text-center text-sm text-text-primary/50 mt-2">Tap any node for its meaning</p>
             </div>
@@ -92,7 +92,7 @@ export function YearForecast() {
             </div>
 
             {themeArcana && (
-              <div className="bg-white/80 rounded-2xl p-6 border border-gold/20 mb-8">
+              <div className="bg-white/80 rounded-2xl p-6 border border-gold/20 mb-8 text-text-primary">
                 <p className="text-xs font-semibold tracking-wide uppercase text-purple mb-1">The year's ruling energy</p>
                 <p className="font-serif font-semibold text-lg mb-2">{themeArcana.id} · {themeArcana.name}</p>
                 <p className="text-sm text-text-primary/75 mb-2">{themeArcana.personality}</p>
@@ -103,13 +103,13 @@ export function YearForecast() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button
                 onClick={() => exportChartPng(chartRef.current, `year-forecast-${targetYear}.png`)}
-                className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold hover:shadow transition-all flex items-center justify-center gap-2"
+                className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 hover:shadow transition-all flex items-center justify-center gap-2"
               >
                 <Download className="w-5 h-5" /> Download forecast (free)
               </button>
               <button
                 onClick={() => setBirthDate(null)}
-                className="px-6 py-3 bg-white/80 border border-purple/30 text-text-primary font-medium rounded-xl hover:border-purple/60 transition-all"
+                className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all"
               >
                 Different birth date
               </button>

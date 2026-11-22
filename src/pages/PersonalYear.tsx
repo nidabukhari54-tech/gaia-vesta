@@ -33,14 +33,14 @@ export function PersonalYear() {
           meaning && (
             <div className="animate-fadeIn">
               <div className="text-center mb-8">
-                <p className="text-sm text-text-primary/55 mb-1">Your Personal Year for {today.getFullYear()}</p>
+                <p className="text-sm text-lavdim mb-1">Your Personal Year for {today.getFullYear()}</p>
                 <div className="w-24 h-24 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto shadow-lg">
                   {meaning.year}
                 </div>
-                <h2 className="text-3xl font-serif font-bold mt-4">{meaning.theme}</h2>
+                <h2 className="text-3xl font-serif font-bold text-cream mt-4">{meaning.theme}</h2>
               </div>
 
-              <div className="bg-white/80 rounded-2xl p-6 border border-gold/20 mb-5">
+              <div className="bg-white/80 rounded-2xl p-6 border border-gold/20 mb-5 text-text-primary">
                 <p className="text-text-primary/80 leading-relaxed mb-4">{meaning.description}</p>
                 <div className="grid sm:grid-cols-2 gap-3 text-sm">
                   <p className="bg-green-50 rounded-lg p-3"><span className="font-semibold text-green-700">Lean in:</span> {meaning.focus}</p>
@@ -49,7 +49,7 @@ export function PersonalYear() {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5 mb-5">
-                <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-center">
+                <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-center text-text-primary">
                   <p className="text-xs font-semibold tracking-widest uppercase text-purple mb-2">
                     This month · {today.toLocaleDateString('en-US', { month: 'long' })}
                   </p>
@@ -58,7 +58,7 @@ export function PersonalYear() {
                     {PERSONAL_YEAR_MEANINGS[pm!].theme} energy, nested inside your {meaning.theme.toLowerCase()} year.
                   </p>
                 </div>
-                <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-center">
+                <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-center text-text-primary">
                   <p className="text-xs font-semibold tracking-widest uppercase text-purple mb-2">Today</p>
                   <p className="text-5xl font-serif font-bold mb-2">{pd}</p>
                   <p className="text-sm text-text-primary/65">
@@ -69,8 +69,8 @@ export function PersonalYear() {
 
               {nextPy && (
                 <div className="bg-gradient-to-br from-gold/10 to-purple/10 rounded-2xl p-6 border border-gold/25 text-center mb-8">
-                  <p className="text-sm text-text-primary/65">
-                    Next year ({nextYear}) you enter a <strong>Personal Year {nextPy} — {PERSONAL_YEAR_MEANINGS[nextPy].theme}</strong>.
+                  <p className="text-sm text-lav/80">
+                    Next year ({nextYear}) you enter a <strong className="text-cream">Personal Year {nextPy} — {PERSONAL_YEAR_MEANINGS[nextPy].theme}</strong>.
                   </p>
                 </div>
               )}
@@ -78,7 +78,7 @@ export function PersonalYear() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
                   onClick={() => setBirthDate(null)}
-                  className="px-6 py-3 bg-white/80 border border-gold/40 text-text-primary font-medium rounded-xl hover:border-gold transition-all flex items-center justify-center gap-2"
+                  className="px-6 py-3 bg-white/[0.04] border border-white/25 text-cream font-medium rounded-xl hover:border-goldlight/60 transition-all flex items-center justify-center gap-2"
                 >
                   <SunMoon className="w-5 h-5" /> Different birth date
                 </button>

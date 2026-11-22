@@ -82,7 +82,7 @@ export function MoonPhase() {
           <p className="text-white/85 max-w-lg mx-auto leading-relaxed">{PHASE_GUIDANCE[now.name]}</p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow border border-purple/20">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow border border-purple/20 text-text-primary">
           <div className="flex items-center gap-2 mb-3">
             <Moon className="w-5 h-5 text-purple" />
             <h3 className="font-serif font-semibold text-lg">The moon on your birth day</h3>

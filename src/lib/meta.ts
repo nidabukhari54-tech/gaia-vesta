@@ -167,7 +167,7 @@ type ArcanaLike = { name: string; description: string };
 export function arcanaDesc(a: ArcanaLike): string {
   return fitDesc(
     `${a.name} tarot meaning: ${a.description}. Personality, love, money and karmic lessons in the Destiny Matrix.`,
-    [' Full card guide, free.', ' Free guide.'],
+    [' Full card guide, free to read.', ' Full guide, free.', ' Free guide.'],
   );
 }
 

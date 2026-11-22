@@ -302,9 +302,11 @@ function HeroCalculator() {
     e.preventDefault();
     if (tab === 'personal') {
       if (!date) return setError('Please choose your birth date first.');
-      const q = new URLSearchParams({ date });
-      if (name.trim()) q.set('name', name.trim());
-      navigate(`/chart?${q.toString()}`);
+      // The demo below is public — run the chart there, no sign-in wall.
+      window.dispatchEvent(
+        new CustomEvent('gaia:hero-calc', { detail: { date, name: name.trim() } }),
+      );
+      document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' });
     } else {
       if (!date || !date2) return setError('Please choose both birth dates.');
       const q = new URLSearchParams({ d1: date, d2: date2 });
@@ -502,6 +504,19 @@ function Demo() {
     setPersonName(name);
     setSelectedArcana(null);
   };
+
+  // The hero calculator sends its date here — the demo is public, no sign-in wall.
+  useEffect(() => {
+    const onHeroCalc = (e: Event) => {
+      const detail = (e as CustomEvent).detail as { date?: string; name?: string };
+      if (!detail?.date) return;
+      const [y, m, dd] = detail.date.split('-').map(Number);
+      if (y && m && dd) handleCalculate(new Date(y, m - 1, dd), detail.name || 'Unknown');
+    };
+    window.addEventListener('gaia:hero-calc', onHeroCalc);
+    return () => window.removeEventListener('gaia:hero-calc', onHeroCalc);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleNodeClick = (position: string, arcanaId: number) => {
     setSelectedArcana({ position, arcana: getArcana(arcanaId) });

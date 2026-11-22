@@ -14,9 +14,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[radial-gradient(circle_at_35%_35%,#F6E3AC,#C9963C)] flex items-center justify-center shadow-[0_0_18px_rgba(231,200,115,0.45)]">
-                <Sparkles className="w-4 h-4 text-night3" />
-              </div>
+              <img src="/favicon-512.png" alt="Gaia Vesta" className="w-9 h-9 rounded-full ring-1 ring-goldlight/50 shadow-[0_0_18px_rgba(231,200,115,0.35)]" />
               <span className="leading-none">
                 <span className="block text-lg font-serif font-semibold tracking-wide text-cream">GAIA VESTA</span>
                 <span className="block text-[9px] tracking-[0.3em] text-lavdim mt-0.5">DESTINY MATRIX</span>
@@ -46,9 +44,7 @@ export function PublicLayout({ children }: { children: ReactNode }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[radial-gradient(circle_at_35%_35%,#F6E3AC,#C9963C)] flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-night3" />
-              </div>
+              <img src="/favicon-512.png" alt="Gaia Vesta" className="w-8 h-8 rounded-full ring-1 ring-goldlight/50 shadow-[0_0_18px_rgba(231,200,115,0.35)]" />
               <span className="leading-none">
                 <span className="block font-serif font-semibold tracking-wide text-cream">GAIA VESTA</span>
                 <span className="block text-[8px] tracking-[0.3em] text-lavdim mt-0.5">DESTINY MATRIX</span>

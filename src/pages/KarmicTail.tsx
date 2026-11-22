@@ -46,6 +46,20 @@ export function KarmicTail() {
         title="Karmic Tail Calculator"
         subtitle="Why does the same pattern keep returning — the same kind of partner, the same money leak, the same inner wall? Your karmic tail is the three-number code at the root of it. Find yours."
       />
+
+      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
+        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
+          <img
+            src="/images/karmic-tail-illustration.webp"
+            alt="A single golden thread of light looping in a spiral knot that is beginning to loosen and untie against indigo darkness"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+        </div>
+      </div>
+
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {!result || !tail ? (
           <>

@@ -59,6 +59,19 @@ export function Compatibility() {
         subtitle="Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."
       />
 
+      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
+        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
+          <img
+            src="/images/compatibility-illustration.webp"
+            alt="A couple holding hands beneath two overlapping golden rings of light merging into one glowing chart in an indigo night sky"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+        </div>
+      </div>
+
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid md:grid-cols-2 gap-5 mb-5">
           <PersonForm title="First person" onChange={(d, n) => { setDateA(d); setNameA(n); }} />

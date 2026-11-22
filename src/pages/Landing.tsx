@@ -573,8 +573,15 @@ function WhatIs() {
           </Link>
         </div>
         <div className="relative max-w-sm mx-auto w-full">
-          <div className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-6">
-            <GlowChart result={SAMPLE_RESULT} />
+          <div className="absolute -inset-4 bg-gold/15 rounded-[2.5rem] blur-2xl pointer-events-none" />
+          <div className="relative rounded-[2rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
+            <img
+              src="/images/seeker-illustration.webp"
+              alt="A seeker in a flowing cream shawl gazing up at a giant glowing golden Destiny Matrix star chart in an indigo night sky"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-auto block"
+            />
           </div>
           <p className="text-center text-xs text-lavdim mt-4">Your energetic blueprint — every point holds an arcana</p>
         </div>

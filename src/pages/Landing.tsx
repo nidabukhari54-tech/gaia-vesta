@@ -278,7 +278,7 @@ function ShootingStars() {
 function Hero() {
   const ticks = ['Free full chart', 'No credit card', 'Instant reading', 'Private — demo stores nothing'];
   return (
-    <section className="relative pt-32 pb-16 overflow-hidden">
+    <section className="relative pt-24 pb-14 overflow-hidden">
       <Stars />
       <ShootingStars />
       <CelestialAccents
@@ -326,19 +326,23 @@ function Hero() {
           </ul>
         </div>
 
-        <div className="relative animate-fadeIn animate-breathe max-w-md mx-auto w-full lg:max-w-none">
+        <div className="relative animate-fadeIn animate-breathe max-w-md mx-auto w-full lg:max-w-[540px]">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
-          <img
-            src="/images/hero-gaia-scene.webp"
-            alt="Gaia presenting your glowing Destiny Matrix chart, one hand open in welcome"
-            className="relative w-full h-auto"
+          <div
+            className="relative lg:h-[590px]"
             style={{
-              WebkitMaskImage: 'radial-gradient(ellipse 88% 88% at 50% 46%, black 58%, transparent 99%)',
-              maskImage: 'radial-gradient(ellipse 88% 88% at 50% 46%, black 58%, transparent 99%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 94% 94% at 50% 46%, black 52%, transparent 98%)',
+              maskImage: 'radial-gradient(ellipse 94% 94% at 50% 46%, black 52%, transparent 98%)',
             }}
-            loading="eager"
-            decoding="async"
-          />
+          >
+            <img
+              src="/images/hero-gaia-scene.webp"
+              alt="Gaia presenting your glowing Destiny Matrix chart, one hand open in welcome"
+              className="w-full h-auto lg:h-full lg:object-cover lg:object-[50%_30%]"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
           <span className="absolute bottom-[5%] left-[5%] whitespace-nowrap bg-night2/85 backdrop-blur border border-goldlight/35 rounded-full px-3.5 py-1.5 text-[11px] font-medium text-cream shadow-lg animate-float">
             Gaia · your guide
           </span>

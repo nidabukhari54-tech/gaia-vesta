@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Hash, Heart, Briefcase } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { lifePathNumber } from '../lib/numerology';
@@ -39,6 +40,7 @@ export function LifePath() {
         eyebrow="Numerology · Core number"
         title="Life Path Number Calculator"
         subtitle="The most important number in numerology — the road you are here to walk, calculated from your full birth date. Master Numbers 11, 22 and 33 are honoured, never reduced away."
+        schema={[webAppSchema('Life Path Number Calculator', '/tools/life-path', "The most important number in numerology — the road you are here to walk, calculated from your full birth date. Master Numbers 11, 22 and 33 are honoured, never reduced away."), faqPageSchema(FAQS), toolBreadcrumb('Life Path Number Calculator', '/tools/life-path')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

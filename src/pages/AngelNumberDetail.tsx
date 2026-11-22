@@ -1,6 +1,7 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Heart, Coins, ArrowRight, Sparkles, Repeat } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ANGEL_NUMBERS, ANGEL_NUMBER_LIST } from '../lib/numerology-meanings';
 import { useEffect } from 'react';
@@ -41,7 +42,22 @@ export function AngelNumberDetail() {
   ];
 
   return (
-    <PublicLayout>
+    <PublicLayout
+      schema={[
+        webAppSchema(
+          `${meaning.number} Angel Number Meaning`,
+          `/tools/angel-numbers/${meaning.number}`,
+          meaning.meaning,
+        ),
+        faqPageSchema(faqs),
+        breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Tools', path: '/tools' },
+          { name: 'Angel Numbers', path: '/tools/angel-numbers' },
+          { name: `${meaning.number} Angel Number`, path: `/tools/angel-numbers/${meaning.number}` },
+        ]),
+      ]}
+    >
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20">
         <div className="text-center mb-8">
           <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">Angel number meaning</p>

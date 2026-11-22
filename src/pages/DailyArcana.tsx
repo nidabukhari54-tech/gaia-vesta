@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
 import { dailyArcana, moonPhase } from '../lib/numerology';
@@ -59,6 +60,7 @@ export function DailyArcana() {
         eyebrow="Daily tarot · Guidance"
         title="Daily Tarot Card — Arcana of the Day"
         subtitle="Every date carries an arcana of its own — your daily tarot draw. This is today's card, drawn from the date itself, the same for everyone, and different tomorrow."
+        schema={[webAppSchema('Daily Tarot Card — Arcana of the Day', '/tools/daily-arcana', "Every date carries an arcana of its own — your daily tarot draw. This is today's card, drawn from the date itself, the same for everyone, and different tomorrow."), faqPageSchema(FAQS), toolBreadcrumb('Daily Tarot Card', '/tools/daily-arcana')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

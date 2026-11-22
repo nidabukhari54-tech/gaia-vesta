@@ -4,6 +4,7 @@ import {
   Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users, Sun,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { webPageSchema, breadcrumbSchema } from '../lib/schema';
 import { dailyArcana, moonPhase } from '../lib/numerology';
 import { getArcana } from '../lib/arcana-meanings';
 
@@ -111,6 +112,7 @@ export function ToolsHub() {
         eyebrow="Free tools"
         title="Every calculator, one home"
         subtitle="Destiny Matrix charts, compatibility, forecasts and classic numerology — all free, all instant, no account needed."
+        schema={[webPageSchema('Every calculator, one home', '/tools', "Destiny Matrix charts, compatibility, forecasts and classic numerology — all free, all instant, no account needed."), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Tools', path: '/tools' }])]}
       />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, Sparkles, CalendarClock } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartLines } from '../components/chart/ChartLines';
@@ -33,6 +34,7 @@ export function YearForecast() {
         eyebrow="Destiny Matrix · Forecast"
         title="What does this year hold for you?"
         subtitle="Your birth matrix recalculated with the target year — see the energies, lessons and opportunities a specific year activates for you."
+        schema={[webAppSchema('Destiny Matrix Year Forecast', '/tools/year-forecast', "Your birth matrix recalculated with the target year — see the energies, lessons and opportunities a specific year activates for you."), toolBreadcrumb('Year Forecast', '/tools/year-forecast')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

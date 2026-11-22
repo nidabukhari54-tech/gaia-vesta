@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, MousePointerClick } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { articleSchema, faqPageSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 
 const STEPS = [
@@ -52,6 +53,7 @@ export function HowToRead() {
         eyebrow="Guide · Start here"
         title="How to Read Your Destiny Matrix Chart"
         subtitle="Your chart looks like a constellation of numbers — but it reads in a clear order. This guide walks you through it, point by point, the same way a practitioner would."
+        schema={[articleSchema('How to Read Your Destiny Matrix Chart', '/tools/how-to-read-destiny-matrix', "Your chart looks like a constellation of numbers — but it reads in a clear order. This guide walks you through it, point by point, the same way a practitioner would."), faqPageSchema(FAQS), toolBreadcrumb('How to Read Your Destiny Matrix Chart', '/tools/how-to-read-destiny-matrix')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

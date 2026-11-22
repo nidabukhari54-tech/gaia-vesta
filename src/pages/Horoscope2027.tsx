@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { YEAR_2027_READINGS, MOON_CALENDAR_2027, ordinal } from '../lib/horoscope-2027';
 
 const FAQS = [
@@ -31,6 +32,7 @@ export function Horoscope2027() {
         eyebrow="2027 Horoscope · Free"
         title="2027 Horoscope — Your Year Ahead, Sign by Sign"
         subtitle="Twelve full year-ahead readings, written by Gaia for each sign's character: the year's theme, love, money, growth, best months — and all twelve months, one by one. Plus the real 2027 moon calendar, calculated in full."
+        schema={[webAppSchema('2027 Horoscope', '/tools/horoscope-2027', "Twelve full year-ahead readings, written by Gaia for each sign's character: the year's theme, love, money, growth, best months — and all twelve months, one by one. Plus the real 2027 moon calendar, calculated in full."), faqPageSchema(FAQS), toolBreadcrumb('2027 Horoscope', '/tools/horoscope-2027')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

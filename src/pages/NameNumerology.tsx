@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Type, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { nameNumbers } from '../lib/numerology';
 import { NAME_NUMBER_TITLES, nameNumberBlurb, LIFE_PATH_MEANINGS } from '../lib/numerology-meanings';
 
@@ -57,6 +58,7 @@ export function NameNumerology() {
         eyebrow="Numerology · Name numbers"
         title="Name Numerology Calculator"
         subtitle="Your name is a number in disguise. One form reveals three: your Expression (talents), Soul Urge (heart's desire) and Personality (outer self) — using the Pythagorean system."
+        schema={[webAppSchema('Name Numerology Calculator', '/tools/name-numerology', "Your name is a number in disguise. One form reveals three: your Expression (talents), Soul Urge (heart's desire) and Personality (outer self) — using the Pythagorean system."), faqPageSchema(FAQS), toolBreadcrumb('Name Numerology Calculator', '/tools/name-numerology')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

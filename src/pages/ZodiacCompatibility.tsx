@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ZODIAC_SIGNS, zodiacCompatibility, type ZodiacSign } from '../lib/numerology';
 
 function SignPicker({
@@ -47,6 +48,7 @@ export function ZodiacCompatibility() {
         eyebrow="Astrology · Compatibility"
         title="Zodiac Compatibility Checker"
         subtitle="Pick any two signs — all 144 pairings — and get an honest harmony score based on elements, rulers and temperament."
+        schema={[webAppSchema('Zodiac Compatibility Checker', '/tools/zodiac-compatibility', "Pick any two signs — all 144 pairings — and get an honest harmony score based on elements, rulers and temperament."), toolBreadcrumb('Zodiac Compatibility', '/tools/zodiac-compatibility')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

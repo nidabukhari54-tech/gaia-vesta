@@ -1,6 +1,7 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Heart, Coins, Compass, Sparkles } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
+import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { getArcana, arcanaMeanings } from '../lib/arcana-meanings';
 
 export function ArcanaDetail() {
@@ -16,7 +17,16 @@ export function ArcanaDetail() {
   const next = num < 22 ? getArcana(num + 1) : null;
 
   return (
-    <PublicLayout>
+    <PublicLayout
+      schema={[
+        articleSchema(a.name, `/arcana/${a.id}`, a.description),
+        breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Arcana Guide', path: '/arcana' },
+          { name: a.name, path: `/arcana/${a.id}` },
+        ]),
+      ]}
+    >
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20">
         <Link to="/arcana" className="inline-flex items-center gap-2 text-sm text-lavdim hover:text-cream mb-8">
           <ArrowLeft className="w-4 h-4" /> All 22 arcana

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, FileText, ArrowRight, Repeat, CircleDashed } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
@@ -103,6 +104,7 @@ export function FamilyLines() {
         eyebrow="Destiny Matrix · Family Lines"
         title="Family & Talent Lines Calculator"
         subtitle="Half of your chart was written before you were born. Read your father's line, your mother's line, the parent–child pattern where they meet in you — and the talent line that is yours alone."
+        schema={[webAppSchema('Family & Talent Lines Calculator', '/tools/family-lines', "Half of your chart was written before you were born. Read your father's line, your mother's line, the parent–child pattern where they meet in you — and the talent line that is yours alone."), faqPageSchema(FAQS), toolBreadcrumb('Family & Talent Lines', '/tools/family-lines')]}
       />
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {!result || !father || !mother || !parentChild || !talent || !analysis ? (

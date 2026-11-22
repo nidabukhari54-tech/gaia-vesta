@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Coins, Compass, Download, Sparkles, HeartHandshake } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { PersonForm } from '../components/chart/PersonForm';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
@@ -75,6 +76,7 @@ export function Compatibility() {
         eyebrow="Destiny Matrix · Compatibility"
         title="Are your charts written for each other?"
         subtitle="Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."
+        schema={[webAppSchema('Destiny Matrix Compatibility Calculator', '/tools/compatibility', "Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."), toolBreadcrumb('Compatibility Matrix', '/tools/compatibility')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

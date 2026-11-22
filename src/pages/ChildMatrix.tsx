@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, Sparkles, GraduationCap, Heart, Compass } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChakraMap } from '../components/chart/ChakraMap';
@@ -28,6 +29,7 @@ export function ChildMatrix() {
         eyebrow="Destiny Matrix · For parents"
         title="Your child's cosmic blueprint"
         subtitle="A child's Destiny Matrix, translated into what parents actually need: innate talents, emotional needs, learning style, and how to support who they already are."
+        schema={[webAppSchema("Children's Destiny Matrix Calculator", '/tools/child-matrix', "A child's Destiny Matrix, translated into what parents actually need: innate talents, emotional needs, learning style, and how to support who they already are."), toolBreadcrumb("Children's Destiny Matrix", '/tools/child-matrix')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

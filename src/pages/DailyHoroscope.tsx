@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SIGNS, getDailyHoroscope, getSignForDate } from '../lib/horoscope';
 
 const FAQS = [
@@ -47,6 +48,7 @@ export function DailyHoroscope() {
         eyebrow="Daily Horoscope · Free"
         title="Daily Horoscope"
         subtitle="Today's reading for all twelve signs — written by Gaia, seeded by the date, and paired with tonight's real moon. Choose your sign, or find it below."
+        schema={[webAppSchema('Daily Horoscope', '/tools/daily-horoscope', "Today's reading for all twelve signs — written by Gaia, seeded by the date, and paired with tonight's real moon. Choose your sign, or find it below."), faqPageSchema(FAQS), toolBreadcrumb('Daily Horoscope', '/tools/daily-horoscope')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

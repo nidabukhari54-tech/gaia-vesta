@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SunMoon } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { personalYearNumber, personalMonthNumber, personalDayNumber } from '../lib/numerology';
 import { PERSONAL_YEAR_MEANINGS } from '../lib/numerology-meanings';
@@ -43,6 +44,7 @@ export function PersonalYear() {
         eyebrow="Numerology · Cycles"
         title="Personal Year, Month & Day"
         subtitle="Life moves in 9-year cycles. Find the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."
+        schema={[webAppSchema('Personal Year, Month & Day', '/tools/personal-year', "Life moves in 9-year cycles. Find the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."), faqPageSchema(FAQS), toolBreadcrumb('Personal Year', '/tools/personal-year')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

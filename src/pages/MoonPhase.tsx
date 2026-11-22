@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Moon } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { moonPhase, zodiacSign } from '../lib/numerology';
 
 const PHASE_GUIDANCE: Record<string, string> = {
@@ -115,6 +116,7 @@ export function MoonPhase() {
         eyebrow="Lunar · Daily"
         title="Moon Phase Today"
         subtitle="Tonight's exact moon phase, illumination and age — calculated live. Then check the moon (and your sun sign) on the day you were born."
+        schema={[webAppSchema('Moon Phase Today', '/tools/moon-phase', "Tonight's exact moon phase, illumination and age — calculated live. Then check the moon (and your sun sign) on the day you were born."), faqPageSchema(FAQS), toolBreadcrumb('Moon Phase Today', '/tools/moon-phase')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

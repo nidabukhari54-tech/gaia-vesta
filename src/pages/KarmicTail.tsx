@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sprout, RefreshCcw, KeyRound, ArrowRight } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
@@ -45,6 +46,7 @@ export function KarmicTail() {
         eyebrow="Destiny Matrix · Karmic Tail"
         title="Karmic Tail Calculator"
         subtitle="Why does the same pattern keep returning — the same kind of partner, the same money leak, the same inner wall? Your karmic tail is the three-number code at the root of it. Find yours."
+        schema={[webAppSchema('Karmic Tail Calculator', '/tools/karmic-tail', "Why does the same pattern keep returning — the same kind of partner, the same money leak, the same inner wall? Your karmic tail is the three-number code at the root of it. Find yours."), faqPageSchema(FAQS), toolBreadcrumb('Karmic Tail Calculator', '/tools/karmic-tail')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

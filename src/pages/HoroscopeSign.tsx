@@ -4,6 +4,7 @@ import {
   ArrowRight, Briefcase, Hash, Heart, HeartHandshake, Moon, Palette, Sparkles,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SIGNS, getDailyHoroscope, getSignBySlug, type HoroscopeSign } from '../lib/horoscope';
 
 function signFaqs(sign: HoroscopeSign) {
@@ -45,6 +46,20 @@ export function HoroscopeSignPage() {
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}
         title={`${sign.name} Horoscope Today — ${daily.dateString}`}
         subtitle={`For every ${sign.name}: ${sign.traits.join(' · ')}. Here is what today asks of you.`}
+        schema={[
+          webAppSchema(
+            `${sign.name} Daily Horoscope`,
+            `/tools/daily-horoscope/${sign.slug}`,
+            `For every ${sign.name}: ${sign.traits.join(' · ')}. Here is what today asks of you.`,
+          ),
+          faqPageSchema(faqs),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Tools', path: '/tools' },
+            { name: 'Daily Horoscope', path: '/tools/daily-horoscope' },
+            { name: `${sign.name} Horoscope`, path: `/tools/daily-horoscope/${sign.slug}` },
+          ]),
+        ]}
       />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">

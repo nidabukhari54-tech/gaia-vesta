@@ -9,6 +9,8 @@ import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { ArcanaModal, SelectedArcana } from '../components/chart/ArcanaModal';
 import { AIReading } from '../components/chart/AIReading';
 import { SalesCTA } from '../components/SalesCTA';
+import { JsonLd } from '../components/JsonLd';
+import { webAppSchema } from '../lib/schema';
 import { ChakraMap } from '../components/chart/ChakraMap';
 import { reduceToArcana } from '../lib/matrix-calculator';
 import { exportChartPng } from '../lib/export-chart';
@@ -162,6 +164,13 @@ export function Chart() {
 
   return (
     <div className="min-h-screen bg-night text-cream">
+      <JsonLd
+        data={webAppSchema(
+          'Destiny Matrix Calculator',
+          '/chart',
+          'Gaia Vesta reveals your Destiny Matrix from your birth date — 22 Major Arcana mapping your soul purpose, love patterns, money energy, and life path. Try it free, no account needed.',
+        )}
+      />
       <header className="bg-night2/80 backdrop-blur-sm border-b border-lav/15 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

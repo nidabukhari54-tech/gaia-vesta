@@ -15,6 +15,8 @@ import {
 import { arcanaMeanings, getArcana } from '../lib/arcana-meanings';
 import { dailyArcana } from '../lib/numerology';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
+import { JsonLd } from '../components/JsonLd';
+import { faqPageSchema, webAppSchema, webPageSchema } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
 
@@ -1461,6 +1463,7 @@ function Faq() {
   const [open, setOpen] = useState(0);
   return (
     <section className="py-20 relative overflow-hidden">
+      <JsonLd data={faqPageSchema(faqs)} />
       <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[38rem] h-[26rem] bg-gold/[0.19] rounded-full blur-3xl pointer-events-none" />
       <CelestialAccents
         items={[
@@ -1569,6 +1572,20 @@ export function Landing() {
 
   return (
     <div className="min-h-screen bg-night text-cream relative overflow-x-clip">
+      <JsonLd
+        data={[
+          webPageSchema(
+            'Gaia Vesta — Your Cosmic Blueprint',
+            '/',
+            'Gaia Vesta reveals your Destiny Matrix from your birth date — 22 Major Arcana mapping your soul purpose, love patterns, money energy, and life path. Try it free, no account needed.',
+          ),
+          webAppSchema(
+            'Destiny Matrix Calculator',
+            '/',
+            'Gaia Vesta reveals your Destiny Matrix from your birth date — 22 Major Arcana mapping your soul purpose, love patterns, money energy, and life path. Try it free, no account needed.',
+          ),
+        ]}
+      />
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(60rem_30rem_at_85%_-5%,rgba(124,92,191,0.28),transparent),radial-gradient(50rem_26rem_at_-10%_30%,rgba(212,165,116,0.10),transparent),radial-gradient(46rem_24rem_at_50%_110%,rgba(124,92,191,0.16),transparent)]" />
       <div className="relative">
         <Nav />

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Heart, Flame, ArrowRight } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
+import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ZODIAC_SIGNS, zodiacCompatibility, type ZodiacSign } from '../lib/numerology';
 
@@ -103,7 +104,21 @@ export function ZodiacPairDetail() {
   );
 
   return (
-    <PublicLayout>
+    <PublicLayout
+      schema={[
+        articleSchema(
+          `${a.name} and ${b.name} Compatibility — Love Match, Score & Meaning`,
+          `/tools/zodiac-compatibility/${pairSlug(a, b)}`,
+          dynamics.strengths,
+        ),
+        breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Tools', path: '/tools' },
+          { name: 'Zodiac Compatibility', path: '/tools/zodiac-compatibility' },
+          { name: `${a.name} & ${b.name}`, path: `/tools/zodiac-compatibility/${pairSlug(a, b)}` },
+        ]),
+      ]}
+    >
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20">
         <div className="text-center mb-8">
           <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">Zodiac compatibility</p>

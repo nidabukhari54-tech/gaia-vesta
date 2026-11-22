@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { webPageSchema, breadcrumbSchema } from '../lib/schema';
 import { arcanaMeanings } from '../lib/arcana-meanings';
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX', 'XXI', '0'];
@@ -13,6 +14,7 @@ export function ArcanaIndex() {
         eyebrow="The guide"
         title="The 22 Major Arcana, explained"
         subtitle="Every number in your Destiny Matrix is one of these 22 archetypes. Read them all — personality, love, money, karmic lessons, strengths and shadows."
+        schema={[webPageSchema('The 22 Major Arcana, explained', '/arcana', "Every number in your Destiny Matrix is one of these 22 archetypes. Read them all — personality, love, money, karmic lessons, strengths and shadows."), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Arcana Guide', path: '/arcana' }])]}
       />
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

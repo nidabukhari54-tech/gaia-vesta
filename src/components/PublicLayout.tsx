@@ -2,13 +2,21 @@ import { useEffect, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
+import { JsonLd } from './JsonLd';
 
 /** Shared header + footer for the public tools and guide pages. */
-export function PublicLayout({ children }: { children: ReactNode }) {
+export function PublicLayout({
+  children,
+  schema,
+}: {
+  children: ReactNode;
+  schema?: object | object[];
+}) {
   const { user } = useAuth();
 
   return (
     <div className="min-h-screen bg-night text-lav flex flex-col relative overflow-x-clip">
+      {schema ? <JsonLd data={schema} /> : null}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(60rem_30rem_at_85%_-5%,rgba(124,92,191,0.28),transparent),radial-gradient(50rem_26rem_at_-10%_30%,rgba(212,165,116,0.10),transparent),radial-gradient(46rem_24rem_at_50%_110%,rgba(124,92,191,0.16),transparent)]" />
       <header className="sticky top-0 z-40 bg-night/85 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,10 +81,12 @@ export function ToolHero({
   eyebrow,
   title,
   subtitle,
+  schema,
 }: {
   eyebrow: string;
   title: string;
   subtitle: string;
+  schema?: object | object[];
 }) {
   useEffect(() => {
     document.title = `${title} | Gaia Vesta`;
@@ -84,6 +94,7 @@ export function ToolHero({
 
   return (
     <section className="pt-14 pb-10 relative overflow-hidden">
+      {schema ? <JsonLd data={schema} /> : null}
       <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[46rem] h-[20rem] bg-gold/[0.19] rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
         <img

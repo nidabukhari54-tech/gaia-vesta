@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Search } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { personalAngelNumber } from '../lib/numerology';
 import { ANGEL_NUMBERS, ANGEL_NUMBER_LIST, type AngelMeaning } from '../lib/numerology-meanings';
@@ -24,6 +25,7 @@ export function AngelNumbers() {
         eyebrow="Angel numbers · Meanings"
         title="Angel Number Meanings"
         subtitle="Seeing the same number everywhere — on clocks, receipts, plates? Look it up below, or calculate the personal angel number written into your birth date."
+        schema={[webAppSchema('Angel Number Meanings', '/tools/angel-numbers', "Seeing the same number everywhere — on clocks, receipts, plates? Look it up below, or calculate the personal angel number written into your birth date."), toolBreadcrumb('Angel Numbers', '/tools/angel-numbers')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

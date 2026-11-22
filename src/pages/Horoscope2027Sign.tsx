@@ -3,6 +3,7 @@ import {
   ArrowRight, Briefcase, CalendarDays, Hash, Heart, Moon, Sparkles, Sprout, Sun,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SIGNS, getSignBySlug, type HoroscopeSign } from '../lib/horoscope';
 import {
   getYear2027, moonsForMonth, ordinal, type SignYear2027,
@@ -46,6 +47,20 @@ export function Horoscope2027SignPage() {
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}
         title={`${sign.name} Horoscope 2027 — Love, Money & Your Year Ahead`}
         subtitle={`Power word for your year: ${year.powerWord}. Lucky number: ${year.luckyNumberYear}. Here is your 2027, ${sign.name} — the whole of it.`}
+        schema={[
+          webAppSchema(
+            `${sign.name} Horoscope 2027`,
+            `/tools/horoscope-2027/${sign.slug}`,
+            `Power word for your year: ${year.powerWord}. Lucky number: ${year.luckyNumberYear}. Here is your 2027, ${sign.name} — the whole of it.`,
+          ),
+          faqPageSchema(faqs),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Tools', path: '/tools' },
+            { name: '2027 Horoscope', path: '/tools/horoscope-2027' },
+            { name: `${sign.name} Horoscope 2027`, path: `/tools/horoscope-2027/${sign.slug}` },
+          ]),
+        ]}
       />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">

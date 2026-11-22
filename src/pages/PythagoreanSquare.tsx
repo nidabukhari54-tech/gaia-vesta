@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { pythagoreanSquare } from '../lib/numerology';
 
@@ -98,6 +99,7 @@ export function PythagoreanSquare() {
         eyebrow="Numerology · Psychomatrix"
         title="Pythagoras Square (Psychomatrix) Calculator"
         subtitle="The ancient psychomatrix of Pythagoras: every digit of your birth date placed in a 3×3 grid. Repeated digits amplify a trait; empty cells show the lessons you are here to develop."
+        schema={[webAppSchema('Pythagoras Square (Psychomatrix) Calculator', '/tools/pythagorean-square', "The ancient psychomatrix of Pythagoras: every digit of your birth date placed in a 3×3 grid. Repeated digits amplify a trait; empty cells show the lessons you are here to develop."), faqPageSchema(FAQS), toolBreadcrumb('Pythagoras Square', '/tools/pythagorean-square')]}
       />
 
       <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">

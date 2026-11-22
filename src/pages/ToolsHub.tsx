@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
   Heart, CalendarClock, CalendarDays, Baby, BookOpen, Hash, Type, SunMoon, Grid3X3,
-  Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users, Sun,
+  Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users, Sun, Compass,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
 import { webPageSchema, breadcrumbSchema } from '../lib/schema';
@@ -103,6 +103,11 @@ const TOOLS = [
     to: '/tools/horoscope-2027', icon: CalendarDays, title: '2027 Horoscope',
     img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
     text: 'Your year ahead, sign by sign — the theme, love, money and best months of 2027, plus all twelve months one by one and the real 2027 moon calendar.', tag: 'New',
+  },
+  {
+    to: '/tools/chinese-zodiac', icon: Compass, title: 'Chinese Zodiac',
+    img: '/images/chinese-zodiac-illustration.webp', alt: 'A golden celestial wheel of the twelve Chinese zodiac animals around a radiant star',
+    text: 'Find your animal and element from your exact birth date — placed by the real Chinese New Year — plus your outlook for 2027, the Fire Goat year.', tag: 'New',
   },
   {
     to: '/tools/daily-arcana', icon: Shapes, title: 'Daily Tarot Card',

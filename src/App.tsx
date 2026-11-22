@@ -38,6 +38,10 @@ import { MoonCalendar2027 } from './pages/MoonCalendar2027';
 import { MoonCalendarMonthPage } from './pages/MoonCalendarMonth';
 import { Horoscope2027 } from './pages/Horoscope2027';
 import { Horoscope2027SignPage } from './pages/Horoscope2027Sign';
+import { ChineseZodiac } from './pages/ChineseZodiac';
+import { ChineseZodiacAnimalPage } from './pages/ChineseZodiacAnimal';
+import { ChineseZodiac2027 } from './pages/ChineseZodiac2027';
+import { ChineseZodiac2027AnimalPage } from './pages/ChineseZodiac2027Animal';
 import GaiaChat from './components/GaiaChat';
 
 function App() {
@@ -74,6 +78,10 @@ function App() {
           <Route path="/tools/moon-calendar-2027/:month" element={<MoonCalendarMonthPage />} />
           <Route path="/tools/horoscope-2027" element={<Horoscope2027 />} />
           <Route path="/tools/horoscope-2027/:sign" element={<Horoscope2027SignPage />} />
+          <Route path="/tools/chinese-zodiac" element={<ChineseZodiac />} />
+          <Route path="/tools/chinese-zodiac/2027" element={<ChineseZodiac2027 />} />
+          <Route path="/tools/chinese-zodiac/2027/:animal" element={<ChineseZodiac2027AnimalPage />} />
+          <Route path="/tools/chinese-zodiac/:animal" element={<ChineseZodiacAnimalPage />} />
           <Route path="/tools/how-to-read-destiny-matrix" element={<HowToRead />} />
           <Route path="/tools/karmic-tail" element={<KarmicTail />} />
           <Route path="/tools/family-lines" element={<FamilyLines />} />

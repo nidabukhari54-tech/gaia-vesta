@@ -157,7 +157,7 @@ function CelestialAccents({ items }: { items: Accent[] }) {
 function Marquee() {
   const items = [
     'Destiny Matrix Chart', 'Karmic Tail', 'Compatibility', 'Family Lines', 'Angel Numbers',
-    'Year Forecast', "Children's Matrix", 'Moon Phase', 'Life Path Number', 'Free PDF Report', 'Daily Horoscope', 'Weekly Horoscope', 'Monthly Horoscope', 'Moon Calendar 2027', '2027 Horoscope',
+    'Year Forecast', "Children's Matrix", 'Moon Phase', 'Life Path Number', 'Free PDF Report', 'Daily Horoscope', 'Weekly Horoscope', 'Monthly Horoscope', 'Moon Calendar 2027', '2027 Horoscope', 'Chinese Zodiac',
   ];
   const row = [...items, ...items];
   return (

@@ -6,6 +6,7 @@ const ITEMS = [
   { key: 'monthly', label: 'Monthly Horoscope', to: '/tools/monthly-horoscope' },
   { key: '2027', label: '2027 Horoscope', to: '/tools/horoscope-2027' },
   { key: 'moon', label: 'Moon Calendar 2027', to: '/tools/moon-calendar-2027' },
+  { key: 'chinese', label: 'Chinese Zodiac', to: '/tools/chinese-zodiac' },
 ] as const;
 
 export type HoroscopeLinkKey = (typeof ITEMS)[number]['key'];

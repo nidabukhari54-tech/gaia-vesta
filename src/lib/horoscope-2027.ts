@@ -6,12 +6,10 @@
 // that powers our Moon Phase tool. Guidance is written as reflection in the
 // astrological tradition — never as a promise about outcomes.
 
-import { moonPhase } from './numerology';
+import { moonsInYear } from './moons';
 import { SIGNS, type HoroscopeSign } from './horoscope';
 
 // ---------- 2027 moon calendar (computed, real) ----------
-
-const SYNODIC = 29.530588853;
 
 export const MONTH_NAMES = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -26,47 +24,14 @@ export type MonthMoons = {
   fullMoons: number[];
 };
 
-function computeMoonCalendar2027(): MonthMoons[] {
-  const months: MonthMoons[] = MONTH_NAMES.map((m) => ({
-    month: m,
-    newMoons: [],
-    fullMoons: [],
-  }));
-  const HALF = SYNODIC / 2;
-
-  // Walk the year at local noon (avoids DST edge cases). A new moon is the
-  // day the moon's age wraps past the end of the cycle; a full moon is the
-  // day the age crosses the cycle's halfway point. In each case the event
-  // belongs to whichever of the two neighbouring days sits closer to it.
-  let prevAge = moonPhase(new Date(2026, 11, 31, 12)).age;
-  let prevMonth = 11; // December 2026
-  let prevDay = 31;
-
-  for (let m = 0; m < 12; m++) {
-    const daysInMonth = new Date(2027, m + 1, 0).getDate();
-    for (let d = 1; d <= daysInMonth; d++) {
-      const age = moonPhase(new Date(2027, m, d, 12)).age;
-
-      if (age < prevAge) {
-        // age wrapped: the new moon fell between yesterday and today
-        if (SYNODIC - prevAge < age) months[prevMonth].newMoons.push(prevDay);
-        else months[m].newMoons.push(d);
-      }
-      if (prevAge < HALF && age >= HALF) {
-        // age crossed the halfway point: the full moon fell in between
-        if (HALF - prevAge < age - HALF) months[prevMonth].fullMoons.push(prevDay);
-        else months[m].fullMoons.push(d);
-      }
-
-      prevAge = age;
-      prevMonth = m;
-      prevDay = d;
-    }
-  }
-  return months;
-}
-
-export const MOON_CALENDAR_2027: MonthMoons[] = computeMoonCalendar2027();
+// The dates come from the shared moon engine in lib/moons.ts — the same
+// day-by-day calculation (and the same nearer-day convention) this calendar
+// was originally built with; verified to reproduce it exactly.
+export const MOON_CALENDAR_2027: MonthMoons[] = moonsInYear(2027).map((m, i) => ({
+  month: MONTH_NAMES[i],
+  newMoons: m.newMoons,
+  fullMoons: m.fullMoons,
+}));
 
 export function moonsForMonth(monthIndex: number): MonthMoons {
   return MOON_CALENDAR_2027[monthIndex];

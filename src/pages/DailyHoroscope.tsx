@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { HoroscopeLinks } from '../components/HoroscopeLinks';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SIGNS, getDailyHoroscope, getSignForDate } from '../lib/horoscope';
 
@@ -141,6 +142,13 @@ export function DailyHoroscope() {
           </div>
           <ArrowRight className="w-5 h-5 text-lavdim shrink-0" />
         </Link>
+
+        <div className="mb-14">
+          <p className="text-center text-xs font-semibold tracking-widest uppercase text-lavdim mb-4">
+            More rhythms
+          </p>
+          <HoroscopeLinks current="daily" />
+        </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">

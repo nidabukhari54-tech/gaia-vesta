@@ -85,6 +85,21 @@ const TOOLS = [
     text: 'Today\u2019s reading for all twelve signs — theme, love, money, mood and lucky number, refreshed every midnight.', tag: 'Daily',
   },
   {
+    to: '/tools/weekly-horoscope', icon: CalendarClock, title: 'Weekly Horoscope',
+    img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
+    text: 'The week ahead for all twelve signs — theme, love, money, mood, your best day and the moon\u2019s arc from Monday to Sunday.', tag: 'Weekly',
+  },
+  {
+    to: '/tools/monthly-horoscope', icon: CalendarDays, title: 'Monthly Horoscope',
+    img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
+    text: 'This month\u2019s theme for all twelve signs — love, money, growth, lucky days and the month\u2019s real new and full moons.', tag: 'Monthly',
+  },
+  {
+    to: '/tools/moon-calendar-2027', icon: Moon, title: 'Moon Calendar 2027',
+    img: '/images/moon-phase-illustration.webp', alt: 'A glowing full moon rising over a calm indigo sea beneath an arc of moon phases',
+    text: 'Every new moon, quarter and full moon of 2027 — calculated day by day, with the phase of every single day and each full moon\u2019s traditional name.', tag: 'New',
+  },
+  {
     to: '/tools/horoscope-2027', icon: CalendarDays, title: '2027 Horoscope',
     img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
     text: 'Your year ahead, sign by sign — the theme, love, money and best months of 2027, plus all twelve months one by one and the real 2027 moon calendar.', tag: 'New',

@@ -30,6 +30,12 @@ import { ZodiacPairDetail } from './pages/ZodiacPairDetail';
 import { DailyArcana } from './pages/DailyArcana';
 import { DailyHoroscope } from './pages/DailyHoroscope';
 import { HoroscopeSignPage } from './pages/HoroscopeSign';
+import { WeeklyHoroscope } from './pages/WeeklyHoroscope';
+import { WeeklyHoroscopeSignPage } from './pages/WeeklyHoroscopeSign';
+import { MonthlyHoroscope } from './pages/MonthlyHoroscope';
+import { MonthlyHoroscopeSignPage } from './pages/MonthlyHoroscopeSign';
+import { MoonCalendar2027 } from './pages/MoonCalendar2027';
+import { MoonCalendarMonthPage } from './pages/MoonCalendarMonth';
 import { Horoscope2027 } from './pages/Horoscope2027';
 import { Horoscope2027SignPage } from './pages/Horoscope2027Sign';
 import GaiaChat from './components/GaiaChat';
@@ -60,6 +66,12 @@ function App() {
           <Route path="/tools/daily-arcana" element={<DailyArcana />} />
           <Route path="/tools/daily-horoscope" element={<DailyHoroscope />} />
           <Route path="/tools/daily-horoscope/:sign" element={<HoroscopeSignPage />} />
+          <Route path="/tools/weekly-horoscope" element={<WeeklyHoroscope />} />
+          <Route path="/tools/weekly-horoscope/:sign" element={<WeeklyHoroscopeSignPage />} />
+          <Route path="/tools/monthly-horoscope" element={<MonthlyHoroscope />} />
+          <Route path="/tools/monthly-horoscope/:sign" element={<MonthlyHoroscopeSignPage />} />
+          <Route path="/tools/moon-calendar-2027" element={<MoonCalendar2027 />} />
+          <Route path="/tools/moon-calendar-2027/:month" element={<MoonCalendarMonthPage />} />
           <Route path="/tools/horoscope-2027" element={<Horoscope2027 />} />
           <Route path="/tools/horoscope-2027/:sign" element={<Horoscope2027SignPage />} />
           <Route path="/tools/how-to-read-destiny-matrix" element={<HowToRead />} />

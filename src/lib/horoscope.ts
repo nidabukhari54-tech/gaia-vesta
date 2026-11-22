@@ -336,7 +336,7 @@ SIGNS.push(
 
 // ---------- Shared daily banks ----------
 
-const LOVE_LINES: string[] = [
+export const LOVE_LINES: string[] = [
   'Love favours the honest sentence today — the one you have been rehearsing. Say it plainly and let it be enough.',
   'A small kindness lands bigger than a grand gesture today. Do the tiny thing, on purpose, and watch it echo.',
   'If you are attached, put the phones down for one shared hour. If you are single, put yourself where interesting people gather.',
@@ -353,7 +353,7 @@ const LOVE_LINES: string[] = [
   'Your heart is braver than your habits today. Let the heart pick one small move and follow it.',
 ];
 
-const MONEY_LINES: string[] = [
+export const MONEY_LINES: string[] = [
   'Check the numbers once today — the account, the bill, the quiet subscription. Clarity is the cheapest financial tool there is.',
   'A small, boring, correct money move beats a dramatic one today. Automate the transfer; future you sends thanks.',
   'Someone\u2019s offer deserves a slower read today. The fine print is where the real offer lives.',
@@ -370,7 +370,7 @@ const MONEY_LINES: string[] = [
   'Track today\u2019s spending without judgement, just with eyes open. Awareness alone changes the pattern.',
 ];
 
-const MOODS: { word: string; note: string }[] = [
+export const MOODS: { word: string; note: string }[] = [
   { word: 'Bright', note: 'Energy arrives early and stays if you feed it one clear purpose.' },
   { word: 'Tender', note: 'Feelings sit close to the surface today — handle yourself and others gently.' },
   { word: 'Restless', note: 'Movement is the medicine: walk it, work it, do not sit on it.' },

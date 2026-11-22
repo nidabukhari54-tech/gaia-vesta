@@ -161,4 +161,43 @@
   <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/horoscope-2027/capricorn</loc></url>
   <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/horoscope-2027/aquarius</loc></url>
   <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/horoscope-2027/pisces</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/aries</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/taurus</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/gemini</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/cancer</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/leo</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/virgo</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/libra</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/scorpio</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/sagittarius</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/capricorn</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/aquarius</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/weekly-horoscope/pisces</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/aries</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/taurus</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/gemini</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/cancer</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/leo</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/virgo</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/libra</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/scorpio</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/sagittarius</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/capricorn</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/aquarius</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/monthly-horoscope/pisces</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/january</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/february</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/march</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/april</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/may</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/june</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/july</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/august</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/september</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/october</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/november</loc></url>
+  <url><loc>https://gaia-vesta-mcyr.vercel.app/tools/moon-calendar-2027/december</loc></url>
 </urlset>

@@ -28,6 +28,7 @@ import { PythagoreanSquare } from './pages/PythagoreanSquare';
 import { ZodiacCompatibility } from './pages/ZodiacCompatibility';
 import { ZodiacPairDetail } from './pages/ZodiacPairDetail';
 import { DailyArcana } from './pages/DailyArcana';
+import GaiaChat from './components/GaiaChat';
 
 function App() {
   return (
@@ -103,6 +104,7 @@ function App() {
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <GaiaChat />
       </BrowserRouter>
     </AuthProvider>
   );

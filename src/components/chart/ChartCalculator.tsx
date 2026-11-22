@@ -50,13 +50,13 @@ export function ChartCalculator({ onCalculate, isCalculating = false }: ChartCal
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-purple/20">
+    <div className="w-full max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-[#D4A574]/40">
       <div className="text-center mb-6">
-        <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center mx-auto mb-3">
-          <Calendar className="w-6 h-6 text-white" />
+        <div className="w-12 h-12 bg-gradient-to-br from-goldlight to-[#C9963C] rounded-full flex items-center justify-center mx-auto mb-3">
+          <Calendar className="w-6 h-6 text-[#2A1850]" />
         </div>
         <h2 className="text-xl font-serif font-semibold text-text-primary">
-          Calculate Your Destiny Matrix
+          Calculate Your <em className="italic text-[#A67C2E]">Destiny Matrix</em>
         </h2>
         <p className="text-sm text-text-primary/60 mt-1">
           Enter your birth date to reveal your cosmic blueprint
@@ -73,7 +73,7 @@ export function ChartCalculator({ onCalculate, isCalculating = false }: ChartCal
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 bg-white/80 border border-purple/30 rounded-lg
+            className="w-full px-4 py-3 bg-white/80 border border-[#D4A574]/35 rounded-lg
                        text-text-primary placeholder:text-text-primary/40
                        focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
                        transition-all duration-200"
@@ -93,7 +93,7 @@ export function ChartCalculator({ onCalculate, isCalculating = false }: ChartCal
               onChange={(e) => setDay(e.target.value)}
               min="1"
               max="31"
-              className="w-full px-3 py-3 bg-white/80 border border-purple/30 rounded-lg
+              className="w-full px-3 py-3 bg-white/80 border border-[#D4A574]/35 rounded-lg
                          text-text-primary placeholder:text-text-primary/40
                          focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
                          transition-all duration-200 text-center"
@@ -113,7 +113,7 @@ export function ChartCalculator({ onCalculate, isCalculating = false }: ChartCal
               onChange={(e) => setMonth(e.target.value)}
               min="1"
               max="12"
-              className="w-full px-3 py-3 bg-white/80 border border-purple/30 rounded-lg
+              className="w-full px-3 py-3 bg-white/80 border border-[#D4A574]/35 rounded-lg
                          text-text-primary placeholder:text-text-primary/40
                          focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
                          transition-all duration-200 text-center"
@@ -133,7 +133,7 @@ export function ChartCalculator({ onCalculate, isCalculating = false }: ChartCal
               onChange={(e) => setYear(e.target.value)}
               min="1900"
               max={new Date().getFullYear()}
-              className="w-full px-3 py-3 bg-white/80 border border-purple/30 rounded-lg
+              className="w-full px-3 py-3 bg-white/80 border border-[#D4A574]/35 rounded-lg
                          text-text-primary placeholder:text-text-primary/40
                          focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
                          transition-all duration-200 text-center"
@@ -152,14 +152,14 @@ export function ChartCalculator({ onCalculate, isCalculating = false }: ChartCal
         <button
           type="submit"
           disabled={isCalculating}
-          className="w-full py-3 px-4 bg-gradient-to-r from-gold to-purple text-white font-medium
+          className="w-full py-3 px-4 bg-gradient-to-r from-goldlight to-[#C9963C] text-[#2A1850] font-semibold
                      rounded-lg shadow-md hover:shadow-lg disabled:opacity-50
                      disabled:cursor-not-allowed transition-all duration-200
                      flex items-center justify-center gap-2"
         >
           {isCalculating ? (
             <>
-              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              <div className="w-5 h-5 border-2 border-[#2A1850]/30 border-t-[#2A1850] rounded-full animate-spin" />
               Calculating...
             </>
           ) : (

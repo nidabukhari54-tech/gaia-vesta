@@ -259,16 +259,19 @@ function Nav() {
 
 function ShootingStars() {
   const stars = [
-    { cls: 'top-[10%] right-[6%]', delay: '1.2s', dur: '9s' },
-    { cls: 'top-[3%] right-[36%]', delay: '5.8s', dur: '12s' },
-    { cls: 'top-[24%] right-[1%]', delay: '9.4s', dur: '10.5s' },
+    { cls: 'top-[8%] right-[4%]', delay: '0.4s', dur: '7s' },
+    { cls: 'top-[2%] right-[30%]', delay: '2.6s', dur: '8s' },
+    { cls: 'top-[18%] right-[12%]', delay: '4.4s', dur: '6.5s' },
+    { cls: 'top-[5%] right-[55%]', delay: '1.6s', dur: '7.6s' },
+    { cls: 'top-[26%] right-[38%]', delay: '5.6s', dur: '8.4s' },
+    { cls: 'top-[12%] right-[70%]', delay: '3.4s', dur: '6.8s' },
   ];
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {stars.map((s, i) => (
         <span
           key={i}
-          className={`absolute ${s.cls} block w-[130px] h-[2px] rounded-full bg-gradient-to-r from-goldlight via-goldlight/60 to-transparent shadow-[0_0_8px_rgba(231,200,115,0.9)] opacity-0 animate-shoot`}
+          className={`absolute ${s.cls} block w-[190px] h-[3px] rounded-full bg-gradient-to-r from-white via-goldlight to-transparent shadow-[0_0_12px_rgba(231,200,115,0.95),0_0_32px_rgba(231,200,115,0.55)] opacity-0 animate-shoot`}
           style={{ animationDelay: s.delay, animationDuration: s.dur }}
         />
       ))}
@@ -821,6 +824,7 @@ function FamilySection() {
   ];
   return (
     <section className="py-20 relative overflow-hidden">
+      <ShootingStars />
       <div className="absolute -bottom-24 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
       <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <Eyebrow>Family connection map</Eyebrow>
@@ -1192,6 +1196,7 @@ function WhyGaia() {
 function Pricing() {
   return (
     <section id="pricing" className="py-20 relative overflow-hidden">
+      <ShootingStars />
       <CelestialAccents
         items={[
           { kind: 'moon', cls: 'top-12 left-[7%] opacity-70 hidden sm:block', size: 24, delay: '0.6s', dur: '8.5s' },

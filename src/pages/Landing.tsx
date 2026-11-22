@@ -1297,6 +1297,18 @@ function Faq() {
       q: 'Is my family\u2019s data private?',
       a: 'The public calculators run in your browser and store nothing. Charts are only saved when you create a free account and choose to save them, and share links are created only by you.',
     },
+    {
+      q: 'What is a karmic tail?',
+      a: 'It is the three-number chain at the base of your chart — where a repeating life lesson begins, how it keeps returning, and how it resolves. If the same kind of problem keeps finding you, the karmic tail usually names it, and the Karmic Tail Calculator reads yours free.',
+    },
+    {
+      q: 'What does the free PDF report include?',
+      a: 'Your complete chart with all sixteen points interpreted, your love, money and life-path lines, your karmic tail, your family lines, the purpose of each life stage, and an analysis of the numbers your chart repeats or misses — one keepsake document, free to download from your chart.',
+    },
+    {
+      q: 'How is a Destiny Matrix different from a horoscope?',
+      a: 'A horoscope follows the moving sky; a Destiny Matrix is drawn once, from your birth date, and does not change. It maps the energies you were born carrying — purpose, patterns, gifts and lessons — rather than predicting events.',
+    },
   ];
   const [open, setOpen] = useState(0);
   return (

@@ -235,7 +235,7 @@ export default function GaiaChat() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 group"
+          className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 group animate-sway"
           aria-label="Ask Gaia — open chat"
         >
           <span className="hidden sm:block bg-night2/90 backdrop-blur border border-goldlight/35 text-cream text-xs font-medium rounded-full pl-4 pr-3 py-2 shadow-xl group-hover:border-goldlight/60 transition-all">

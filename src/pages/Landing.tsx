@@ -17,7 +17,6 @@ import { dailyArcana } from '../lib/numerology';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
-import RoamingGaia from '../components/RoamingGaia';
 
 const SAMPLE_RESULT = calculateDestinyMatrix(new Date(1990, 4, 21));
 const ARCANA_LIST = Object.values(arcanaMeanings);
@@ -1415,7 +1414,6 @@ export function Landing() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(60rem_30rem_at_85%_-5%,rgba(124,92,191,0.28),transparent),radial-gradient(50rem_26rem_at_-10%_30%,rgba(212,165,116,0.10),transparent),radial-gradient(46rem_24rem_at_50%_110%,rgba(124,92,191,0.16),transparent)]" />
       <div className="relative">
         <Nav />
-        <RoamingGaia />
         <main>
           <Hero />
           <Marquee />

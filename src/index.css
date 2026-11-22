@@ -196,3 +196,14 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-heartbeat { animation: none !important; }
 }
+
+/* Gentle sway — for the Ask Gaia chat button */
+@keyframes sway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-5px) rotate(-1.6deg); }
+  75% { transform: translateX(5px) rotate(1.6deg); }
+}
+.animate-sway { animation: sway 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-sway { animation: none !important; }
+}

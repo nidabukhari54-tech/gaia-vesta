@@ -44,6 +44,8 @@ export function Horoscope2027SignPage() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}
         title={`${sign.name} Horoscope 2027 — Love, Money & Your Year Ahead`}
         subtitle={`Power word for your year: ${year.powerWord}. Lucky number: ${year.luckyNumberYear}. Here is your 2027, ${sign.name} — the whole of it.`}

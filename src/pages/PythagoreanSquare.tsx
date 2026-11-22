@@ -96,24 +96,14 @@ export function PythagoreanSquare() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/pythagoras-illustration.webp"
+        imageAlt="A glowing three-by-three grid of golden light dots joined by fine lines in indigo darkness"
         eyebrow="Numerology · Psychomatrix"
         title="Pythagoras Square (Psychomatrix) Calculator"
         subtitle="The ancient psychomatrix of Pythagoras: every digit of your birth date placed in a 3×3 grid. Repeated digits amplify a trait; empty cells show the lessons you are here to develop."
         schema={[webAppSchema('Pythagoras Square (Psychomatrix) Calculator', '/tools/pythagorean-square', "The ancient psychomatrix of Pythagoras: every digit of your birth date placed in a 3×3 grid. Repeated digits amplify a trait; empty cells show the lessons you are here to develop."), faqPageSchema(FAQS), toolBreadcrumb('Pythagoras Square', '/tools/pythagorean-square')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/pythagoras-illustration.webp"
-            alt="A glowing three-by-three grid of golden light dots joined by fine lines in indigo darkness"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {!result ? (

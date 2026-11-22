@@ -40,24 +40,14 @@ export function MonthlyHoroscope() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow="Monthly Horoscope · Free"
         title={`Monthly Horoscope — ${sample.monthYear}`}
         subtitle={`The slow lens: ${sample.monthName}'s theme for all twelve signs — love, money, growth, lucky days and the month's real moons. Choose your sign.`}
         schema={[webAppSchema('Monthly Horoscope', '/tools/monthly-horoscope', `The slow lens: ${sample.monthName}'s theme for all twelve signs — love, money, growth, lucky days and the month's real moons. Choose your sign.`), faqPageSchema(FAQS), toolBreadcrumb('Monthly Horoscope', '/tools/monthly-horoscope')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/zodiac-illustration.webp"
-            alt="Two overlapping golden rings studded with star dots in an indigo night sky"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
         <Link

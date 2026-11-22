@@ -45,24 +45,14 @@ export function WeeklyHoroscope() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow="Weekly Horoscope · Free"
         title={`Weekly Horoscope — ${range}`}
         subtitle="The week's theme for all twelve signs — love, money, mood, your best day, and the moon's arc from Monday to Sunday. Choose your sign."
         schema={[webAppSchema('Weekly Horoscope', '/tools/weekly-horoscope', "The week's theme for all twelve signs — love, money, mood, your best day, and the moon's arc from Monday to Sunday. Choose your sign."), faqPageSchema(FAQS), toolBreadcrumb('Weekly Horoscope', '/tools/weekly-horoscope')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/zodiac-illustration.webp"
-            alt="Two overlapping golden rings studded with star dots in an indigo night sky"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
         <Link

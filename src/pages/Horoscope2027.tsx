@@ -29,24 +29,14 @@ export function Horoscope2027() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow="2027 Horoscope · Free"
         title="2027 Horoscope — Your Year Ahead, Sign by Sign"
         subtitle="Twelve full year-ahead readings, written by Gaia for each sign's character: the year's theme, love, money, growth, best months — and all twelve months, one by one. Plus the real 2027 moon calendar, calculated in full."
         schema={[webAppSchema('2027 Horoscope', '/tools/horoscope-2027', "Twelve full year-ahead readings, written by Gaia for each sign's character: the year's theme, love, money, growth, best months — and all twelve months, one by one. Plus the real 2027 moon calendar, calculated in full."), faqPageSchema(FAQS), toolBreadcrumb('2027 Horoscope', '/tools/horoscope-2027')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/zodiac-illustration.webp"
-            alt="Two overlapping golden rings studded with star dots in an indigo night sky"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-cream text-center mb-2">

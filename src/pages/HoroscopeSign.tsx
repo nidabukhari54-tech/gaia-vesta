@@ -43,6 +43,8 @@ export function HoroscopeSignPage() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}
         title={`${sign.name} Horoscope Today — ${daily.dateString}`}
         subtitle={`For every ${sign.name}: ${sign.traits.join(' · ')}. Here is what today asks of you.`}

@@ -94,6 +94,8 @@ export function MoonCalendarMonthPage() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/moon-phase-illustration.webp"
+        imageAlt="A glowing full moon rising over a calm indigo sea beneath an arc of moon phases"
         eyebrow="Moon Calendar · 2027"
         title={`${monthName} 2027 Moon Calendar`}
         subtitle={`Every moon of ${monthName} 2027: the new moon, both quarters and the ${fullMoonName} — plus the phase and illumination of every single day, calculated.`}

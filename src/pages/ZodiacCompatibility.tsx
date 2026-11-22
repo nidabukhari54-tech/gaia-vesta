@@ -45,24 +45,14 @@ export function ZodiacCompatibility() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots turning in an indigo night sky"
         eyebrow="Astrology · Compatibility"
         title="Zodiac Compatibility Checker"
         subtitle="Pick any two signs — all 144 pairings — and get an honest harmony score based on elements, rulers and temperament."
         schema={[webAppSchema('Zodiac Compatibility Checker', '/tools/zodiac-compatibility', "Pick any two signs — all 144 pairings — and get an honest harmony score based on elements, rulers and temperament."), toolBreadcrumb('Zodiac Compatibility', '/tools/zodiac-compatibility')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/zodiac-illustration.webp"
-            alt="Two overlapping golden rings studded with star dots turning in an indigo night sky"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid md:grid-cols-2 gap-6 mb-8">

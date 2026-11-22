@@ -28,24 +28,14 @@ export function ChildMatrix() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/child-matrix-illustration.webp"
+        imageAlt="A mother and young child sitting together at night, reading a small glowing golden star chart"
         eyebrow="Destiny Matrix · For parents"
         title="Your child's cosmic blueprint"
         subtitle="A child's Destiny Matrix, translated into what parents actually need: innate talents, emotional needs, learning style, and how to support who they already are."
         schema={[webAppSchema("Children's Destiny Matrix Calculator", '/tools/child-matrix', "A child's Destiny Matrix, translated into what parents actually need: innate talents, emotional needs, learning style, and how to support who they already are."), toolBreadcrumb("Children's Destiny Matrix", '/tools/child-matrix')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/child-matrix-illustration.webp"
-            alt="A mother and young child sitting together at night, reading a small glowing golden star chart"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {!result ? (

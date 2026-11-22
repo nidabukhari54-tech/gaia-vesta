@@ -101,6 +101,8 @@ export function FamilyLines() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/family-illustration.webp"
+        imageAlt="A family gazing together at a glowing golden Destiny Matrix star"
         eyebrow="Destiny Matrix · Family Lines"
         title="Family & Talent Lines Calculator"
         subtitle="Half of your chart was written before you were born. Read your father's line, your mother's line, the parent–child pattern where they meet in you — and the talent line that is yours alone."

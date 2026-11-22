@@ -41,24 +41,14 @@ export function PersonalYear() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/personal-year-illustration.webp"
+        imageAlt="A golden sunrise cresting indigo hills, encircled by a thin ring of light"
         eyebrow="Numerology · Cycles"
         title="Personal Year, Month & Day"
         subtitle="Life moves in 9-year cycles. Find the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."
         schema={[webAppSchema('Personal Year, Month & Day', '/tools/personal-year', "Life moves in 9-year cycles. Find the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."), faqPageSchema(FAQS), toolBreadcrumb('Personal Year', '/tools/personal-year')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/personal-year-illustration.webp"
-            alt="A golden sunrise cresting indigo hills, encircled by a thin ring of light"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {!birthDate ? (

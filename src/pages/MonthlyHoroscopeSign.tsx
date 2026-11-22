@@ -75,6 +75,8 @@ export function MonthlyHoroscopeSignPage() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}
         title={`${sign.name} Horoscope — ${monthly.monthYear}`}
         subtitle={`For every ${sign.name}: ${sign.traits.join(' · ')}. Here is what ${monthly.monthName} asks of you.`}

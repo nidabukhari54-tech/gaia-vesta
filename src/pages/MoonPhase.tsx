@@ -113,24 +113,14 @@ export function MoonPhase() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/moon-phase-illustration.webp"
+        imageAlt="A large glowing full moon rising over a calm indigo sea, with a gentle arc of moon phases above it"
         eyebrow="Lunar · Daily"
         title="Moon Phase Today"
         subtitle="Tonight's exact moon phase, illumination and age — calculated live. Then check the moon (and your sun sign) on the day you were born."
         schema={[webAppSchema('Moon Phase Today', '/tools/moon-phase', "Tonight's exact moon phase, illumination and age — calculated live. Then check the moon (and your sun sign) on the day you were born."), faqPageSchema(FAQS), toolBreadcrumb('Moon Phase Today', '/tools/moon-phase')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/moon-phase-illustration.webp"
-            alt="A large glowing full moon rising over a calm indigo sea, with a gentle arc of moon phases above it"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-gradient-to-br from-[#2b2440] to-[#4a3f6b] rounded-3xl p-8 text-center text-white shadow-xl mb-8">

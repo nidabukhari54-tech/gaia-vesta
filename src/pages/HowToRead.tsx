@@ -50,24 +50,14 @@ export function HowToRead() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/how-to-read-illustration.webp"
+        imageAlt="An unrolled parchment scroll bearing a golden geometric chart of lines and glowing nodes, beside a candle"
         eyebrow="Guide · Start here"
         title="How to Read Your Destiny Matrix Chart"
         subtitle="Your chart looks like a constellation of numbers — but it reads in a clear order. This guide walks you through it, point by point, the same way a practitioner would."
         schema={[articleSchema('How to Read Your Destiny Matrix Chart', '/tools/how-to-read-destiny-matrix', "Your chart looks like a constellation of numbers — but it reads in a clear order. This guide walks you through it, point by point, the same way a practitioner would."), faqPageSchema(FAQS), toolBreadcrumb('How to Read Your Destiny Matrix Chart', '/tools/how-to-read-destiny-matrix')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/how-to-read-illustration.webp"
-            alt="An unrolled parchment scroll bearing a golden geometric chart of lines and glowing nodes, beside a candle"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-white/[0.04] border border-goldlight/30 rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-center gap-4">
           <MousePointerClick className="w-8 h-8 text-goldlight shrink-0" />

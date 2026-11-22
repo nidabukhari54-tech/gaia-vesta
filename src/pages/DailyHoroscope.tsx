@@ -46,24 +46,14 @@ export function DailyHoroscope() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow="Daily Horoscope · Free"
         title="Daily Horoscope"
         subtitle="Today's reading for all twelve signs — written by Gaia, seeded by the date, and paired with tonight's real moon. Choose your sign, or find it below."
         schema={[webAppSchema('Daily Horoscope', '/tools/daily-horoscope', "Today's reading for all twelve signs — written by Gaia, seeded by the date, and paired with tonight's real moon. Choose your sign, or find it below."), faqPageSchema(FAQS), toolBreadcrumb('Daily Horoscope', '/tools/daily-horoscope')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/zodiac-illustration.webp"
-            alt="Two overlapping golden rings studded with star dots in an indigo night sky"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
         <div className="bg-white/[0.04] rounded-3xl border border-goldlight/25 p-6 sm:p-8 mb-6">

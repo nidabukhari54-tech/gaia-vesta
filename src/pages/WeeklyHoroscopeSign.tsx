@@ -67,6 +67,8 @@ export function WeeklyHoroscopeSignPage() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/zodiac-illustration.webp"
+        imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}
         title={`${sign.name} Weekly Horoscope — Week of ${weekOf}`}
         subtitle={`For every ${sign.name}: ${sign.traits.join(' · ')}. Here is what this week asks of you.`}

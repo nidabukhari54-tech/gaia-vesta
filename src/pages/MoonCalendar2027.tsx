@@ -57,24 +57,14 @@ export function MoonCalendar2027() {
   return (
     <PublicLayout>
       <ToolHero
+        image="/images/moon-phase-illustration.webp"
+        imageAlt="A glowing full moon rising over a calm indigo sea beneath an arc of moon phases"
         eyebrow="Moon Calendar · 2027 · Free"
         title="Moon Calendar 2027 — Every New & Full Moon"
         subtitle="All thirteen new moons and twelve full moons of 2027, calculated day by day with the same astronomy as our Moon Phase tool — plus every quarter, month by month."
         schema={[webAppSchema('Moon Calendar 2027', '/tools/moon-calendar-2027', "All thirteen new moons and twelve full moons of 2027, calculated day by day with the same astronomy as our Moon Phase tool — plus every quarter, month by month."), faqPageSchema(FAQS), toolBreadcrumb('Moon Calendar 2027', '/tools/moon-calendar-2027')]}
       />
 
-      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
-        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
-          <img
-            src="/images/moon-phase-illustration.webp"
-            alt="A glowing full moon rising over a calm indigo sea beneath an arc of moon phases"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto block"
-          />
-        </div>
-      </div>
 
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-cream text-center mb-2">

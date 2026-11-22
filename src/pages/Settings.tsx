@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
-import { ArrowLeft, Settings as SettingsIcon, LogOut, Loader2, Crown, PartyPopper } from 'lucide-react';
+import { ArrowLeft, Settings as SettingsIcon, LogOut, Loader2, Crown, PartyPopper, ExternalLink } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
 import { requireSupabase, type Profile } from '../lib/supabase';
+import { fetchLatestSubscription, type SubscriptionRow } from '../lib/payments';
 import { ConfigNotice } from '../components/ConfigNotice';
 
 export function Settings() {
@@ -11,6 +12,7 @@ export function Settings() {
   const [searchParams, setSearchParams] = useSearchParams();
   const justUpgraded = searchParams.get('upgraded') === '1';
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [subscription, setSubscription] = useState<SubscriptionRow | null>(null);
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -32,6 +34,10 @@ export function Settings() {
         if (error) throw error;
         setProfile(data as Profile);
         setName((data as Profile).name ?? '');
+        // Provider/renewal details live in the subscriptions table; this
+        // resolves to null until migration 003 is applied — plan display
+        // above keeps working from the profile either way.
+        setSubscription(await fetchLatestSubscription(user.id));
       } catch (e) {
         console.error('Failed to load profile:', e);
       } finally {
@@ -155,10 +161,27 @@ export function Settings() {
                 <div className="flex items-center gap-3">
                   {isPremium && <Crown className="w-5 h-5 text-gold" />}
                   <div>
-                    <p className="font-medium text-cream capitalize">{profile?.plan ?? 'free'} plan</p>
+                    <p className="font-medium text-cream">{isPremium ? 'Cosmic plan' : 'Starseed plan (Free)'}</p>
                     <p className="text-sm text-lavdim">
                       AI readings used: {profile?.ai_queries_used ?? 0} / {profile?.ai_queries_limit ?? 5} this month
                     </p>
+                    {subscription && (
+                      <p className="text-sm text-lavdim">
+                        Billed via{' '}
+                        {subscription.provider === 'paypal'
+                          ? 'PayPal'
+                          : subscription.provider === 'stripe'
+                            ? 'Stripe'
+                            : subscription.provider}
+                        {subscription.current_period_end
+                          ? ` · renews ${new Date(subscription.current_period_end).toLocaleDateString(undefined, {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric',
+                            })}`
+                          : ''}
+                      </p>
+                    )}
                   </div>
                 </div>
                 {!isPremium && (
@@ -170,6 +193,16 @@ export function Settings() {
                   </Link>
                 )}
               </div>
+              {subscription?.provider === 'paypal' && isPremium && (
+                <a
+                  href="https://www.paypal.com/myaccount/autopay"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-goldlight hover:text-gold transition-colors mb-4"
+                >
+                  Manage subscription on PayPal <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
               <div className="w-full bg-white/10 rounded-full h-2">
                 <div
                   className="bg-gradient-to-r from-goldlight to-[#C9963C] h-2 rounded-full transition-all"

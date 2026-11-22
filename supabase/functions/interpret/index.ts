@@ -55,7 +55,25 @@ serve(async (req) => {
       .single();
     if (profileError || !profile) return json({ error: 'Profile not found' }, 404);
 
-    const isPremium = profile.plan === 'premium';
+    // Provider-agnostic entitlement: profiles.plan is the synced cache
+    // (written by stripe-webhook / paypal-verify), and an active row in the
+    // `subscriptions` table — whichever provider wrote it — also unlocks
+    // Cosmic. If the subscriptions table doesn't exist yet (migration 003
+    // not applied), the query errors and we fall back to the cache alone.
+    let hasActiveSub = false;
+    const { data: activeSubs, error: subError } = await supabase
+      .from('subscriptions')
+      .select('status, current_period_end')
+      .eq('user_id', user.id)
+      .eq('status', 'active')
+      .limit(1);
+    if (!subError && activeSubs) {
+      hasActiveSub = activeSubs.some(
+        (s: { current_period_end?: string | null }) =>
+          !s.current_period_end || new Date(s.current_period_end) > new Date(),
+      );
+    }
+    const isPremium = profile.plan === 'premium' || hasActiveSub;
     if (!isPremium && (profile.ai_queries_used ?? 0) >= (profile.ai_queries_limit ?? 5)) {
       return json({ error: 'Monthly AI reading quota reached. Upgrade to Cosmic for unlimited readings.' }, 402);
     }

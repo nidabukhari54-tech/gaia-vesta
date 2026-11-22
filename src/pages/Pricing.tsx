@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Star, Loader2, Check } from 'lucide-react';
+import { ArrowLeft, Star, Check, Sparkles } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
 import { requireSupabase } from '../lib/supabase';
+import { isPayPalConfigured } from '../lib/payments';
+import { PayPalSubscribe } from '../components/PayPalSubscribe';
 import { ConfigNotice } from '../components/ConfigNotice';
 
 const TIERS = [
@@ -39,33 +41,30 @@ const TIERS = [
 export function Pricing() {
   const { user, configured } = useAuth();
   const navigate = useNavigate();
-  const [checkoutLoading, setCheckoutLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [plan, setPlan] = useState<string | null>(null);
+  const paymentsConfigured = isPayPalConfigured();
+  const isPremium = plan === 'premium';
 
-  const handleUpgrade = async () => {
-    setError(null);
-    if (!user) {
-      navigate('/auth');
-      return;
-    }
-    if (!configured) {
-      setError('Payments are not configured yet. The site owner needs to add Stripe keys (see README).');
-      return;
-    }
-    setCheckoutLoading(true);
-    try {
-      const supabase = requireSupabase();
-      const { data, error: fnError } = await supabase.functions.invoke('create-checkout');
-      if (fnError) throw fnError;
-      const url = (data as { url?: string })?.url;
-      if (!url) throw new Error('No checkout URL returned');
-      window.location.href = url;
-    } catch (e) {
-      console.error('Checkout failed:', e);
-      setError('Could not start checkout. Please try again later.');
-      setCheckoutLoading(false);
-    }
-  };
+  useEffect(() => {
+    if (!configured || !user) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const supabase = requireSupabase();
+        const { data } = await supabase
+          .from('profiles')
+          .select('plan')
+          .eq('id', user.id)
+          .single();
+        if (!cancelled && data) setPlan((data as { plan?: string }).plan ?? 'free');
+      } catch (e) {
+        console.error('Failed to load plan:', e);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [configured, user]);
 
   return (
     <div className="min-h-screen bg-night text-cream">
@@ -93,12 +92,6 @@ export function Pricing() {
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-cream mb-4">Simple pricing</h2>
           <p className="text-lav">Start free. Go deeper when you're ready. Cancel anytime.</p>
         </div>
-
-        {error && (
-          <div className="max-w-3xl mx-auto mb-6 bg-red-500/10 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg text-sm">
-            {error}
-          </div>
-        )}
 
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {TIERS.map((tier) => (
@@ -140,27 +133,50 @@ export function Pricing() {
                 >
                   {user ? 'Go to dashboard' : 'Start free'}
                 </Link>
-              ) : (
+              ) : isPremium ? (
+                <div className="text-center">
+                  <p className="flex items-center justify-center gap-2 px-6 py-3 bg-goldlight/10 border border-goldlight/40 text-goldlight font-semibold rounded-xl">
+                    <Sparkles className="w-5 h-5" /> You're on Cosmic
+                  </p>
+                  <Link to="/settings" className="inline-block mt-3 text-sm text-lav hover:text-cream transition-colors">
+                    Manage your plan in Settings
+                  </Link>
+                </div>
+              ) : !paymentsConfigured ? (
+                <div className="rounded-2xl border border-goldlight/30 bg-gold/[0.06] p-5">
+                  <p className="font-serif text-lg text-cream mb-1.5">
+                    Cosmic payments open with our new domain tomorrow — start free today.
+                  </p>
+                  <p className="text-sm text-lav mb-4">
+                    Everything on Starseed is already unlocked, including 5 AI deep readings a month.
+                    Cosmic checkout goes live the moment the new domain does — no need to wait to begin.
+                  </p>
+                  <Link
+                    to={user ? '/dashboard' : '/auth'}
+                    className="block text-center px-6 py-3 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-xl hover:shadow-lg transition-all"
+                  >
+                    Start free — no card needed
+                  </Link>
+                </div>
+              ) : !user ? (
                 <button
-                  onClick={handleUpgrade}
-                  disabled={checkoutLoading}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-xl hover:shadow-lg disabled:opacity-50 transition-all flex items-center justify-center gap-2"
+                  onClick={() => navigate('/auth')}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-xl hover:shadow-lg transition-all"
                 >
-                  {checkoutLoading ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" /> Redirecting to checkout...
-                    </>
-                  ) : (
-                    'Go Cosmic'
-                  )}
+                  Sign in to go Cosmic
                 </button>
+              ) : (
+                <PayPalSubscribe
+                  userId={user.id}
+                  onSuccess={() => navigate('/settings?upgraded=1')}
+                />
               )}
             </div>
           ))}
         </div>
 
         <p className="text-center text-sm text-lavdim mt-10">
-          Secure payments by Stripe · Gaia Vesta is for self-reflection and entertainment.
+          Secure payments by PayPal · Gaia Vesta is for self-reflection and entertainment.
         </p>
       </main>
     </div>

@@ -180,6 +180,12 @@ export default function GaiaChat() {
   }, [msgs, typing, open]);
 
   useEffect(() => {
+    const open = () => setOpen(true);
+    window.addEventListener('gaia:open-chat', open);
+    return () => window.removeEventListener('gaia:open-chat', open);
+  }, []);
+
+  useEffect(() => {
     return () => {
       if (timerRef.current) window.clearTimeout(timerRef.current);
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();

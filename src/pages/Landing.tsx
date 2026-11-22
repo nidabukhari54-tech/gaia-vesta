@@ -17,6 +17,7 @@ import { dailyArcana } from '../lib/numerology';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
+import RoamingGaia from '../components/RoamingGaia';
 
 const SAMPLE_RESULT = calculateDestinyMatrix(new Date(1990, 4, 21));
 const ARCANA_LIST = Object.values(arcanaMeanings);
@@ -326,26 +327,21 @@ function Hero() {
           </ul>
         </div>
 
-        <div className="relative animate-fadeIn animate-breathe max-w-md mx-auto w-full lg:max-w-[540px]">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
-          <div
-            className="relative lg:h-[590px]"
-            style={{
-              WebkitMaskImage: 'radial-gradient(ellipse 94% 94% at 50% 46%, black 52%, transparent 98%)',
-              maskImage: 'radial-gradient(ellipse 94% 94% at 50% 46%, black 52%, transparent 98%)',
-            }}
-          >
+        <div className="relative animate-fadeIn max-w-md mx-auto w-full lg:max-w-none">
+          <div className="relative h-[480px] sm:h-[540px] lg:h-[620px] animate-breathe">
             <img
               src="/images/hero-gaia-scene.webp"
               alt="Gaia presenting your glowing Destiny Matrix chart, one hand open in welcome"
-              className="w-full h-auto lg:h-full lg:object-cover lg:object-[50%_30%]"
+              className="absolute inset-0 w-full h-full object-cover object-[50%_42%]"
               loading="eager"
               decoding="async"
             />
+            <div className="absolute inset-0 bg-night/15 pointer-events-none" />
+            <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-night via-night/45 to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-night to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-night to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-night/70 to-transparent hidden lg:block pointer-events-none" />
           </div>
-          <span className="absolute bottom-[5%] left-[5%] whitespace-nowrap bg-night2/85 backdrop-blur border border-goldlight/35 rounded-full px-3.5 py-1.5 text-[11px] font-medium text-cream shadow-lg animate-float">
-            Gaia · your guide
-          </span>
         </div>
       </div>
 
@@ -690,33 +686,48 @@ function ArcanaCarousel() {
 
 function ChartFan() {
   const cards = [
-    { img: '/images/fan-staircase.webp', alt: 'A golden staircase rising through night clouds toward a bright star', cls: '-rotate-[13deg] translate-y-6 z-0' },
-    { img: '/images/fan-crystal.webp', alt: 'A hand holding a glowing golden crystal', cls: '-rotate-[6deg] translate-y-2 z-10' },
-    { img: '/images/fan-moonwave.webp', alt: 'A golden crescent moon above curling ocean waves', cls: 'rotate-[6deg] translate-y-2 z-10' },
-    { img: '/images/fan-meditate.webp', alt: 'Gaia meditating peacefully on soft clouds', cls: 'rotate-[13deg] translate-y-6 z-0' },
+    { img: '/images/fan-staircase.webp', alt: 'A golden staircase rising through night clouds toward a bright star', label: 'Life Path', to: '/tools/life-path', cls: '-rotate-[13deg] translate-y-6 z-0' },
+    { img: '/images/fan-crystal.webp', alt: 'A hand holding a glowing golden crystal', label: "Today's Arcana", to: '/tools/daily-arcana', cls: '-rotate-[6deg] translate-y-2 z-10' },
+    { img: '/images/fan-moonwave.webp', alt: 'A golden crescent moon above curling ocean waves', label: 'Moon Phase', to: '/tools/moon-phase', cls: 'rotate-[6deg] translate-y-2 z-10' },
+    { img: '/images/fan-meditate.webp', alt: 'Gaia meditating peacefully on soft clouds', label: 'How to read your chart', to: '/tools/how-to-read-destiny-matrix', cls: 'rotate-[13deg] translate-y-6 z-0' },
   ];
   return (
     <div className="mt-16">
       <div className="flex justify-center items-start">
-        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -mr-4 sm:-mr-5 ${cards[0].cls}`}>
+        <Link to={cards[0].to} className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -mr-4 sm:-mr-5 group ${cards[0].cls}`}>
           <img src={cards[0].img} alt={cards[0].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-        </div>
-        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -mr-4 sm:-mr-5 ${cards[1].cls}`}>
+          <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-night/85 backdrop-blur border border-goldlight/40 rounded-full px-3 py-1 text-[10px] font-medium text-cream opacity-90 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+            {cards[0].label} →
+          </span>
+        </Link>
+        <Link to={cards[1].to} className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -mr-4 sm:-mr-5 group ${cards[1].cls}`}>
           <img src={cards[1].img} alt={cards[1].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-        </div>
-        <div className="relative z-20 w-36 sm:w-48 aspect-[3/4.3] rounded-2xl bg-[#FAF5EA] border border-goldlight/70 shadow-[0_30px_60px_-18px_rgba(231,200,115,0.6)] p-3 flex flex-col items-center transition-all duration-500 hover:scale-[1.04]">
+          <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-night/85 backdrop-blur border border-goldlight/40 rounded-full px-3 py-1 text-[10px] font-medium text-cream opacity-90 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+            {cards[1].label} →
+          </span>
+        </Link>
+        <a href="#demo" className="relative z-20 w-36 sm:w-48 aspect-[3/4.3] rounded-2xl bg-[#FAF5EA] border border-goldlight/70 shadow-[0_30px_60px_-18px_rgba(231,200,115,0.6)] p-3 flex flex-col items-center transition-all duration-500 hover:scale-[1.04] group">
           <p className="text-[8px] sm:text-[9px] tracking-[0.28em] text-[#8a6d3b] font-semibold">THE MATRIX</p>
           <div className="w-full max-w-[9.5rem]">
             <GlowChart result={SAMPLE_RESULT} />
           </div>
           <p className="font-serif text-[#3D3D3D] text-sm sm:text-base text-center leading-tight">Your chart, at the centre of it all</p>
-        </div>
-        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -ml-4 sm:-ml-5 ${cards[2].cls}`}>
+          <span className="mt-auto bg-night text-goldlight text-[10px] font-medium rounded-full px-3 py-1 group-hover:bg-night3 transition-colors">
+            Draw yours →
+          </span>
+        </a>
+        <Link to={cards[2].to} className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -ml-4 sm:-ml-5 group ${cards[2].cls}`}>
           <img src={cards[2].img} alt={cards[2].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-        </div>
-        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -ml-4 sm:-ml-5 ${cards[3].cls}`}>
+          <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-night/85 backdrop-blur border border-goldlight/40 rounded-full px-3 py-1 text-[10px] font-medium text-cream opacity-90 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+            {cards[2].label} →
+          </span>
+        </Link>
+        <Link to={cards[3].to} className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -ml-4 sm:-ml-5 group ${cards[3].cls}`}>
           <img src={cards[3].img} alt={cards[3].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-        </div>
+          <span className="absolute bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-night/85 backdrop-blur border border-goldlight/40 rounded-full px-3 py-1 text-[10px] font-medium text-cream opacity-90 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
+            {cards[3].label} →
+          </span>
+        </Link>
       </div>
       <div className="text-center mt-10">
         <a
@@ -856,15 +867,18 @@ function FamilySection() {
                 loading="lazy"
               />
               <span className="absolute bottom-3.5 left-3.5 flex items-center gap-2 bg-night/85 backdrop-blur border border-goldlight/30 rounded-full px-4 py-2 text-xs font-medium text-cream">
-                <Heart className="w-3.5 h-3.5 text-goldlight" /> One family — one map
+                <Heart className="w-3.5 h-3.5 text-red-400" fill="currentColor" /> One family — one map
               </span>
             </div>
             <svg viewBox="0 0 400 300" className="w-full h-auto" role="img" aria-label="A family connection map">
               {members.map((m) => (
                 <line key={m.label} x1="200" y1="150" x2={m.x} y2={m.y} stroke="#7C6BD9" strokeOpacity="0.55" strokeWidth="1.4" />
               ))}
+              <circle cx="200" cy="150" r="37" fill="#E5484D" opacity="0.16" className="animate-pulse" />
               <circle cx="200" cy="150" r="30" fill="url(#goldCore)" />
-              <text x="200" y="158" textAnchor="middle" fontSize="19" fill="#2A1850">♥</text>
+              <g className="animate-heartbeat" style={{ transformBox: 'fill-box', transformOrigin: 'center' }}>
+                <text x="200" y="158" textAnchor="middle" fontSize="19" fill="#D92323">♥</text>
+              </g>
               {members.map((m) => (
                 <g key={m.label}>
                   <circle cx={m.x} cy={m.y} r="24" fill="#221344" stroke="#8B7FE0" strokeWidth="1.4" />
@@ -1396,6 +1410,7 @@ export function Landing() {
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(60rem_30rem_at_85%_-5%,rgba(124,92,191,0.28),transparent),radial-gradient(50rem_26rem_at_-10%_30%,rgba(212,165,116,0.10),transparent),radial-gradient(46rem_24rem_at_50%_110%,rgba(124,92,191,0.16),transparent)]" />
       <div className="relative">
         <Nav />
+        <RoamingGaia />
         <main>
           <Hero />
           <Marquee />

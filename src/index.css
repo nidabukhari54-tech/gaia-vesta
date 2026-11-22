@@ -184,3 +184,15 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-shoot { animation: none !important; }
 }
+
+/* Heartbeat — for the family map's heart */
+@keyframes heartbeat {
+  0%, 40%, 80%, 100% { transform: scale(1); }
+  12% { transform: scale(1.25); }
+  24% { transform: scale(1.06); }
+  56% { transform: scale(1.18); }
+}
+.animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-heartbeat { animation: none !important; }
+}

@@ -619,23 +619,35 @@ function ArcanaCarousel() {
           <Link
             key={a.id}
             to={`/arcana/${a.id}`}
-            className="snap-start shrink-0 w-[300px] bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 rounded-[1.75rem] p-7 hover:border-goldlight/60 hover:shadow-[0_24px_50px_-20px_rgba(231,200,115,0.45)] transition-all group"
+            className="snap-start shrink-0 w-[300px] bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 rounded-[1.75rem] overflow-hidden hover:border-goldlight/60 hover:shadow-[0_24px_50px_-20px_rgba(231,200,115,0.45)] transition-all group"
           >
-            <div className="w-16 h-16 rounded-full bg-[radial-gradient(circle_at_35%_35%,#F6E3AC,#C9963C)] flex items-center justify-center shadow-[0_0_26px_rgba(231,200,115,0.5)] mb-5">
-              <span className="font-serif text-2xl font-semibold text-night3">{a.id}</span>
+            <div className="relative h-40">
+              <img
+                src={`/images/arcana-${a.id}.webp`}
+                alt={`${a.name} — Destiny Matrix arcana illustration`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1A0C33] via-[#1A0C33]/40 to-transparent pointer-events-none" />
+              <div className="absolute -bottom-6 left-5 w-16 h-16 rounded-full bg-[radial-gradient(circle_at_35%_35%,#F6E3AC,#C9963C)] ring-4 ring-[#1A0C33] flex items-center justify-center shadow-[0_0_26px_rgba(231,200,115,0.5)]">
+                <span className="font-serif text-2xl font-semibold text-night3">{a.id}</span>
+              </div>
             </div>
-            <h3 className="font-serif text-xl text-cream mb-1.5 group-hover:text-goldlight transition-colors">{a.name}</h3>
-            <p className="text-sm text-lav/75 leading-relaxed mb-4">{a.description}</p>
-            <p className="flex flex-wrap gap-1.5">
-              {a.strengths.slice(0, 3).map((s) => (
-                <span key={s} className="text-[11px] font-medium bg-white/[0.06] border border-white/10 text-lav rounded-full px-2.5 py-1">
-                  {s}
-                </span>
-              ))}
-            </p>
-            <span className="inline-flex items-center gap-1 text-sm font-medium text-goldlight mt-5">
-              Read its meaning <ArrowRight className="w-4 h-4" />
-            </span>
+            <div className="p-7 pt-10">
+              <h3 className="font-serif text-xl text-cream mb-1.5 group-hover:text-goldlight transition-colors">{a.name}</h3>
+              <p className="text-sm text-lav/75 leading-relaxed mb-4">{a.description}</p>
+              <p className="flex flex-wrap gap-1.5">
+                {a.strengths.slice(0, 3).map((s) => (
+                  <span key={s} className="text-[11px] font-medium bg-white/[0.06] border border-white/10 text-lav rounded-full px-2.5 py-1">
+                    {s}
+                  </span>
+                ))}
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-goldlight mt-5">
+                Read its meaning <ArrowRight className="w-4 h-4" />
+              </span>
+            </div>
           </Link>
         ))}
         </div>

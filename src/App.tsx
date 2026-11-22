@@ -28,6 +28,8 @@ import { PythagoreanSquare } from './pages/PythagoreanSquare';
 import { ZodiacCompatibility } from './pages/ZodiacCompatibility';
 import { ZodiacPairDetail } from './pages/ZodiacPairDetail';
 import { DailyArcana } from './pages/DailyArcana';
+import { DailyHoroscope } from './pages/DailyHoroscope';
+import { HoroscopeSignPage } from './pages/HoroscopeSign';
 import GaiaChat from './components/GaiaChat';
 
 function App() {
@@ -54,6 +56,8 @@ function App() {
           <Route path="/tools/zodiac-compatibility" element={<ZodiacCompatibility />} />
           <Route path="/tools/zodiac-compatibility/:pair" element={<ZodiacPairDetail />} />
           <Route path="/tools/daily-arcana" element={<DailyArcana />} />
+          <Route path="/tools/daily-horoscope" element={<DailyHoroscope />} />
+          <Route path="/tools/daily-horoscope/:sign" element={<HoroscopeSignPage />} />
           <Route path="/tools/how-to-read-destiny-matrix" element={<HowToRead />} />
           <Route path="/tools/karmic-tail" element={<KarmicTail />} />
           <Route path="/tools/family-lines" element={<FamilyLines />} />

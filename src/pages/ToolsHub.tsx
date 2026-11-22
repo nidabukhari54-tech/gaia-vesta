@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
   Heart, CalendarClock, Baby, BookOpen, Hash, Type, SunMoon, Grid3X3,
-  Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users,
+  Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users, Sun,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
 import { dailyArcana, moonPhase } from '../lib/numerology';
@@ -77,6 +77,11 @@ const TOOLS = [
     to: '/tools/zodiac-compatibility', icon: Heart, title: 'Zodiac Compatibility',
     img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
     text: 'All 144 sign pairings with a harmony score and an honest read on the match.', tag: 'New tool',
+  },
+  {
+    to: '/tools/daily-horoscope', icon: Sun, title: 'Daily Horoscope',
+    img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
+    text: 'Today\u2019s reading for all twelve signs — theme, love, money, mood and lucky number, refreshed every midnight.', tag: 'Daily',
   },
   {
     to: '/tools/daily-arcana', icon: Shapes, title: 'Daily Tarot Card',

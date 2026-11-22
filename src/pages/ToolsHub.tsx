@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import {
   Heart, CalendarClock, CalendarDays, Baby, BookOpen, Hash, Type, SunMoon, Grid3X3,
   Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users, Sun, Compass,
+  ArrowRight,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { Marquee } from '../components/Marquee';
 import { DESC } from '../lib/meta';
 import { webPageSchema, breadcrumbSchema } from '../lib/schema';
 import { dailyArcana, moonPhase } from '../lib/numerology';
@@ -138,6 +140,41 @@ export function ToolsHub() {
       />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <Link
+          to={{ pathname: '/', hash: '#demo' }}
+          className="group grid md:grid-cols-2 rounded-[1.75rem] overflow-hidden border border-goldlight/40 bg-gradient-to-b from-white/[0.06] to-white/[0.02] hover:border-goldlight/70 hover:shadow-[0_30px_60px_-25px_rgba(231,200,115,0.5)] transition-all mb-10"
+        >
+          <div className="relative h-56 md:h-auto md:min-h-[320px] overflow-hidden">
+            <img
+              src="/images/seeker-illustration.webp"
+              alt="A lone seeker standing before a giant glowing golden matrix star"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#170B31] via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-[#170B31]" />
+            <span className="absolute top-4 left-4 text-[11px] font-semibold tracking-wide uppercase bg-night/70 backdrop-blur-sm text-goldlight px-2.5 py-1 rounded-full">
+              Flagship
+            </span>
+          </div>
+          <div className="p-8 sm:p-10 flex flex-col justify-center">
+            <p className="text-xs font-semibold tracking-[0.18em] uppercase text-goldlight mb-3">
+              Featured · The flagship tool
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl text-cream mb-3">
+              Destiny Matrix Chart Calculator
+            </h2>
+            <p className="text-lav/80 leading-relaxed mb-7 max-w-md">
+              Start where every reading starts: your full 22-arcana chart from your birth date — soul
+              purpose, love line, money line and karmic tail, calculated in seconds. Free, instant,
+              no account needed.
+            </p>
+            <span className="inline-flex w-fit items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-full group-hover:shadow-[0_0_28px_rgba(231,200,115,0.5)] transition-all">
+              Calculate your chart — free <ArrowRight className="w-5 h-5" />
+            </span>
+          </div>
+        </Link>
+
         <div className="grid md:grid-cols-2 gap-4 mb-10">
           <Link to="/tools/daily-arcana" className="bg-white/[0.04] rounded-2xl p-6 border border-goldlight/30 hover:border-goldlight/60 hover:shadow-lg transition-all">
             <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">Today's arcana</p>
@@ -187,7 +224,11 @@ export function ToolsHub() {
             </Link>
           ))}
         </div>
+      </section>
 
+      <Marquee />
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14">
         <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-8 text-center mb-16">
           <Download className="w-8 h-8 text-goldlight mx-auto mb-3" />
           <h2 className="text-xl font-serif font-semibold text-cream mb-2">Every chart is downloadable</h2>

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Heart, Coins, Compass, Sparkles } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
+import { RelatedRail } from '../components/RelatedRail';
 import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { getArcana, arcanaMeanings } from '../lib/arcana-meanings';
 import { arcanaPageTitle, arcanaDesc } from '../lib/meta';
@@ -40,8 +41,19 @@ export function ArcanaDetail() {
         </Link>
 
         <div className="text-center mb-10">
-          <div className="w-20 h-20 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4 shadow-lg">
-            {a.id}
+          <div className="relative max-w-md mx-auto mb-9">
+            <div className="absolute -inset-8 bg-gold/[0.20] rounded-full blur-3xl pointer-events-none" />
+            <div className="relative animate-breathe">
+              <img
+                src={`/images/arcana-${a.id}.webp`}
+                alt={`${a.name} — Destiny Matrix arcana illustration`}
+                decoding="async"
+                className="w-full h-72 sm:h-80 object-cover [mask-image:radial-gradient(ellipse_88%_84%_at_50%_46%,black_56%,transparent_98%)]"
+              />
+            </div>
+            <div className="absolute bottom-1 left-5 w-16 h-16 rounded-full bg-[radial-gradient(circle_at_35%_35%,#F6E3AC,#C9963C)] ring-4 ring-night flex items-center justify-center shadow-[0_0_26px_rgba(231,200,115,0.5)]">
+              <span className="font-serif text-2xl font-semibold text-night3">{a.id}</span>
+            </div>
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-cream mb-2">{a.name}</h1>
           <p className="text-lg text-lav/75 italic">"{a.description}"</p>
@@ -140,6 +152,22 @@ export function ArcanaDetail() {
           <Link to="/#demo" className="inline-block px-7 py-3 bg-gradient-to-r from-gold to-purple text-white font-medium rounded-xl hover:shadow-lg transition-all">
             Calculate my chart — free
           </Link>
+        </div>
+
+        <div className="mt-14">
+          <RelatedRail
+            title="Every other arcana"
+            items={Object.values(arcanaMeanings)
+              .filter((x) => x.id !== num)
+              .map((x) => ({
+                to: `/arcana/${x.id}`,
+                title: x.name,
+                essence: x.description,
+                image: `/images/arcana-${x.id}.webp`,
+                imageAlt: `${x.name} — Destiny Matrix arcana illustration`,
+                badge: `Arcana ${x.id}`,
+              }))}
+          />
         </div>
 
         <div className="flex justify-between mt-8">

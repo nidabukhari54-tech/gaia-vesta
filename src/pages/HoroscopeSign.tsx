@@ -4,6 +4,7 @@ import {
   ArrowRight, Briefcase, Hash, Heart, HeartHandshake, Moon, Palette, Sparkles,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { RelatedRail, firstSentence } from '../components/RelatedRail';
 import { dailySignDesc, dailySignPageTitle } from '../lib/meta';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SIGNS, getDailyHoroscope, getSignBySlug, type HoroscopeSign } from '../lib/horoscope';
@@ -40,6 +41,9 @@ export function HoroscopeSignPage() {
 
   const daily = getDailyHoroscope(sign, today);
   const faqs = signFaqs(sign);
+  const signIdx = SIGNS.indexOf(sign);
+  const prevSign = SIGNS[(signIdx + 11) % 12];
+  const nextSign = SIGNS[(signIdx + 1) % 12];
 
   return (
     <PublicLayout>
@@ -249,24 +253,24 @@ export function HoroscopeSignPage() {
           ))}
         </div>
 
-        <h3 className="font-serif font-semibold text-lg text-cream mb-4 text-center">
-          All twelve signs, today
-        </h3>
-        <div className="flex flex-wrap justify-center gap-2">
-          {SIGNS.map((s) => (
-            <Link
-              key={s.slug}
-              to={`/tools/daily-horoscope/${s.slug}`}
-              className={`px-4 py-2 rounded-full border text-sm transition-all ${
-                s.slug === sign.slug
-                  ? 'bg-goldlight/15 border-goldlight/60 text-goldlight font-semibold'
-                  : 'bg-white/[0.04] border-white/10 text-lav hover:border-goldlight/50 hover:text-cream'
-              }`}
-            >
-              {s.glyph} {s.name}
-            </Link>
-          ))}
-        </div>
+        <RelatedRail
+          title="All twelve signs, today"
+          items={SIGNS.filter((s) => s.slug !== sign.slug).map((s) => ({
+            to: `/tools/daily-horoscope/${s.slug}`,
+            title: s.name,
+            essence: firstSentence(getDailyHoroscope(s, today).theme),
+            glyph: s.glyph,
+            badge: s.dates,
+          }))}
+          prev={{
+            to: `/tools/daily-horoscope/${prevSign.slug}`,
+            label: `${prevSign.glyph} ${prevSign.name}`,
+          }}
+          next={{
+            to: `/tools/daily-horoscope/${nextSign.slug}`,
+            label: `${nextSign.glyph} ${nextSign.name}`,
+          }}
+        />
         <p className="text-center mt-8">
           <Link
             to="/tools/daily-horoscope"

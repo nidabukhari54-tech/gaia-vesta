@@ -3,6 +3,7 @@ import {
   ArrowRight, CalendarDays, Heart, HeartCrack, Hash, Palette, Sparkles, Sprout, AlertTriangle,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { RelatedRail, firstSentence } from '../components/RelatedRail';
 import { chineseAnimalDesc } from '../lib/meta';
 import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { ANIMALS, elementForYear, getAnimalBySlug, type ChineseAnimal } from '../lib/chinese-zodiac';
@@ -258,22 +259,24 @@ export function ChineseZodiacAnimalPage() {
           ))}
         </div>
 
-        <h3 className="font-serif font-semibold text-lg text-cream mb-4 text-center">All twelve animals</h3>
-        <div className="flex flex-wrap justify-center gap-2">
-          {ANIMALS.map((a) => (
-            <Link
-              key={a.slug}
-              to={`/tools/chinese-zodiac/${a.slug}`}
-              className={`px-4 py-2 rounded-full border text-sm transition-all ${
-                a.slug === animal.slug
-                  ? 'bg-goldlight/15 border-goldlight/60 text-goldlight font-semibold'
-                  : 'bg-white/[0.04] border-white/10 text-lav hover:border-goldlight/50 hover:text-cream'
-              }`}
-            >
-              {a.glyph} {a.name}
-            </Link>
-          ))}
-        </div>
+        <RelatedRail
+          title="All twelve animals"
+          items={ANIMALS.filter((a) => a.slug !== animal.slug).map((a) => ({
+            to: `/tools/chinese-zodiac/${a.slug}`,
+            title: `The ${a.name}`,
+            essence: `${a.branchElement} branch · ${firstSentence(a.traits)}`,
+            glyph: a.glyph,
+            badge: `${a.branchElement} branch`,
+          }))}
+          prev={{
+            to: `/tools/chinese-zodiac/${ANIMALS[(ANIMALS.indexOf(animal) + 11) % 12].slug}`,
+            label: `The ${ANIMALS[(ANIMALS.indexOf(animal) + 11) % 12].name}`,
+          }}
+          next={{
+            to: `/tools/chinese-zodiac/${ANIMALS[(ANIMALS.indexOf(animal) + 1) % 12].slug}`,
+            label: `The ${ANIMALS[(ANIMALS.indexOf(animal) + 1) % 12].name}`,
+          }}
+        />
         <p className="text-center mt-8">
           <Link to="/tools/chinese-zodiac" className="text-sm text-lavdim hover:text-goldlight transition-colors">
             ← Back to the Chinese Zodiac hub

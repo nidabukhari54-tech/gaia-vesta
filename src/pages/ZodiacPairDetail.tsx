@@ -4,6 +4,7 @@ import { Heart, Flame, ArrowRight } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
 import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
+import { RelatedRail } from '../components/RelatedRail';
 import { ZODIAC_SIGNS, zodiacCompatibility, type ZodiacSign } from '../lib/numerology';
 import { pairPageTitle, pairDesc } from '../lib/meta';
 
@@ -86,6 +87,23 @@ export function ZodiacPairDetail() {
   const dynamics = ELEMENT_DYNAMICS[elementKey(a, b)];
   const aPairs = ZODIAC_SIGNS.filter((s) => s.name !== a.name);
   const bPairs = ZODIAC_SIGNS.filter((s) => s.name !== b.name && s.name !== a.name);
+
+  // Rail of neighbouring pairs: six more matches for each sign, current pair excluded.
+  const railPairs = [
+    ...aPairs.filter((s) => s.name !== b.name).slice(0, 6).map((s) => [a, s] as const),
+    ...bPairs.slice(0, 6).map((s) => [b, s] as const),
+  ].map(([p, q]) => {
+    const [x, y] =
+      ZODIAC_SIGNS.indexOf(p) <= ZODIAC_SIGNS.indexOf(q) ? [p, q] : [q, p];
+    const m = zodiacCompatibility(x, y);
+    return {
+      to: `/tools/zodiac-compatibility/${pairSlug(x, y)}`,
+      title: `${x.name} & ${y.name}`,
+      essence: m.verdict,
+      glyph: `${x.symbol} ${y.symbol}`,
+      badge: `${m.score}% match`,
+    };
+  });
 
   const signCard = (s: ZodiacSign) => (
     <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-left text-text-primary">
@@ -189,24 +207,8 @@ export function ZodiacPairDetail() {
           context="Sun-sign scores are a first glance. The AI deep reading compares your full Destiny Matrix charts — love lines, money lines and shared karmic lessons — and tells the real story of this pairing."
         />
 
-        <h2 className="font-serif font-semibold text-xl text-cream mb-4 text-center mt-14">More pairs</h2>
-        <div className="flex flex-wrap justify-center gap-2">
-          {aPairs.slice(0, 6).map((s) => {
-            const [x, y] = ZODIAC_SIGNS.indexOf(a) <= ZODIAC_SIGNS.indexOf(s) ? [a, s] : [s, a];
-            return (
-              <Link key={`a-${s.name}`} to={`/tools/zodiac-compatibility/${pairSlug(x, y)}`} className="px-4 py-2 rounded-full font-medium text-sm bg-white/[0.06] border border-white/10 text-lav hover:bg-white/[0.12] hover:text-cream transition-all">
-                {a.name} + {s.name}
-              </Link>
-            );
-          })}
-          {bPairs.slice(0, 6).map((s) => {
-            const [x, y] = ZODIAC_SIGNS.indexOf(b) <= ZODIAC_SIGNS.indexOf(s) ? [b, s] : [s, b];
-            return (
-              <Link key={`b-${s.name}`} to={`/tools/zodiac-compatibility/${pairSlug(x, y)}`} className="px-4 py-2 rounded-full font-medium text-sm bg-goldlight/10 border border-goldlight/20 text-lav hover:bg-goldlight/20 hover:text-cream transition-all">
-                {b.name} + {s.name}
-              </Link>
-            );
-          })}
+        <div className="mt-14">
+          <RelatedRail title="More pairs" items={railPairs} />
         </div>
       </section>
     </PublicLayout>

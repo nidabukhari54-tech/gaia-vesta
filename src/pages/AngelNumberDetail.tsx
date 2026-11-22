@@ -3,6 +3,7 @@ import { Heart, Coins, ArrowRight, Sparkles, Repeat } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
+import { RelatedRail, firstSentence } from '../components/RelatedRail';
 import { ANGEL_NUMBERS, ANGEL_NUMBER_LIST } from '../lib/numerology-meanings';
 import { angelPageTitle, angelDesc } from '../lib/meta';
 import { useEffect } from 'react';
@@ -22,6 +23,10 @@ export function AngelNumberDetail() {
   }
 
   const others = ANGEL_NUMBER_LIST.filter((n) => n !== meaning.number);
+  const listIdx = ANGEL_NUMBER_LIST.indexOf(meaning.number);
+  const prevNumber = listIdx > 0 ? ANGEL_NUMBER_LIST[listIdx - 1] : null;
+  const nextNumber =
+    listIdx < ANGEL_NUMBER_LIST.length - 1 ? ANGEL_NUMBER_LIST[listIdx + 1] : null;
 
   const faqs = [
     {
@@ -155,17 +160,27 @@ export function AngelNumberDetail() {
           </div>
         </div>
 
-        <h2 className="font-serif font-semibold text-xl text-cream mb-4 text-center mt-14">All angel number meanings</h2>
-        <div className="flex flex-wrap justify-center gap-2">
-          {others.map((n) => (
-            <Link
-              key={n}
-              to={`/tools/angel-numbers/${n}`}
-              className="px-4 py-2 rounded-full font-semibold text-sm bg-white/[0.06] border border-white/10 text-lav hover:bg-white/[0.12] hover:text-cream transition-all"
-            >
-              {n}
-            </Link>
-          ))}
+        <div className="mt-14">
+          <RelatedRail
+            title="All angel number meanings"
+            items={others.map((n) => ({
+              to: `/tools/angel-numbers/${n}`,
+              title: ANGEL_NUMBERS[n].title,
+              essence: firstSentence(ANGEL_NUMBERS[n].meaning),
+              glyph: n,
+              badge: `Angel number ${n}`,
+            }))}
+            prev={
+              prevNumber
+                ? { to: `/tools/angel-numbers/${prevNumber}`, label: `${prevNumber} angel number` }
+                : undefined
+            }
+            next={
+              nextNumber
+                ? { to: `/tools/angel-numbers/${nextNumber}`, label: `${nextNumber} angel number` }
+                : undefined
+            }
+          />
         </div>
       </section>
     </PublicLayout>

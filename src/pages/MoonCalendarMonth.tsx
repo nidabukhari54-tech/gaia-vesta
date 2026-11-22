@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Moon } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { RelatedRail } from '../components/RelatedRail';
 import { moonMonthDesc } from '../lib/meta';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { moonsInMonth } from '../lib/moons';
@@ -238,6 +239,29 @@ export function MoonCalendarMonthPage() {
             {next.label} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <RelatedRail
+          title="The other months of 2027"
+          items={MONTH_NAMES.filter((_, i) => i !== monthIndex).map((name) => {
+            const i = MONTH_NAMES.indexOf(name);
+            const m = moonsInMonth(2027, i);
+            const fullStr = m.fullMoons.length
+              ? new Date(2027, i, m.fullMoons[0]).toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'long',
+                })
+              : '';
+            return {
+              to: `/tools/moon-calendar-2027/${MONTH_SLUGS[i]}`,
+              title: `${name} 2027`,
+              essence: `${FULL_MOON_NAMES[MONTH_SLUGS[i]]} — the full moon falls on ${fullStr}.`,
+              glyph: '🌕',
+              badge: 'Moon calendar',
+            };
+          })}
+        />
       </section>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

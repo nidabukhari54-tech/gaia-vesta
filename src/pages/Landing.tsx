@@ -334,15 +334,16 @@ function Hero() {
             <img
               src="/images/hero-gaia-scene.webp"
               alt="Gaia presenting your glowing Destiny Matrix chart, one hand open in welcome"
-              className="absolute inset-0 w-full h-full object-cover object-[50%_42%]"
+              className="absolute inset-0 w-full h-full object-cover object-[50%_42%] [mask-image:radial-gradient(ellipse_82%_76%_at_47%_44%,black_52%,transparent_97%)]"
               loading="eager"
               decoding="async"
             />
             <div className="absolute inset-0 bg-night/15 pointer-events-none" />
             <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-night via-night/45 to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-night to-transparent pointer-events-none" />
+            <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-night via-night/60 to-transparent pointer-events-none" />
             <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-night to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-night/70 to-transparent hidden lg:block pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-night/85 to-transparent pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle_at_top_right,theme(colors.night)_0%,transparent_70%)] pointer-events-none" />
           </div>
         </div>
       </div>

@@ -38,6 +38,19 @@ export function NameNumerology() {
         subtitle="Your name is a number in disguise. One form reveals three: your Expression (talents), Soul Urge (heart's desire) and Personality (outer self) — using the Pythagorean system."
       />
 
+      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
+        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
+          <img
+            src="/images/name-numerology-illustration.webp"
+            alt="An open ancient book with golden light and sparkles swirling up from its glowing pages"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+        </div>
+      </div>
+
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow border border-purple/20 mb-8">
           <label htmlFor="fullname" className="block text-sm font-medium text-text-primary mb-2">

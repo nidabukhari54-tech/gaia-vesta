@@ -24,6 +24,19 @@ export function DailyArcana() {
         subtitle="Every date carries an arcana of its own — your daily tarot draw. This is today's card, drawn from the date itself, the same for everyone, and different tomorrow."
       />
 
+      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
+        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
+          <img
+            src="/images/daily-arcana-illustration.webp"
+            alt="An ornate tarot-like card with a golden eight-pointed star on its face, standing among the stars"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+        </div>
+      </div>
+
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl border border-gold/25 shadow-xl p-8 text-center mb-6 text-text-primary">
           <p className="text-sm text-text-primary/55 mb-4">

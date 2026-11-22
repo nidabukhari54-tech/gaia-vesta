@@ -26,6 +26,19 @@ export function AngelNumbers() {
         subtitle="Seeing the same number everywhere — on clocks, receipts, plates? Look it up below, or calculate the personal angel number written into your birth date."
       />
 
+      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
+        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
+          <img
+            src="/images/angel-numbers-illustration.webp"
+            alt="Three glowing golden orbs of light with soft halos floating in indigo mist"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+        </div>
+      </div>
+
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow border border-purple/20 mb-8">
           <div className="relative">

@@ -20,6 +20,19 @@ export function LifePath() {
         subtitle="The most important number in numerology — the road you are here to walk, calculated from your full birth date. Master Numbers 11, 22 and 33 are honoured, never reduced away."
       />
 
+      <div className="relative max-w-md mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="absolute -inset-4 bg-gold/15 rounded-[2.25rem] blur-2xl pointer-events-none" />
+        <div className="relative rounded-[1.75rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)]">
+          <img
+            src="/images/life-path-illustration.webp"
+            alt="A winding golden path of light climbing through indigo hills toward one bright guiding star"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+        </div>
+      </div>
+
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {!result ? (
           <ChartCalculator

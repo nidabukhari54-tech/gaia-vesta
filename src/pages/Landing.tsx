@@ -713,7 +713,7 @@ function FamilySection() {
           <div className="relative max-w-md mx-auto w-full">
             <div className="relative rounded-[2rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)] mb-8 animate-breathe">
               <img
-                src="/images/family-illustration.jpg"
+                src="/images/family-illustration.webp"
                 alt="A family — mother, father, son and daughter — gazing together at a glowing golden Destiny Matrix star"
                 className="w-full h-auto block"
                 loading="lazy"
@@ -756,7 +756,7 @@ function ToolsSection() {
   const tools = [
     { icon: HeartHandshake, img: '/images/compatibility-illustration.webp', alt: 'A couple beneath two overlapping golden rings of light', title: 'Compatibility Matrix', text: 'Two birth dates, one shared chart — with love, money and purpose scores.', to: '/tools/compatibility' },
     { icon: RefreshCcw, img: '/images/karmic-tail-illustration.webp', alt: 'A golden thread knot loosening into light', title: 'Karmic Tail Calculator', text: 'Why does the same pattern keep returning? Your three-number tail: root, repetition, resolution.', to: '/tools/karmic-tail' },
-    { icon: Users, img: '/images/family-illustration.jpg', alt: 'A family gazing at a glowing golden matrix star', title: 'Family & Talent Lines', text: "Your father's line, your mother's line, the parent–child pattern — plus your gifts and missing numbers.", to: '/tools/family-lines' },
+    { icon: Users, img: '/images/family-illustration.webp', alt: 'A family gazing at a glowing golden matrix star', title: 'Family & Talent Lines', text: "Your father's line, your mother's line, the parent–child pattern — plus your gifts and missing numbers.", to: '/tools/family-lines' },
     { icon: CalendarClock, img: '/images/year-forecast-illustration.webp', alt: 'A golden wheel of the year with moon phases', title: 'Year Forecast', text: 'Your matrix for any year, plus your Personal Year theme and lessons.', to: '/tools/year-forecast' },
     { icon: Baby, img: '/images/child-matrix-illustration.webp', alt: 'A mother and child reading a glowing star chart together', title: "Children's Matrix", text: "Your child's talents, emotional needs and learning style, decoded for parents.", to: '/tools/child-matrix' },
     { icon: Moon, img: '/images/moon-phase-illustration.webp', alt: 'A glowing full moon rising over an indigo sea', title: "Today's Arcana", text: `${todayArcana.id} · ${todayArcana.name} — "${todayArcana.description}"`, to: '/tools/daily-arcana' },

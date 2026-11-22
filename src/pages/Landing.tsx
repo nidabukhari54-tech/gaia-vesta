@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Sparkles, ArrowRight, Heart, Coins, Compass,
   ChevronDown, ChevronLeft, ChevronRight, Menu, X, Star, HeartHandshake,
@@ -278,6 +278,145 @@ function ShootingStars() {
   );
 }
 
+function HeroCalculator() {
+  const navigate = useNavigate();
+  const [tab, setTab] = useState<'personal' | 'compat'>('personal');
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [name2, setName2] = useState('');
+  const [date2, setDate2] = useState('');
+  const [error, setError] = useState('');
+
+  const inputCls =
+    'w-full bg-night2/70 border border-lav/25 rounded-xl px-4 py-3 text-cream placeholder:text-lavdim/70 focus:outline-none focus:ring-2 focus:ring-goldlight/60 focus:border-goldlight/60 transition-all [color-scheme:dark]';
+  const tabCls = (active: boolean) =>
+    `px-4 py-2 rounded-full text-[13px] font-semibold transition-all ${
+      active
+        ? 'bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 shadow'
+        : 'text-lav hover:text-cream'
+    }`;
+  const goldBtn =
+    'px-6 py-3 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-xl hover:shadow-[0_0_28px_rgba(231,200,115,0.5)] transition-all flex items-center justify-center gap-2 whitespace-nowrap';
+
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+    if (tab === 'personal') {
+      if (!date) return setError('Please choose your birth date first.');
+      const q = new URLSearchParams({ date });
+      if (name.trim()) q.set('name', name.trim());
+      navigate(`/chart?${q.toString()}`);
+    } else {
+      if (!date || !date2) return setError('Please choose both birth dates.');
+      const q = new URLSearchParams({ d1: date, d2: date2 });
+      if (name.trim()) q.set('n1', name.trim());
+      if (name2.trim()) q.set('n2', name2.trim());
+      navigate(`/tools/compatibility?${q.toString()}`);
+    }
+  };
+
+  return (
+    <div className="relative max-w-xl">
+      <div className="absolute -inset-3 bg-gold/[0.16] rounded-[2rem] blur-xl pointer-events-none" />
+      <div className="relative bg-white/[0.05] backdrop-blur-md border border-goldlight/30 rounded-3xl p-4 sm:p-5 shadow-[0_24px_60px_-20px_rgba(231,200,115,0.35)]">
+        <div className="flex items-center justify-between gap-3 mb-4">
+          <div className="flex bg-night2/80 border border-lav/20 rounded-full p-1">
+            <button
+              type="button"
+              onClick={() => {
+                setTab('personal');
+                setError('');
+              }}
+              className={tabCls(tab === 'personal')}
+            >
+              Personal Matrix
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setTab('compat');
+                setError('');
+              }}
+              className={tabCls(tab === 'compat')}
+            >
+              Compatibility
+            </button>
+          </div>
+          <span className="shrink-0 text-[11px] font-bold tracking-widest text-night3 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full px-3 py-1.5">
+            IT'S FREE
+          </span>
+        </div>
+        <form onSubmit={submit} noValidate>
+          {tab === 'personal' ? (
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name (optional)"
+                className={`${inputCls} sm:flex-1`}
+                aria-label="Your name (optional)"
+              />
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className={`${inputCls} sm:w-44`}
+                aria-label="Your birth date"
+              />
+              <button type="submit" className={goldBtn}>
+                Reveal my chart
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name"
+                  className={`${inputCls} sm:flex-1`}
+                  aria-label="Your name"
+                />
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className={`${inputCls} sm:w-44`}
+                  aria-label="Your birth date"
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="text"
+                  value={name2}
+                  onChange={(e) => setName2(e.target.value)}
+                  placeholder="Partner's name"
+                  className={`${inputCls} sm:flex-1`}
+                  aria-label="Partner's name"
+                />
+                <input
+                  type="date"
+                  value={date2}
+                  onChange={(e) => setDate2(e.target.value)}
+                  className={`${inputCls} sm:w-44`}
+                  aria-label="Partner's birth date"
+                />
+              </div>
+              <button type="submit" className={`${goldBtn} w-full`}>
+                Match our charts
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
+          {error && <p className="text-sm text-red-300 mt-3">{error}</p>}
+        </form>
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   const ticks = ['Free full chart', 'No credit card', 'Instant reading', 'Private — demo stores nothing'];
   return (
@@ -305,21 +444,16 @@ function Hero() {
             disappear? Your personal Destiny Matrix chart maps the pattern: soul purpose, love, money,
             and the karmic tail beneath it all. Read it for yourself — or for the people you love most.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="#demo"
-              className="px-8 py-3.5 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-full hover:shadow-[0_0_28px_rgba(231,200,115,0.5)] transition-all flex items-center justify-center gap-2"
-            >
-              Reveal my chart — free
-              <ArrowRight className="w-5 h-5" />
-            </a>
+          <HeroCalculator />
+          <p className="mt-4 text-sm text-lavdim">
+            Reading for your family?{' '}
             <Link
               to="/tools/family-lines"
-              className="px-8 py-3.5 bg-white/[0.04] border border-white/20 text-cream font-medium rounded-full hover:border-goldlight/60 transition-all flex items-center justify-center"
+              className="text-goldlight underline decoration-goldlight/40 underline-offset-4 hover:decoration-goldlight transition-all"
             >
-              Explore family lines
+              Explore family lines →
             </Link>
-          </div>
+          </p>
           <ul className="flex flex-wrap gap-x-5 gap-y-2 mt-7">
             {ticks.map((t) => (
               <li key={t} className="flex items-center gap-1.5 text-[13px] text-lavdim">

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../lib/AuthContext';
 import { requireSupabase } from '../lib/supabase';
@@ -65,6 +65,16 @@ export function Chart() {
     setCopied(false);
     setPdfNote('');
   };
+
+  // Arriving from the homepage hero calculator: /chart?date=YYYY-MM-DD&name=X
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const d = q.get('date');
+    if (!d) return;
+    const [y, m, dd] = d.split('-').map(Number);
+    if (y && m && dd) handleCalculate(new Date(y, m - 1, dd), q.get('name') || 'Unknown');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleNodeClick = (position: string, arcana: Arcana) => {
     setSelectedArcana({ position, arcana });

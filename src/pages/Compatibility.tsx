@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Coins, Compass, Download, Sparkles, HeartHandshake } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
@@ -44,6 +44,24 @@ export function Compatibility() {
     setResult(calculateCompatibility(dateA, dateB));
     setSelected(null);
   };
+
+  // Arriving from the homepage hero calculator: /tools/compatibility?d1=..&n1=..&d2=..&n2=..
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    const parse = (v: string | null) => {
+      if (!v) return null;
+      const [y, m, dd] = v.split('-').map(Number);
+      return y && m && dd ? new Date(y, m - 1, dd) : null;
+    };
+    const a = parse(q.get('d1'));
+    const b = parse(q.get('d2'));
+    if (q.get('n1')) setNameA(q.get('n1') as string);
+    if (q.get('n2')) setNameB(q.get('n2') as string);
+    if (a) setDateA(a);
+    if (b) setDateB(b);
+    if (a && b) setResult(calculateCompatibility(a, b));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleNodeClick = (position: string, arcana: Arcana) => setSelected({ position, arcana });
 

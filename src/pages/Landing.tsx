@@ -119,6 +119,26 @@ function Eyebrow({ children }: { children: string }) {
   );
 }
 
+function Marquee() {
+  const items = [
+    'Destiny Matrix Chart', 'Karmic Tail', 'Compatibility', 'Family Lines', 'Angel Numbers',
+    'Year Forecast', "Children's Matrix", 'Moon Phase', 'Life Path Number', 'Free PDF Report',
+  ];
+  const row = [...items, ...items];
+  return (
+    <div className="relative border-y border-white/[0.08] bg-white/[0.02] py-4 overflow-hidden marquee-paused">
+      <div className="flex w-max animate-marquee">
+        {row.map((t, i) => (
+          <span key={i} className="flex items-center gap-6 px-6 whitespace-nowrap">
+            <span className={`font-serif text-lg ${i % 2 ? 'italic text-goldlight/90' : 'text-cream/85'}`}>{t}</span>
+            <Sparkles className="w-3.5 h-3.5 text-goldlight/50" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Nav() {
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
@@ -208,7 +228,7 @@ function Hero() {
   return (
     <section className="relative pt-32 pb-16 overflow-hidden">
       <Stars />
-      <div className="absolute -top-32 right-0 w-[34rem] h-[34rem] bg-purple/25 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-32 right-0 w-[34rem] h-[34rem] bg-purple/25 rounded-full blur-3xl pointer-events-none animate-drift" />
       <div className="absolute top-72 -left-40 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center relative">
@@ -246,7 +266,7 @@ function Hero() {
           </ul>
         </div>
 
-        <div className="relative animate-fadeIn max-w-md mx-auto w-full lg:max-w-none">
+        <div className="relative animate-fadeIn animate-breathe max-w-md mx-auto w-full lg:max-w-none">
           <GlowChart result={SAMPLE_RESULT} />
           <div className="absolute top-[6%] -left-2 sm:left-[2%] animate-float">
             <span className="flex items-center gap-2 bg-night2/90 backdrop-blur border border-goldlight/30 rounded-full px-4 py-2 text-xs font-medium text-cream shadow-xl">
@@ -294,7 +314,7 @@ function Demo() {
 
   return (
     <section id="demo" className="py-20 relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs tracking-[0.25em] uppercase text-lavdim mb-3">— the living chart —</p>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mb-4">
@@ -399,7 +419,7 @@ function WhyCards() {
   ];
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <Eyebrow>Why people choose Gaia Vesta</Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mt-5">
@@ -447,7 +467,7 @@ function ArcanaCarousel() {
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="absolute top-0 left-1/3 w-96 h-96 bg-purple/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
           <div>
             <Eyebrow>The 22 Major Arcana</Eyebrow>
@@ -517,7 +537,7 @@ function ArcanaCarousel() {
 function WhatIs() {
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+      <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
         <div>
           <Eyebrow>What is the Destiny Matrix</Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream leading-snug mt-5 mb-5">
@@ -579,7 +599,7 @@ function FamilySection() {
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="absolute -bottom-24 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <Eyebrow>Family connection map</Eyebrow>
         <div className="grid lg:grid-cols-2 gap-14 items-center mt-5">
           <div>
@@ -616,7 +636,7 @@ function FamilySection() {
           </div>
 
           <div className="relative max-w-md mx-auto w-full">
-            <div className="relative rounded-[2rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)] mb-8">
+            <div className="relative rounded-[2rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)] mb-8 animate-breathe">
               <img
                 src="/images/family-illustration.jpg"
                 alt="A family — mother, father, son and daughter — gazing together at a glowing golden Destiny Matrix star"
@@ -668,7 +688,7 @@ function ToolsSection() {
   ];
   return (
     <section id="tools" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <Eyebrow>The toolkit</Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mt-5 mb-4">
@@ -723,7 +743,7 @@ function ReceiveSection() {
   ];
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         <div className="relative order-2 lg:order-1">
           <div className="bg-gradient-to-br from-night3 to-night2 border border-goldlight/25 rounded-[1.75rem] p-8 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.35)] rotate-[-2deg] max-w-sm mx-auto">
             <p className="text-[10px] tracking-[0.3em] text-lavdim mb-3">GAIA VESTA · FULL READING</p>
@@ -769,7 +789,7 @@ function WhyGaia() {
   ];
   return (
     <section className="py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <Eyebrow>The honest comparison</Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mt-5 mb-4">
@@ -809,7 +829,7 @@ function WhyGaia() {
 function Pricing() {
   return (
     <section id="pricing" className="py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-reveal className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <Eyebrow>Access</Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mt-5 mb-4">Simple pricing</h2>
@@ -908,7 +928,7 @@ function Faq() {
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[38rem] h-[26rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div data-reveal className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-10">
           <Eyebrow>Frequently asked</Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mt-5">
@@ -990,6 +1010,25 @@ function Footer() {
 }
 
 export function Landing() {
+  useEffect(() => {
+    const els = document.querySelectorAll('[data-reveal]');
+    const obs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.1 },
+    );
+    els.forEach((el) => {
+      el.classList.add('reveal');
+      obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-night text-cream relative overflow-x-clip">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(60rem_30rem_at_85%_-5%,rgba(124,92,191,0.28),transparent),radial-gradient(50rem_26rem_at_-10%_30%,rgba(212,165,116,0.10),transparent),radial-gradient(46rem_24rem_at_50%_110%,rgba(124,92,191,0.16),transparent)]" />
@@ -997,6 +1036,7 @@ export function Landing() {
         <Nav />
         <main>
           <Hero />
+          <Marquee />
           <Demo />
           <WhyCards />
           <ArcanaCarousel />

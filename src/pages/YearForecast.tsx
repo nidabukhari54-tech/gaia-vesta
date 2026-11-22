@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, Sparkles, CalendarClock } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
-import { webAppSchema, toolBreadcrumb } from '../lib/schema';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartLines } from '../components/chart/ChartLines';
@@ -11,6 +11,44 @@ import { yearForecast } from '../lib/forecast';
 import { PERSONAL_YEAR_MEANINGS } from '../lib/numerology-meanings';
 import { getArcana, type Arcana } from '../lib/arcana-meanings';
 import { exportChartPng } from '../lib/export-chart';
+
+const FORECAST_PARTS = [
+  {
+    title: 'The year chart',
+    text: 'Your full matrix for the chosen year. Its centre is the year’s ruling energy — the arcana the whole year is filtered through — and its love and money lines show where the year’s emphasis falls.',
+  },
+  {
+    title: 'The Personal Year theme',
+    text: 'A number from 1 to 9, worked out from your birth day and month plus the target year. It places the year inside your nine-year cycle — a 1 year opens a cycle, a 9 year closes one — and sets the theme, the focus to lean into and the pattern to watch.',
+  },
+  {
+    title: 'Any year, past or ahead',
+    text: 'The picker covers two years back to six years ahead, so you can look back at a year you have already lived to see how the reading matches it, or look ahead and plan with the grain of the coming year.',
+  },
+];
+
+const FAQS = [
+  {
+    q: 'What is a year forecast in the Destiny Matrix?',
+    a: 'It is your Destiny Matrix recalculated for one specific year. The target year takes the place of your birth year in the calculation, so the year-derived points of the chart show the energies, lessons and opportunities that year activates for you personally — read together with your Personal Year theme for that year.',
+  },
+  {
+    q: 'How is my year energy calculated?',
+    a: 'In two parts. First, your matrix is recalculated with the target year in place of your birth year, keeping your own birth day and month; the centre of that year chart is its ruling energy. Second, your Personal Year number is worked out from your birth day, your birth month and the target year, reduced to a single digit from 1 to 9 — the cycle position that sets the year’s theme.',
+  },
+  {
+    q: 'When does my forecast year start — in January, or on my birthday?',
+    a: 'On Gaia Vesta, in January. The forecast is read by calendar year: your Personal Year number is calculated from your birth day and month plus the calendar year, so it turns over on 1 January, and the year chart describes that calendar year as a whole. Some traditions count personal years from birthday to birthday instead — the number itself is worked out the same way; only the changeover date differs.',
+  },
+  {
+    q: 'Is this a prediction of what will happen?',
+    a: 'No. A forecast describes themes and tendencies — the energies a year activates and the lessons it tends to bring forward — not events. It cannot tell you what will happen; it shows you what to lean into and what to watch, so you can meet the year deliberately rather than by accident.',
+  },
+  {
+    q: 'Is the year forecast free?',
+    a: 'Yes — the year chart, the Personal Year theme, the ruling energy and the chart download are all free, for any year in the picker. A free account is only needed if you want to save the forecast.',
+  },
+];
 
 const CURRENT_YEAR = new Date().getFullYear();
 const YEARS = Array.from({ length: 9 }, (_, i) => CURRENT_YEAR - 2 + i);
@@ -36,7 +74,7 @@ export function YearForecast() {
         eyebrow="Destiny Matrix · Forecast"
         title="What does this year hold for you?"
         subtitle="Your birth matrix recalculated with the target year — see the energies, lessons and opportunities a specific year activates for you."
-        schema={[webAppSchema('Destiny Matrix Year Forecast', '/tools/year-forecast', "Your birth matrix recalculated with the target year — see the energies, lessons and opportunities a specific year activates for you."), toolBreadcrumb('Year Forecast', '/tools/year-forecast')]}
+        schema={[webAppSchema('Destiny Matrix Year Forecast', '/tools/year-forecast', "Your birth matrix recalculated with the target year — see the energies, lessons and opportunities a specific year activates for you."), faqPageSchema(FAQS), toolBreadcrumb('Year Forecast', '/tools/year-forecast')]}
       />
 
 
@@ -127,6 +165,34 @@ export function YearForecast() {
             </div>
           </div>
         )}
+      </section>
+
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <h2 className="text-2xl font-serif font-bold text-cream mb-4 text-center">How the Year Forecast Works</h2>
+        <p className="text-lav/80 leading-relaxed max-w-3xl mx-auto text-center mb-10">
+          The forecast recalculates your Destiny Matrix with the target year standing in place of your birth
+          year. Your birth day and month stay your own, so the points of the chart that are derived from the
+          year — the foundation point, the karmic point and everything built on them — shift to the energies
+          that year activates for you. That year chart is then read alongside your Personal Year theme:
+        </p>
+        <div className="grid md:grid-cols-3 gap-4 mb-16">
+          {FORECAST_PARTS.map((p) => (
+            <div key={p.title} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+              <h3 className="font-serif font-semibold text-lg text-cream mb-2">{p.title}</h3>
+              <p className="text-sm text-lav/80 leading-relaxed">{p.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">Year forecast questions</h2>
+        <div className="space-y-4">
+          {FAQS.map((f) => (
+            <div key={f.q} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+              <h3 className="font-serif font-semibold text-lg text-cream mb-2">{f.q}</h3>
+              <p className="text-lav/80 leading-relaxed">{f.a}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <ArcanaModal selected={selected} onClose={() => setSelected(null)} />

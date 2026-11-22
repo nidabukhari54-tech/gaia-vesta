@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Coins, Compass, Download, Sparkles, HeartHandshake } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
-import { webAppSchema, toolBreadcrumb } from '../lib/schema';
+import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { PersonForm } from '../components/chart/PersonForm';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
@@ -14,6 +14,68 @@ import { compatibilityZones } from '../lib/zones';
 import { ZoneCards } from '../components/ZoneCards';
 import { getArcana, type Arcana } from '../lib/arcana-meanings';
 import { exportChartPng } from '../lib/export-chart';
+
+const ZONE_GUIDE = [
+  {
+    title: 'Two Cores',
+    text: 'Your two centre arcana, side by side, and the third centre they blend into — the flavour the relationship itself takes on when you are together.',
+  },
+  {
+    title: 'Shared Strengths',
+    text: 'The arcana that appear in both charts: the instincts you never have to explain to each other — and, where you share none, how difference itself becomes the bridge.',
+  },
+  {
+    title: 'Love & Connection',
+    text: 'How each of you enters love, what sits at the heart of the combined love line, and what the bond is building toward.',
+  },
+  {
+    title: 'Money & Work Together',
+    text: 'Each partner’s money drive, the household’s money centre, and the material foundation you build on together.',
+  },
+  {
+    title: 'Communication',
+    text: 'Your blend point and each centre’s stress pattern: how you two talk, how you misread each other under pressure, and the repair language that suits this bond.',
+  },
+  {
+    title: 'Main Challenge & Breakup Risks',
+    text: 'The positions where the combined chart carries tenser energy — friction patterns named early so they can be worked with. Patterns to notice, never a prediction.',
+  },
+  {
+    title: 'Children & Parenting',
+    text: 'Each partner’s parent–child line and what each of you hands on — parenting styles and inherited patterns, whether or not children are part of your story.',
+  },
+  {
+    title: 'Karmic Lesson Together',
+    text: 'Both karmic tails and the combined one: the old pattern each of you arrived with, and the lesson the relationship keeps seating you across from.',
+  },
+  {
+    title: 'Purpose Together',
+    text: 'The combined life path, stage by stage: the direction this relationship itself is travelling, separate from either partner’s individual road.',
+  },
+];
+
+const FAQS = [
+  {
+    q: 'What is a Destiny Matrix compatibility chart?',
+    a: 'It is a single chart built from two birth dates. Each partner’s own Destiny Matrix is calculated first, then the two charts are merged into one combined chart that is read as the relationship itself — its love line, its money line, its shared purpose, and the places where the two of you are likely to rub. The reading describes the bond, not either individual.',
+  },
+  {
+    q: 'How is the combined chart calculated?',
+    a: 'Every position is added together. For each point of the chart, the two partners’ numbers at that same position are summed and reduced back into the 1–22 arcana range — so if one partner’s centre is 6 and the other’s is 14, the combined centre is 20. The love, money and shared-purpose scores are read from the combined chart’s lines, and the harmony score is the average of the three.',
+  },
+  {
+    q: 'What does the ‘Main Challenge & Breakup Risks’ zone actually mean?',
+    a: 'It names the positions where your combined chart carries arcana that are traditionally read as tense — Death, The Devil, The Tower or The Fool among them — and describes the friction patterns couples with those placements most often report. It is not a breakup prediction, and no chart can say whether a relationship will last. The zone exists because risk in a relationship usually lives in patterns that repeat without being named; naming them early is most of the protection there is.',
+  },
+  {
+    q: 'Do both partners need accounts?',
+    a: 'No. Two birth dates are all the calculator needs — names are only optional labels. The combined chart, the scores and the full nine-zone reading are generated in your browser without any account. A free account is only needed if you want to save the reading, or to open an AI deep reading of it.',
+  },
+  {
+    q: 'Is the compatibility reading free?',
+    a: 'Yes — the combined chart, the love, money and purpose scores, and all nine reading zones are free in full, and you can download the chart image free too. The paid layer is the AI deep reading: a free account includes 5 AI readings a month, and Cosmic ($9/month) makes them unlimited.',
+  },
+];
 
 function ScoreBar({ label, icon: Icon, score, color }: { label: string; icon: typeof Heart; score: number; color: string }) {
   return (
@@ -86,7 +148,7 @@ export function Compatibility() {
         eyebrow="Destiny Matrix · Compatibility"
         title="Are your charts written for each other?"
         subtitle="Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."
-        schema={[webAppSchema('Destiny Matrix Compatibility Calculator', '/tools/compatibility', "Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."), toolBreadcrumb('Compatibility Matrix', '/tools/compatibility')]}
+        schema={[webAppSchema('Destiny Matrix Compatibility Calculator', '/tools/compatibility', "Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."), faqPageSchema(FAQS), toolBreadcrumb('Compatibility Matrix', '/tools/compatibility')]}
       />
 
 
@@ -182,6 +244,35 @@ export function Compatibility() {
           context="Compatibility scores tell you the weather. The AI deep reading tells you the climate — how your love lines, money lines and karmic lessons interact as a couple, and what this year holds for you both."
         />
       </div>
+
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <h2 className="text-2xl font-serif font-bold text-cream mb-4 text-center">How the Compatibility Reading Works</h2>
+        <p className="text-lav/80 leading-relaxed max-w-3xl mx-auto text-center mb-10">
+          Enter two birth dates and Gaia Vesta first calculates each person’s own Destiny Matrix. Then the two
+          charts are merged: every position of the combined chart is the sum of both partners’ numbers at that
+          position, reduced into the 1–22 arcana range. What you get is a third chart — neither person’s, but the
+          relationship’s — and it is read in nine zones:
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          {ZONE_GUIDE.map((z, i) => (
+            <div key={z.title} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+              <p className="text-xs font-semibold tracking-widest text-goldlight mb-1">Zone {i + 1}</p>
+              <h3 className="font-serif font-semibold text-lg text-cream mb-2">{z.title}</h3>
+              <p className="text-sm text-lav/80 leading-relaxed">{z.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">Compatibility questions</h2>
+        <div className="space-y-4 max-w-4xl mx-auto">
+          {FAQS.map((f) => (
+            <div key={f.q} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+              <h3 className="font-serif font-semibold text-lg text-cream mb-2">{f.q}</h3>
+              <p className="text-lav/80 leading-relaxed">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <ArcanaModal selected={selected} onClose={() => setSelected(null)} />
     </PublicLayout>

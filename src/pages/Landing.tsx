@@ -385,7 +385,7 @@ function Demo() {
         </div>
 
         {!matrixResult ? (
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center lg:items-stretch">
             <div className="relative order-2 lg:order-1 text-center lg:text-left">
               <div className="absolute left-1/2 lg:left-24 top-44 -translate-x-1/2 w-72 h-72 bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
               <img
@@ -416,10 +416,10 @@ function Demo() {
                 Completely free · No account needed · Your date never leaves your browser
               </p>
             </div>
-            <div className="relative order-1 lg:order-2">
+            <div className="relative order-1 lg:order-2 h-full">
               <div className="absolute -inset-5 bg-gold/[0.22] rounded-[2.5rem] blur-2xl pointer-events-none" />
               <div
-                className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-7 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] ring-1 ring-[#D4A574]/60 text-text-primary overflow-hidden"
+                className="relative h-full flex flex-col justify-center bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] ring-1 ring-[#D4A574]/60 text-text-primary overflow-hidden"
                 style={{
                   backgroundImage:
                     'radial-gradient(rgba(201,150,60,0.13) 1px, transparent 1.6px), radial-gradient(rgba(124,92,191,0.10) 1px, transparent 1.6px)',
@@ -427,7 +427,7 @@ function Demo() {
                   backgroundPosition: '0 0, 13px 17px',
                 }}
               >
-                <ChartCalculator onCalculate={handleCalculate} />
+                <ChartCalculator onCalculate={handleCalculate} size="large" />
               </div>
             </div>
           </div>

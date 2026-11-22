@@ -30,29 +30,29 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-serif font-semibold text-text-primary mb-2">
+        <h2 className="text-3xl font-serif font-semibold text-cream mb-2">
           Welcome Back
         </h2>
-        <p className="text-text-primary/70">
+        <p className="text-lav">
           Sign in to continue your cosmic journey
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="login-email" className="block text-sm font-medium text-text-primary mb-2">
+          <label htmlFor="login-email" className="block text-sm font-medium text-cream mb-2">
             Email
           </label>
           <div className="relative">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-primary/50" />
+            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-lavdim" />
             <input
               id="login-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white/80 border border-gold/30 rounded-lg
-                         text-text-primary placeholder:text-text-primary/40
-                         focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
+              className="w-full pl-12 pr-4 py-3 bg-night/50 border border-lav/25 rounded-lg
+                         text-cream placeholder:text-lavdim/70
+                         focus:outline-none focus:ring-2 focus:ring-goldlight/60 focus:border-goldlight/60
                          transition-all duration-200"
               placeholder="Enter your email"
               required
@@ -61,19 +61,19 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
         </div>
 
         <div>
-          <label htmlFor="login-password" className="block text-sm font-medium text-text-primary mb-2">
+          <label htmlFor="login-password" className="block text-sm font-medium text-cream mb-2">
             Password
           </label>
           <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-primary/50" />
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-lavdim" />
             <input
               id="login-password"
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full pl-12 pr-12 py-3 bg-white/80 border border-gold/30 rounded-lg
-                         text-text-primary placeholder:text-text-primary/40
-                         focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
+              className="w-full pl-12 pr-12 py-3 bg-night/50 border border-lav/25 rounded-lg
+                         text-cream placeholder:text-lavdim/70
+                         focus:outline-none focus:ring-2 focus:ring-goldlight/60 focus:border-goldlight/60
                          transition-all duration-200"
               placeholder="Enter your password"
               required
@@ -81,8 +81,8 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-text-primary/50
-                         hover:text-text-primary transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-lavdim
+                         hover:text-cream transition-colors"
             >
               {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
             </button>
@@ -90,7 +90,7 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+          <div className="bg-red-500/10 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg text-sm">
             {error}
           </div>
         )}
@@ -98,14 +98,14 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 px-4 bg-gradient-to-r from-gold to-purple text-white font-medium
+          className="w-full py-3 px-4 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold
                      rounded-lg shadow-md hover:shadow-lg disabled:opacity-50
                      disabled:cursor-not-allowed transition-all duration-200
                      flex items-center justify-center gap-2"
         >
           {loading ? (
             <>
-              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              <div className="w-5 h-5 border-2 border-night3/30 border-t-night3 rounded-full animate-spin" />
               Signing in...
             </>
           ) : (
@@ -117,12 +117,12 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
         </button>
 
         <div className="text-center pt-4">
-          <p className="text-text-primary/70">
+          <p className="text-lav">
             Don't have an account?{' '}
             <button
               type="button"
               onClick={onSwitchToSignup}
-              className="text-gold hover:text-purple font-medium transition-colors"
+              className="text-goldlight hover:text-gold font-medium transition-colors"
             >
               Sign Up
             </button>

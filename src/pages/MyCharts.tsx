@@ -67,24 +67,24 @@ export function MyCharts() {
     });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fef7ed] to-[#f3e8ff]">
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gold/20 sticky top-0 z-10">
+    <div className="min-h-screen bg-night text-cream">
+      <header className="bg-night2/80 backdrop-blur-sm border-b border-lav/15 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center gap-2 text-text-primary/70 hover:text-text-primary transition-colors"
+              className="text-lav hover:text-cream transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="hidden sm:inline">Dashboard</span>
             </button>
             <div className="flex items-center gap-2">
-              <BarChart3 className="w-5 h-5 text-purple" />
-              <h1 className="text-lg font-serif font-semibold text-text-primary">My Charts</h1>
+              <BarChart3 className="w-5 h-5 text-goldlight" />
+              <h1 className="text-lg font-serif font-semibold text-cream">My Charts</h1>
             </div>
             <Link
               to="/chart"
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold to-purple text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all"
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 text-sm font-semibold rounded-lg hover:shadow-lg transition-all"
             >
               <Plus className="w-4 h-4" />
               <span className="hidden sm:inline">New Chart</span>
@@ -98,18 +98,18 @@ export function MyCharts() {
 
         {loading ? (
           <div className="flex items-center justify-center py-24">
-            <Loader2 className="w-8 h-8 text-purple animate-spin" />
+            <Loader2 className="w-8 h-8 text-goldlight animate-spin" />
           </div>
         ) : charts.length === 0 ? (
           <div className="text-center py-24">
-            <div className="w-16 h-16 bg-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <BarChart3 className="w-8 h-8 text-purple/60" />
+            <div className="w-16 h-16 bg-goldlight/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <BarChart3 className="w-8 h-8 text-goldlight/70" />
             </div>
-            <h2 className="text-2xl font-serif font-semibold text-text-primary mb-2">No charts yet</h2>
-            <p className="text-text-primary/60 mb-6">Create your first Destiny Matrix to start your collection.</p>
+            <h2 className="text-2xl font-serif font-semibold text-cream mb-2">No charts yet</h2>
+            <p className="text-lav mb-6">Create your first Destiny Matrix to start your collection.</p>
             <Link
               to="/chart"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold to-purple text-white font-medium rounded-xl hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-xl hover:shadow-lg transition-all"
             >
               <Plus className="w-5 h-5" /> Create a chart
             </Link>
@@ -119,27 +119,27 @@ export function MyCharts() {
             {charts.map((chart) => (
               <div
                 key={chart.id}
-                className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gold/20 hover:border-gold/40 hover:shadow-lg transition-all"
+                className="bg-night2 backdrop-blur-sm rounded-xl p-6 border border-lav/15 hover:border-goldlight/40 hover:shadow-lg transition-all"
               >
-                <h3 className="text-lg font-semibold text-text-primary mb-1">{chart.person_name}</h3>
-                <p className="text-sm text-text-primary/60 mb-1">Born {formatDate(chart.birth_date)}</p>
-                <p className="text-xs text-text-primary/40 mb-4">
+                <h3 className="text-lg font-semibold text-cream mb-1">{chart.person_name}</h3>
+                <p className="text-sm text-lav mb-1">Born {formatDate(chart.birth_date)}</p>
+                <p className="text-xs text-lavdim mb-4">
                   Saved {new Date(chart.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                   {chart.is_shared && chart.shared_link && (
-                    <span className="ml-2 inline-block bg-green-100 text-green-700 px-2 py-0.5 rounded-full">shared</span>
+                    <span className="ml-2 inline-block bg-emerald-500/15 text-emerald-300 px-2 py-0.5 rounded-full">shared</span>
                   )}
                 </p>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setViewing(chart)}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-gold to-purple text-white text-sm font-medium rounded-lg hover:shadow transition-all"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 text-sm font-semibold rounded-lg hover:shadow transition-all"
                   >
                     <Eye className="w-4 h-4" /> View
                   </button>
                   <button
                     onClick={() => handleDelete(chart.id)}
                     disabled={deleting === chart.id}
-                    className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
+                    className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors disabled:opacity-50"
                     aria-label="Delete chart"
                   >
                     {deleting === chart.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
@@ -152,20 +152,20 @@ export function MyCharts() {
       </main>
 
       {viewing && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 overflow-y-auto" onClick={() => setViewing(null)}>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 overflow-y-auto" onClick={() => setViewing(null)}>
           <div
             className="min-h-full flex items-center justify-center p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 my-8">
+            <div className="bg-night2 rounded-2xl shadow-2xl max-w-2xl w-full p-6 my-8 border border-goldlight/25">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-2xl font-serif font-semibold text-text-primary">{viewing.person_name}</h3>
-                  <p className="text-sm text-text-primary/60">Born {formatDate(viewing.birth_date)}</p>
+                  <h3 className="text-2xl font-serif font-semibold text-cream">{viewing.person_name}</h3>
+                  <p className="text-sm text-lav">Born {formatDate(viewing.birth_date)}</p>
                 </div>
                 <button
                   onClick={() => setViewing(null)}
-                  className="px-4 py-2 text-sm text-text-primary/60 hover:text-text-primary hover:bg-purple/10 rounded-lg transition-colors"
+                  className="px-4 py-2 text-sm text-lav hover:text-cream hover:bg-white/[0.06] rounded-lg transition-colors"
                 >
                   Close
                 </button>
@@ -176,7 +176,7 @@ export function MyCharts() {
                   setSelectedArcana({ position, arcana: getArcana(arcana.id) })
                 }
               />
-              <p className="text-center text-sm text-text-primary/50 mt-2">Tap any node for its meaning</p>
+              <p className="text-center text-sm text-lavdim mt-2">Tap any node for its meaning</p>
             </div>
           </div>
         </div>

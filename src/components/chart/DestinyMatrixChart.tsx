@@ -16,7 +16,7 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
 
   const getNodeColor = (id: string): string => {
     if (id === 'X') return 'url(#goldGradient)';
-    return 'url(#purpleGradient)';
+    return 'url(#indigoGradient)';
   };
 
   const renderLines = () => {
@@ -37,7 +37,7 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
           y1={corner.y}
           x2={next.x}
           y2={next.y}
-          stroke="rgba(139, 127, 176, 0.3)"
+          stroke="rgba(212, 165, 116, 0.45)"
           strokeWidth="1"
         />
       );
@@ -53,7 +53,7 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
           y1={pos.y}
           x2={centerX}
           y2={centerY}
-          stroke="rgba(212, 165, 116, 0.3)"
+          stroke="rgba(212, 165, 116, 0.45)"
           strokeWidth="1"
         />
       );
@@ -62,10 +62,10 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
     lines.push(
       <line key="diag-1" x1={positions.find(p => p.id === 'A')!.x} y1={positions.find(p => p.id === 'A')!.y}
             x2={positions.find(p => p.id === 'C')!.x} y2={positions.find(p => p.id === 'C')!.y}
-            stroke="rgba(139, 127, 176, 0.2)" strokeWidth="1" strokeDasharray="5,5" />,
+            stroke="rgba(201, 190, 227, 0.28)" strokeWidth="1" strokeDasharray="5,5" />,
       <line key="diag-2" x1={positions.find(p => p.id === 'B')!.x} y1={positions.find(p => p.id === 'B')!.y}
             x2={positions.find(p => p.id === 'D')!.x} y2={positions.find(p => p.id === 'D')!.y}
-            stroke="rgba(139, 127, 176, 0.2)" strokeWidth="1" strokeDasharray="5,5" />
+            stroke="rgba(201, 190, 227, 0.28)" strokeWidth="1" strokeDasharray="5,5" />
     );
 
     return lines;
@@ -73,6 +73,7 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
 
   const renderNode = (position: ChartPosition) => {
     const isCenter = position.id === 'X';
+    const isFoundation = ['A', 'B', 'C', 'D'].includes(position.id);
     const arcana = getArcana(position.arcana);
     const nodeSize = isCenter ? 32 : 24;
 
@@ -86,7 +87,7 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
         style={{ cursor: 'pointer' }}
       >
         {isCenter && (
-          <circle r={nodeSize + 8} fill="none" stroke="rgba(212, 165, 116, 0.3)" strokeWidth="2">
+          <circle r={nodeSize + 8} fill="none" stroke="rgba(231, 200, 115, 0.5)" strokeWidth="2">
             <animate
               attributeName="r"
               values={`${nodeSize + 4};${nodeSize + 12};${nodeSize + 4}`}
@@ -98,13 +99,13 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
         <circle
           r={nodeSize}
           fill={getNodeColor(position.id)}
-          stroke={isCenter ? '#D4A574' : 'rgba(139, 127, 176, 0.5)'}
-          strokeWidth={isCenter ? 2 : 1}
+          stroke={isCenter || isFoundation ? '#D4A574' : 'rgba(231, 200, 115, 0.45)'}
+          strokeWidth={isCenter || isFoundation ? 2 : 1}
         />
         <text
           textAnchor="middle"
           dy="0.35em"
-          fill={isCenter ? '#FFF8E7' : '#3D3D3D'}
+          fill={isCenter ? '#2A1850' : '#F5EFE3'}
           fontSize={isCenter ? 14 : 12}
           fontWeight="600"
           fontFamily="Inter, sans-serif"
@@ -124,13 +125,13 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
       >
         <defs>
           <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D4A574" />
-            <stop offset="100%" stopColor="#C49B6B" />
+            <stop offset="0%" stopColor="#F0D48A" />
+            <stop offset="100%" stopColor="#C9963C" />
           </linearGradient>
-          <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#A99BBF" />
-            <stop offset="100%" stopColor="#8B7FB0" />
-          </linearGradient>
+          <radialGradient id="indigoGradient" cx="35%" cy="30%" r="85%">
+            <stop offset="0%" stopColor="#3B2273" />
+            <stop offset="100%" stopColor="#1E1038" />
+          </radialGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="coloredBlur" />
             <feMerge>
@@ -170,7 +171,7 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
           <text
             textAnchor="middle"
             dy="0.35em"
-            fill="#FFF8E7"
+            fill="#2A1850"
             fontSize={18}
             fontWeight="700"
             fontFamily="Inter, sans-serif"
@@ -181,12 +182,12 @@ export function DestinyMatrixChart({ result, onNodeClick }: DestinyMatrixChartPr
       </svg>
 
       {hoveredNode && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm
-                        px-4 py-2 rounded-lg shadow-lg border border-purple/30 text-center min-w-max">
-          <p className="text-sm font-semibold text-text-primary">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#1E1038]/95 backdrop-blur-sm
+                        px-4 py-2 rounded-lg shadow-lg border border-goldlight/40 text-center min-w-max">
+          <p className="text-sm font-semibold text-cream">
             {getArcana(hoveredNode.arcana).name}
           </p>
-          <p className="text-xs text-text-primary/70">
+          <p className="text-xs text-lav">
             {getArcana(hoveredNode.arcana).description}
           </p>
         </div>

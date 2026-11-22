@@ -47,18 +47,18 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
   if (success) {
     return (
       <div className="w-full max-w-md mx-auto text-center">
-        <div className="w-16 h-16 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center mx-auto mb-6">
-          <UserPlus className="w-8 h-8 text-white" />
+        <div className="w-16 h-16 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full flex items-center justify-center mx-auto mb-6">
+          <UserPlus className="w-8 h-8 text-night3" />
         </div>
-        <h2 className="text-3xl font-serif font-semibold text-text-primary mb-4">
+        <h2 className="text-3xl font-serif font-semibold text-cream mb-4">
           Account Created!
         </h2>
-        <p className="text-text-primary/70 mb-6">
+        <p className="text-lav mb-6">
           Please check your email to confirm your account, then sign in.
         </p>
         <button
           onClick={onSwitchToLogin}
-          className="text-gold hover:text-purple font-medium transition-colors"
+          className="text-goldlight hover:text-gold font-medium transition-colors"
         >
           Back to Sign In
         </button>
@@ -69,29 +69,29 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-serif font-semibold text-text-primary mb-2">
+        <h2 className="text-3xl font-serif font-semibold text-cream mb-2">
           Create Account
         </h2>
-        <p className="text-text-primary/70">
+        <p className="text-lav">
           Begin your astrological journey
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label htmlFor="signup-name" className="block text-sm font-medium text-text-primary mb-2">
+          <label htmlFor="signup-name" className="block text-sm font-medium text-cream mb-2">
             Name (optional)
           </label>
           <div className="relative">
-            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-primary/50" />
+            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-lavdim" />
             <input
               id="signup-name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white/80 border border-gold/30 rounded-lg
-                         text-text-primary placeholder:text-text-primary/40
-                         focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
+              className="w-full pl-12 pr-4 py-3 bg-night/50 border border-lav/25 rounded-lg
+                         text-cream placeholder:text-lavdim/70
+                         focus:outline-none focus:ring-2 focus:ring-goldlight/60 focus:border-goldlight/60
                          transition-all duration-200"
               placeholder="Your name"
             />
@@ -99,19 +99,19 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         <div>
-          <label htmlFor="signup-email" className="block text-sm font-medium text-text-primary mb-2">
+          <label htmlFor="signup-email" className="block text-sm font-medium text-cream mb-2">
             Email
           </label>
           <div className="relative">
-            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-primary/50" />
+            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-lavdim" />
             <input
               id="signup-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white/80 border border-gold/30 rounded-lg
-                         text-text-primary placeholder:text-text-primary/40
-                         focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
+              className="w-full pl-12 pr-4 py-3 bg-night/50 border border-lav/25 rounded-lg
+                         text-cream placeholder:text-lavdim/70
+                         focus:outline-none focus:ring-2 focus:ring-goldlight/60 focus:border-goldlight/60
                          transition-all duration-200"
               placeholder="Enter your email"
               required
@@ -120,19 +120,19 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         <div>
-          <label htmlFor="signup-password" className="block text-sm font-medium text-text-primary mb-2">
+          <label htmlFor="signup-password" className="block text-sm font-medium text-cream mb-2">
             Password
           </label>
           <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-primary/50" />
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-lavdim" />
             <input
               id="signup-password"
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full pl-12 pr-12 py-3 bg-white/80 border border-gold/30 rounded-lg
-                         text-text-primary placeholder:text-text-primary/40
-                         focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
+              className="w-full pl-12 pr-12 py-3 bg-night/50 border border-lav/25 rounded-lg
+                         text-cream placeholder:text-lavdim/70
+                         focus:outline-none focus:ring-2 focus:ring-goldlight/60 focus:border-goldlight/60
                          transition-all duration-200"
               placeholder="Create a password"
               required
@@ -140,8 +140,8 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-text-primary/50
-                         hover:text-text-primary transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-lavdim
+                         hover:text-cream transition-colors"
             >
               {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
             </button>
@@ -149,19 +149,19 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         <div>
-          <label htmlFor="signup-confirm" className="block text-sm font-medium text-text-primary mb-2">
+          <label htmlFor="signup-confirm" className="block text-sm font-medium text-cream mb-2">
             Confirm Password
           </label>
           <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-primary/50" />
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-lavdim" />
             <input
               id="signup-confirm"
               type={showPassword ? 'text' : 'password'}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white/80 border border-gold/30 rounded-lg
-                         text-text-primary placeholder:text-text-primary/40
-                         focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold
+              className="w-full pl-12 pr-4 py-3 bg-night/50 border border-lav/25 rounded-lg
+                         text-cream placeholder:text-lavdim/70
+                         focus:outline-none focus:ring-2 focus:ring-goldlight/60 focus:border-goldlight/60
                          transition-all duration-200"
               placeholder="Confirm your password"
               required
@@ -170,7 +170,7 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+          <div className="bg-red-500/10 border border-red-500/30 text-red-300 px-4 py-3 rounded-lg text-sm">
             {error}
           </div>
         )}
@@ -178,14 +178,14 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 px-4 bg-gradient-to-r from-gold to-purple text-white font-medium
+          className="w-full py-3 px-4 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold
                      rounded-lg shadow-md hover:shadow-lg disabled:opacity-50
                      disabled:cursor-not-allowed transition-all duration-200
                      flex items-center justify-center gap-2"
         >
           {loading ? (
             <>
-              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              <div className="w-5 h-5 border-2 border-night3/30 border-t-night3 rounded-full animate-spin" />
               Creating account...
             </>
           ) : (
@@ -197,12 +197,12 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
         </button>
 
         <div className="text-center pt-4">
-          <p className="text-text-primary/70">
+          <p className="text-lav">
             Already have an account?{' '}
             <button
               type="button"
               onClick={onSwitchToLogin}
-              className="text-gold hover:text-purple font-medium transition-colors"
+              className="text-goldlight hover:text-gold font-medium transition-colors"
             >
               Sign In
             </button>

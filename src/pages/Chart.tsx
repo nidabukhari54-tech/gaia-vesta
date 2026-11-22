@@ -161,23 +161,23 @@ export function Chart() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f8f4ff] to-[#fef7ed]">
-      <header className="bg-white/80 backdrop-blur-sm border-b border-purple/20 sticky top-0 z-10">
+    <div className="min-h-screen bg-night text-cream">
+      <header className="bg-night2/80 backdrop-blur-sm border-b border-lav/15 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate('/dashboard')}
-              className="flex items-center gap-2 text-text-primary/70 hover:text-text-primary transition-colors"
+              className="flex items-center gap-2 text-lav hover:text-cream transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="hidden sm:inline">Back</span>
             </button>
 
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center shadow-md">
-                <Sparkles className="w-4 h-4 text-white" />
+              <div className="w-9 h-9 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full flex items-center justify-center shadow-md">
+                <Sparkles className="w-4 h-4 text-night3" />
               </div>
-              <h1 className="text-lg font-serif font-semibold text-text-primary">
+              <h1 className="text-lg font-serif font-semibold text-cream">
                 Destiny Matrix
               </h1>
             </div>
@@ -186,7 +186,7 @@ export function Chart() {
               {matrixResult && (
                 <button
                   onClick={handleReset}
-                  className="text-sm text-purple hover:text-text-primary transition-colors"
+                  className="text-sm text-goldlight hover:text-cream transition-colors"
                 >
                   New Chart
                 </button>
@@ -200,10 +200,10 @@ export function Chart() {
         {!matrixResult ? (
           <div className="animate-fadeIn">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-serif font-semibold text-text-primary mb-2">
+              <h2 className="text-3xl font-serif font-semibold text-cream mb-2">
                 Discover Your Destiny Matrix
               </h2>
-              <p className="text-text-primary/70">
+              <p className="text-lav">
                 Based on ancient Tarot wisdom and numerology
               </p>
             </div>
@@ -212,127 +212,127 @@ export function Chart() {
         ) : (
           <div className="animate-fadeIn">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-serif font-semibold text-text-primary">
+              <h2 className="text-2xl font-serif font-semibold text-cream">
                 {personName}'s Destiny Matrix
               </h2>
-              <p className="text-text-primary/60 text-sm">
+              <p className="text-lav text-sm">
                 Born {birthDate?.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </p>
             </div>
 
-            <div ref={chartRef} className="bg-white/60 backdrop-blur-sm rounded-xl p-6 mb-6 shadow-lg border border-purple/20">
+            <div ref={chartRef} className="bg-night2 backdrop-blur-sm rounded-xl p-6 mb-6 shadow-lg border border-goldlight/25">
               <DestinyMatrixChart result={matrixResult} onNodeClick={handleNodeClick} />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-purple/20 hover:border-purple/40 transition-all">
+              <div className="bg-night2 backdrop-blur-sm rounded-lg p-4 border border-lav/15 hover:border-goldlight/40 transition-all">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple/20 rounded-full flex items-center justify-center">
-                    <Heart className="w-5 h-5 text-purple" />
+                  <div className="w-10 h-10 bg-goldlight/15 rounded-full flex items-center justify-center">
+                    <Heart className="w-5 h-5 text-goldlight" />
                   </div>
-                  <h3 className="font-semibold text-text-primary">Love Line</h3>
+                  <h3 className="font-semibold text-cream">Love Line</h3>
                 </div>
                 <div className="flex items-center justify-around">
                   <button
                     onClick={() => handleNodeClick('A', getArcana(matrixResult.loveLine.left))}
-                    className="w-10 h-10 bg-gradient-to-br from-purple/30 to-gold/30 rounded-full
+                    className="w-10 h-10 bg-gradient-to-br from-night3 to-night2 border border-goldlight/30 rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform"
                   >
-                    <span className="font-semibold text-sm text-text-primary">
+                    <span className="font-semibold text-sm text-cream">
                       {matrixResult.loveLine.left}
                     </span>
                   </button>
-                  <span className="text-text-primary/30">→</span>
+                  <span className="text-lavdim/60">→</span>
                   <button
                     onClick={() => handleNodeClick('X', getArcana(matrixResult.loveLine.center))}
-                    className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-full
+                    className="w-12 h-12 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform shadow-md"
                   >
-                    <span className="font-bold text-white">{matrixResult.loveLine.center}</span>
+                    <span className="font-bold text-night3">{matrixResult.loveLine.center}</span>
                   </button>
-                  <span className="text-text-primary/30">→</span>
+                  <span className="text-lavdim/60">→</span>
                   <button
                     onClick={() => handleNodeClick('C', getArcana(matrixResult.loveLine.right))}
-                    className="w-10 h-10 bg-gradient-to-br from-purple/30 to-gold/30 rounded-full
+                    className="w-10 h-10 bg-gradient-to-br from-night3 to-night2 border border-goldlight/30 rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform"
                   >
-                    <span className="font-semibold text-sm text-text-primary">
+                    <span className="font-semibold text-sm text-cream">
                       {matrixResult.loveLine.right}
                     </span>
                   </button>
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-gold/20 hover:border-gold/40 transition-all">
+              <div className="bg-night2 backdrop-blur-sm rounded-lg p-4 border border-lav/15 hover:border-goldlight/40 transition-all">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center">
-                    <Coins className="w-5 h-5 text-gold" />
+                  <div className="w-10 h-10 bg-goldlight/15 rounded-full flex items-center justify-center">
+                    <Coins className="w-5 h-5 text-goldlight" />
                   </div>
-                  <h3 className="font-semibold text-text-primary">Money Line</h3>
+                  <h3 className="font-semibold text-cream">Money Line</h3>
                 </div>
                 <div className="flex items-center justify-around">
                   <button
                     onClick={() => handleNodeClick('B', getArcana(matrixResult.moneyLine.left))}
-                    className="w-10 h-10 bg-gradient-to-br from-gold/30 to-purple/30 rounded-full
+                    className="w-10 h-10 bg-gradient-to-br from-night3 to-night2 border border-goldlight/30 rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform"
                   >
-                    <span className="font-semibold text-sm text-text-primary">
+                    <span className="font-semibold text-sm text-cream">
                       {matrixResult.moneyLine.left}
                     </span>
                   </button>
-                  <span className="text-text-primary/30">→</span>
+                  <span className="text-lavdim/60">→</span>
                   <button
                     onClick={() => handleNodeClick('X', getArcana(matrixResult.moneyLine.center))}
-                    className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-full
+                    className="w-12 h-12 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform shadow-md"
                   >
-                    <span className="font-bold text-white">{matrixResult.moneyLine.center}</span>
+                    <span className="font-bold text-night3">{matrixResult.moneyLine.center}</span>
                   </button>
-                  <span className="text-text-primary/30">→</span>
+                  <span className="text-lavdim/60">→</span>
                   <button
                     onClick={() => handleNodeClick('D', getArcana(matrixResult.moneyLine.right))}
-                    className="w-10 h-10 bg-gradient-to-br from-gold/30 to-purple/30 rounded-full
+                    className="w-10 h-10 bg-gradient-to-br from-night3 to-night2 border border-goldlight/30 rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform"
                   >
-                    <span className="font-semibold text-sm text-text-primary">
+                    <span className="font-semibold text-sm text-cream">
                       {matrixResult.moneyLine.right}
                     </span>
                   </button>
                 </div>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-purple/20 hover:border-purple/40 transition-all">
+              <div className="bg-night2 backdrop-blur-sm rounded-lg p-4 border border-lav/15 hover:border-goldlight/40 transition-all">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-purple/20 rounded-full flex items-center justify-center">
-                    <Compass className="w-5 h-5 text-purple" />
+                  <div className="w-10 h-10 bg-goldlight/15 rounded-full flex items-center justify-center">
+                    <Compass className="w-5 h-5 text-goldlight" />
                   </div>
-                  <h3 className="font-semibold text-text-primary">Life Path</h3>
+                  <h3 className="font-semibold text-cream">Life Path</h3>
                 </div>
                 <div className="flex items-center justify-around">
                   <button
                     onClick={() => handleNodeClick('H', getArcana(matrixResult.lifePath.left))}
-                    className="w-10 h-10 bg-gradient-to-br from-purple/30 to-gold/30 rounded-full
+                    className="w-10 h-10 bg-gradient-to-br from-night3 to-night2 border border-goldlight/30 rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform"
                   >
-                    <span className="font-semibold text-sm text-text-primary">
+                    <span className="font-semibold text-sm text-cream">
                       {matrixResult.lifePath.left}
                     </span>
                   </button>
-                  <span className="text-text-primary/30">→</span>
+                  <span className="text-lavdim/60">→</span>
                   <button
                     onClick={() => handleNodeClick('X', getArcana(matrixResult.lifePath.center))}
-                    className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-full
+                    className="w-12 h-12 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform shadow-md"
                   >
-                    <span className="font-bold text-white">{matrixResult.lifePath.center}</span>
+                    <span className="font-bold text-night3">{matrixResult.lifePath.center}</span>
                   </button>
-                  <span className="text-text-primary/30">→</span>
+                  <span className="text-lavdim/60">→</span>
                   <button
                     onClick={() => handleNodeClick('F', getArcana(matrixResult.lifePath.right))}
-                    className="w-10 h-10 bg-gradient-to-br from-purple/30 to-gold/30 rounded-full
+                    className="w-10 h-10 bg-gradient-to-br from-night3 to-night2 border border-goldlight/30 rounded-full
                                flex items-center justify-center hover:scale-110 transition-transform"
                   >
-                    <span className="font-semibold text-sm text-text-primary">
+                    <span className="font-semibold text-sm text-cream">
                       {matrixResult.lifePath.right}
                     </span>
                   </button>
@@ -341,14 +341,14 @@ export function Chart() {
             </div>
 
             {/* Purpose by life stage */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-gold/20 p-6 mb-6">
+            <div className="bg-night2 backdrop-blur-sm rounded-2xl border border-lav/15 p-6 mb-6">
               <div className="flex items-center gap-3 mb-1">
-                <div className="w-10 h-10 bg-purple/15 rounded-full flex items-center justify-center">
-                  <Target className="w-5 h-5 text-purple" />
+                <div className="w-10 h-10 bg-goldlight/15 rounded-full flex items-center justify-center">
+                  <Target className="w-5 h-5 text-goldlight" />
                 </div>
-                <h3 className="font-serif font-semibold text-xl text-text-primary">Your Purpose, by Life Stage</h3>
+                <h3 className="font-serif font-semibold text-xl text-cream">Your Purpose, by Life Stage</h3>
               </div>
-              <p className="text-sm text-text-primary/60 mb-5">
+              <p className="text-sm text-lavdim mb-5">
                 In the Destiny Matrix method, your mission unfolds in chapters — each stage of life has its own guiding arcana.
               </p>
               <div className="grid md:grid-cols-3 gap-4">
@@ -362,18 +362,18 @@ export function Chart() {
                     <button
                       key={p.stage}
                       onClick={() => handleNodeClick(p.label, arcana)}
-                      className="text-left bg-gradient-to-br from-purple/5 to-gold/5 rounded-xl p-5 border border-purple/10 hover:border-gold/40 transition-all"
+                      className="text-left bg-white/[0.04] rounded-xl p-5 border border-lav/15 hover:border-goldlight/40 transition-all"
                     >
-                      <p className="text-xs font-semibold tracking-widest uppercase text-purple">{p.stage}</p>
-                      <p className="text-xs text-text-primary/50 mb-2">{p.label}</p>
+                      <p className="text-xs font-semibold tracking-widest uppercase text-goldlight">{p.stage}</p>
+                      <p className="text-xs text-lavdim mb-2">{p.label}</p>
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="w-11 h-11 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white font-bold">
+                        <span className="w-11 h-11 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full flex items-center justify-center text-night3 font-bold">
                           {p.value}
                         </span>
                         <span className="font-serif font-semibold text-lg">{arcana.name}</span>
                       </div>
-                      <p className="text-sm text-text-primary/70">{arcana.karmicLesson}</p>
-                      <p className="text-[11px] text-text-primary/40 mt-2">{p.hint}</p>
+                      <p className="text-sm text-lav">{arcana.karmicLesson}</p>
+                      <p className="text-[11px] text-lavdim mt-2">{p.hint}</p>
                     </button>
                   );
                 })}
@@ -382,38 +382,38 @@ export function Chart() {
 
             {/* Your Numbers, Analysed */}
             {analysis && (
-              <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple/20 p-6 mb-6">
-                <h3 className="font-serif font-semibold text-xl text-text-primary mb-1">Your Numbers, Analysed</h3>
-                <p className="text-sm text-text-primary/60 mb-5">
+              <div className="bg-night2 backdrop-blur-sm rounded-2xl border border-lav/15 p-6 mb-6">
+                <h3 className="font-serif font-semibold text-xl text-cream mb-1">Your Numbers, Analysed</h3>
+                <p className="text-sm text-lavdim mb-5">
                   Across all sixteen points of your chart, some arcana speak more than once — and some never appear. Both facts mean something.
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-gradient-to-br from-gold/5 to-purple/5 rounded-xl p-5 border border-gold/20">
-                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-purple mb-3">
+                  <div className="bg-white/[0.04] rounded-xl p-5 border border-goldlight/25">
+                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">
                       <Repeat className="w-4 h-4" /> Repeated — your loud energies
                     </p>
                     {analysis.repeated.length ? (
                       <ul className="space-y-2.5">
                         {analysis.repeated.map((r) => (
-                          <li key={r.arcana.id} className="text-sm text-text-primary/75 leading-relaxed">
-                            <strong className="text-text-primary">{r.arcana.id} — {r.arcana.name}</strong> × {r.count} ({r.positions.join(', ').toLowerCase()}): {r.arcana.description.toLowerCase()}.
+                          <li key={r.arcana.id} className="text-sm text-lav leading-relaxed">
+                            <strong className="text-cream">{r.arcana.id} — {r.arcana.name}</strong> × {r.count} ({r.positions.join(', ').toLowerCase()}): {r.arcana.description.toLowerCase()}.
                           </li>
                         ))}
                       </ul>
                     ) : (
-                      <p className="text-sm text-text-primary/70">No arcana repeats in your chart — your energies are spread evenly, with no single number dominating.</p>
+                      <p className="text-sm text-lav">No arcana repeats in your chart — your energies are spread evenly, with no single number dominating.</p>
                     )}
                   </div>
-                  <div className="bg-gradient-to-br from-purple/5 to-gold/5 rounded-xl p-5 border border-purple/15">
-                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-purple mb-3">
+                  <div className="bg-white/[0.04] rounded-xl p-5 border border-lav/15">
+                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">
                       <CircleDashed className="w-4 h-4" /> Missing — your growth edges
                     </p>
-                    <p className="text-sm text-text-primary/75 leading-relaxed mb-3">
+                    <p className="text-sm text-lav leading-relaxed mb-3">
                       {analysis.missing.length} of the 22 arcana do not appear in your chart — qualities you meet through other people and build deliberately:
                     </p>
                     <p className="flex flex-wrap gap-1.5">
                       {analysis.missing.map((a) => (
-                        <span key={a.id} className="text-xs font-medium bg-purple/10 text-text-primary/75 rounded-full px-2.5 py-1">
+                        <span key={a.id} className="text-xs font-medium bg-goldlight/10 text-lav rounded-full px-2.5 py-1">
                           {a.id} · {a.name}
                         </span>
                       ))}
@@ -424,7 +424,7 @@ export function Chart() {
             )}
 
             {/* Chakra Health Map */}
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple/20 p-6 mb-6">
+            <div className="bg-[#FAF5EA] backdrop-blur-sm rounded-2xl border border-goldlight/50 p-6 mb-6">
               <h3 className="font-serif font-semibold text-xl text-text-primary mb-1">Chakra Health Map</h3>
               <p className="text-sm text-text-primary/60 mb-6">
                 Your seven energy centres read three ways — physical, energy and emotions. Tap a chakra, then a column, for the full reading.
@@ -445,7 +445,7 @@ export function Chart() {
                              flex items-center gap-2
                              ${saveSuccess
                                ? 'bg-green-500 text-white'
-                               : 'bg-gradient-to-r from-gold to-purple text-white hover:shadow-lg disabled:opacity-50'}`}
+                               : 'bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold hover:shadow-lg disabled:opacity-50'}`}
                 >
                   {saveSuccess ? (
                     <>
@@ -454,7 +454,7 @@ export function Chart() {
                     </>
                   ) : isSaving ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-night3/30 border-t-night3 rounded-full animate-spin" />
                       Saving...
                     </>
                   ) : (
@@ -469,12 +469,12 @@ export function Chart() {
                   onClick={handleShare}
                   disabled={isSharing || !configured}
                   className="px-6 py-3 rounded-lg font-medium transition-all duration-200
-                             flex items-center gap-2 bg-white/80 border border-gold/40 text-text-primary
-                             hover:border-gold hover:shadow-lg disabled:opacity-50"
+                             flex items-center gap-2 bg-white/[0.04] border border-lav/30 text-cream
+                             hover:border-goldlight/60 hover:shadow-lg disabled:opacity-50"
                 >
                   {isSharing ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-gold/30 border-t-gold rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-goldlight/30 border-t-goldlight rounded-full animate-spin" />
                       Creating link...
                     </>
                   ) : (
@@ -488,8 +488,8 @@ export function Chart() {
                 <button
                   onClick={() => exportChartPng(chartRef.current, `${(personName || 'destiny-matrix').toLowerCase().replace(/\s+/g, '-')}-matrix.png`)}
                   className="px-6 py-3 rounded-lg font-medium transition-all duration-200
-                             flex items-center gap-2 bg-white/80 border border-purple/30 text-text-primary
-                             hover:border-purple/60 hover:shadow-lg"
+                             flex items-center gap-2 bg-white/[0.04] border border-lav/30 text-cream
+                             hover:border-goldlight/60 hover:shadow-lg"
                 >
                   <Download className="w-5 h-5" />
                   Download PNG (free)
@@ -498,7 +498,7 @@ export function Chart() {
                 <button
                   onClick={handlePdf}
                   className="px-6 py-3 rounded-lg font-medium transition-all duration-200
-                             flex items-center gap-2 bg-gradient-to-r from-gold to-purple text-white
+                             flex items-center gap-2 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold
                              hover:shadow-lg"
                 >
                   <FileText className="w-5 h-5" />
@@ -507,35 +507,35 @@ export function Chart() {
               </div>
 
               {pdfNote && (
-                <p className="text-sm text-text-primary/55 mt-3 max-w-md mx-auto">{pdfNote}</p>
+                <p className="text-sm text-lavdim mt-3 max-w-md mx-auto">{pdfNote}</p>
               )}
 
               {!configured && (
-                <p className="text-sm text-text-primary/50 mt-3">
+                <p className="text-sm text-lavdim mt-3">
                   Sign in with Supabase configured to save and share charts.
                 </p>
               )}
 
               {shareLink && (
-                <div className="mt-5 max-w-lg mx-auto bg-white/80 border border-gold/30 rounded-xl p-4 animate-fadeIn">
-                  <p className="text-sm font-medium text-text-primary mb-2">Your shareable link</p>
+                <div className="mt-5 max-w-lg mx-auto bg-night2 border border-goldlight/30 rounded-xl p-4 animate-fadeIn">
+                  <p className="text-sm font-medium text-cream mb-2">Your shareable link</p>
                   <div className="flex items-center gap-2">
                     <input
                       type="text"
                       readOnly
                       value={shareLink}
                       onFocus={(e) => e.target.select()}
-                      className="flex-1 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-text-primary/80 font-mono"
+                      className="flex-1 px-3 py-2 bg-night/60 border border-lav/20 rounded-lg text-sm text-cream font-mono"
                     />
                     <button
                       onClick={handleCopy}
-                      className="p-2.5 bg-gradient-to-r from-gold to-purple text-white rounded-lg hover:shadow transition-all"
+                      className="p-2.5 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-lg hover:shadow transition-all"
                       aria-label="Copy link"
                     >
                       {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     </button>
                   </div>
-                  <p className="text-xs text-text-primary/50 mt-2">
+                  <p className="text-xs text-lavdim mt-2">
                     Anyone with this link can view the chart. {copied ? 'Copied!' : ''}
                   </p>
                 </div>

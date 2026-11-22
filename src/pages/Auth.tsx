@@ -4,7 +4,6 @@ import { LoginForm } from '../components/auth/LoginForm';
 import { SignupForm } from '../components/auth/SignupForm';
 import { useAuth } from '../lib/AuthContext';
 import { ConfigNotice } from '../components/ConfigNotice';
-import { Sparkles } from 'lucide-react';
 
 export function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,10 +18,10 @@ export function Auth() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#fef7ed] to-[#f3e8ff] flex items-center justify-center">
+      <div className="min-h-screen bg-night flex items-center justify-center">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-gold/30 border-t-gold rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-text-primary/70 font-medium">Loading...</p>
+          <div className="w-12 h-12 border-4 border-goldlight/30 border-t-goldlight rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-lav font-medium">Loading...</p>
         </div>
       </div>
     );
@@ -33,21 +32,24 @@ export function Auth() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fef7ed] to-[#f3e8ff] flex items-center justify-center px-4 py-8">
-      <div className="w-full max-w-lg">
+    <div className="min-h-screen bg-night text-cream relative overflow-x-clip flex items-center justify-center px-4 py-8">
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[38rem] h-[38rem] bg-gold/10 rounded-full blur-3xl" />
+      <div className="w-full max-w-lg relative">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-gold to-purple rounded-full shadow-lg mb-4">
-            <Sparkles className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-4xl font-serif font-bold text-text-primary mb-2">
+          <img
+            src="/images/gaia-character.webp"
+            alt="Gaia"
+            className="w-20 h-20 rounded-full object-cover border-2 border-goldlight/60 shadow-[0_0_36px_rgba(231,200,115,0.35)] mx-auto mb-4"
+          />
+          <h1 className="text-4xl font-serif font-bold text-cream mb-2">
             Gaia Vesta
           </h1>
-          <p className="text-text-primary/70">
+          <p className="text-lav">
             Discover your cosmic blueprint
           </p>
         </div>
 
-        <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gold/20">
+        <div className="bg-night2 rounded-3xl shadow-xl p-8 border border-goldlight/25">
           <ConfigNotice />
           {isLogin ? (
             <LoginForm onSwitchToSignup={() => setIsLogin(false)} />
@@ -56,7 +58,7 @@ export function Auth() {
           )}
         </div>
 
-        <div className="text-center mt-8 text-sm text-text-primary/50">
+        <div className="text-center mt-8 text-sm text-lavdim">
           <p>By continuing, you agree to our Terms of Service and Privacy Policy</p>
         </div>
       </div>

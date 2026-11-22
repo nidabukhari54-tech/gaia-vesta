@@ -21,6 +21,7 @@ import { PersonalYear } from './pages/PersonalYear';
 import { AngelNumbers } from './pages/AngelNumbers';
 import { AngelNumberDetail } from './pages/AngelNumberDetail';
 import { HowToRead } from './pages/HowToRead';
+import { KarmicTail } from './pages/KarmicTail';
 import { MoonPhase } from './pages/MoonPhase';
 import { PythagoreanSquare } from './pages/PythagoreanSquare';
 import { ZodiacCompatibility } from './pages/ZodiacCompatibility';
@@ -52,6 +53,7 @@ function App() {
           <Route path="/tools/zodiac-compatibility/:pair" element={<ZodiacPairDetail />} />
           <Route path="/tools/daily-arcana" element={<DailyArcana />} />
           <Route path="/tools/how-to-read-destiny-matrix" element={<HowToRead />} />
+          <Route path="/tools/karmic-tail" element={<KarmicTail />} />
 
           {/* Arcana encyclopedia */}
           <Route path="/arcana" element={<ArcanaIndex />} />

@@ -376,7 +376,7 @@ function Demo() {
 
   return (
     <section id="demo" className="py-20 relative">
-      <div data-reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-reveal className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs tracking-[0.25em] uppercase text-lavdim mb-3">— the living chart —</p>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mb-4">
@@ -385,33 +385,65 @@ function Demo() {
           <p className="text-lav/80">No account, no email. Your birth date never leaves your browser in this demo.</p>
         </div>
 
-        <div className="relative max-w-2xl mx-auto">
-          <div className="absolute -inset-6 bg-gold/[0.22] rounded-[2.5rem] blur-2xl pointer-events-none" />
-          <div
-            className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] ring-1 ring-[#D4A574]/60 text-text-primary overflow-hidden"
-            style={{
-              backgroundImage:
-                'radial-gradient(rgba(201,150,60,0.13) 1px, transparent 1.6px), radial-gradient(rgba(124,92,191,0.10) 1px, transparent 1.6px)',
-              backgroundSize: '26px 26px, 34px 34px',
-              backgroundPosition: '0 0, 13px 17px',
-            }}
-          >
-          <div className="text-center mb-6 relative">
-            <img
-              src="/images/gaia-character.webp"
-              alt="Gaia"
-              className="w-14 h-14 rounded-full object-cover object-top border-2 border-[#D4A574]/70 shadow-md mx-auto mb-3"
-              loading="lazy"
-              decoding="async"
-            />
-            <p className="font-serif text-xl text-text-primary">Begin your reading</p>
-            <p className="text-[11px] tracking-[0.18em] uppercase text-text-primary/50 mt-1.5">
-              Enter your date · See your chart · Read your story
-            </p>
+        {!matrixResult ? (
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="relative order-2 lg:order-1 text-center lg:text-left">
+              <div className="absolute left-1/2 lg:left-24 top-44 -translate-x-1/2 w-72 h-72 bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
+              <img
+                src="/images/gaia-character.webp"
+                alt="Gaia, ready to read your chart"
+                className="relative w-52 sm:w-60 mx-auto lg:mx-0 rounded-[1.75rem] border border-goldlight/40 shadow-[0_30px_60px_-20px_rgba(231,200,115,0.5)] animate-breathe"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 className="font-serif text-2xl sm:text-[1.7rem] text-cream mt-7 leading-snug">
+                Begin your <em className="italic text-goldlight">reading</em>
+              </h3>
+              <ol className="mt-5 space-y-3.5 max-w-sm mx-auto lg:mx-0">
+                {[
+                  'Enter your birth date — nothing else is needed',
+                  'Watch your chart draw itself in light',
+                  'Read your story: lines, karmic tail & purposes',
+                ].map((s, i) => (
+                  <li key={s} className="flex items-center gap-3 text-sm text-lav/85 text-left">
+                    <span className="w-7 h-7 shrink-0 rounded-full bg-goldlight/15 border border-goldlight/40 flex items-center justify-center font-serif text-goldlight text-sm">
+                      {i + 1}
+                    </span>
+                    {s}
+                  </li>
+                ))}
+              </ol>
+              <p className="text-xs text-lavdim mt-5">
+                Completely free · No account needed · Your date never leaves your browser
+              </p>
+            </div>
+            <div className="relative order-1 lg:order-2">
+              <div className="absolute -inset-5 bg-gold/[0.22] rounded-[2.5rem] blur-2xl pointer-events-none" />
+              <div
+                className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-7 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] ring-1 ring-[#D4A574]/60 text-text-primary overflow-hidden"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(rgba(201,150,60,0.13) 1px, transparent 1.6px), radial-gradient(rgba(124,92,191,0.10) 1px, transparent 1.6px)',
+                  backgroundSize: '26px 26px, 34px 34px',
+                  backgroundPosition: '0 0, 13px 17px',
+                }}
+              >
+                <ChartCalculator onCalculate={handleCalculate} />
+              </div>
+            </div>
           </div>
-          {!matrixResult ? (
-            <ChartCalculator onCalculate={handleCalculate} />
-          ) : (
+        ) : (
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute -inset-6 bg-gold/[0.22] rounded-[2.5rem] blur-2xl pointer-events-none" />
+            <div
+              className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] ring-1 ring-[#D4A574]/60 text-text-primary overflow-hidden"
+              style={{
+                backgroundImage:
+                  'radial-gradient(rgba(201,150,60,0.13) 1px, transparent 1.6px), radial-gradient(rgba(124,92,191,0.10) 1px, transparent 1.6px)',
+                backgroundSize: '26px 26px, 34px 34px',
+                backgroundPosition: '0 0, 13px 17px',
+              }}
+            >
             <div className="animate-fadeIn">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-serif font-semibold text-text-primary">
@@ -467,9 +499,9 @@ function Demo() {
                 </div>
               </div>
             </div>
-          )}
-        </div>
-        </div>
+            </div>
+          </div>
+        )}
       </div>
 
       <ArcanaModal selected={selectedArcana} onClose={() => setSelectedArcana(null)} />

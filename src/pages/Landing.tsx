@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Sparkles, ArrowRight, Heart, Coins, Compass,
@@ -303,7 +303,9 @@ function Demo() {
           <p className="text-lav/80">No account, no email. Your birth date never leaves your browser in this demo.</p>
         </div>
 
-        <div className="bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] text-text-primary">
+        <div className="relative">
+          <div className="absolute -inset-6 bg-gold/15 rounded-[2.5rem] blur-2xl pointer-events-none" />
+          <div className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] text-text-primary">
           {!matrixResult ? (
             <ChartCalculator onCalculate={handleCalculate} />
           ) : (
@@ -363,6 +365,7 @@ function Demo() {
               </div>
             </div>
           )}
+        </div>
         </div>
       </div>
 
@@ -424,7 +427,22 @@ function WhyCards() {
 
 function ArcanaCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const scroll = (dir: number) => trackRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  const [paused, setPaused] = useState(false);
+  const scroll = (dir: number) => trackRef.current?.scrollBy({ left: dir * 336, behavior: 'smooth' });
+
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => {
+      const el = trackRef.current;
+      if (!el) return;
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 24) {
+        el.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        el.scrollBy({ left: 336, behavior: 'smooth' });
+      }
+    }, 3400);
+    return () => clearInterval(t);
+  }, [paused]);
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -459,17 +477,23 @@ function ArcanaCarousel() {
         </div>
       </div>
 
-      <div
-        ref={trackRef}
-        className="flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory px-4 sm:px-6 lg:px-8 pb-2 max-w-7xl mx-auto"
-      >
+      <div className="relative">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[20rem] bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+        <div
+          ref={trackRef}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          className="relative flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory px-4 sm:px-6 lg:px-8 pb-2 max-w-7xl mx-auto"
+        >
         {ARCANA_LIST.map((a) => (
           <Link
             key={a.id}
             to={`/arcana/${a.id}`}
-            className="snap-start shrink-0 w-[270px] bg-white/[0.04] border border-white/10 rounded-3xl p-7 hover:border-goldlight/50 hover:bg-white/[0.07] transition-all group"
+            className="snap-start shrink-0 w-[300px] bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 rounded-[1.75rem] p-7 hover:border-goldlight/60 hover:shadow-[0_24px_50px_-20px_rgba(231,200,115,0.45)] transition-all group"
           >
-            <p className="font-serif text-5xl text-goldlight/90 mb-4">{a.id}</p>
+            <div className="w-16 h-16 rounded-full bg-[radial-gradient(circle_at_35%_35%,#F6E3AC,#C9963C)] flex items-center justify-center shadow-[0_0_26px_rgba(231,200,115,0.5)] mb-5">
+              <span className="font-serif text-2xl font-semibold text-night3">{a.id}</span>
+            </div>
             <h3 className="font-serif text-xl text-cream mb-1.5 group-hover:text-goldlight transition-colors">{a.name}</h3>
             <p className="text-sm text-lav/75 leading-relaxed mb-4">{a.description}</p>
             <p className="flex flex-wrap gap-1.5">
@@ -484,6 +508,7 @@ function ArcanaCarousel() {
             </span>
           </Link>
         ))}
+        </div>
       </div>
     </section>
   );
@@ -591,6 +616,17 @@ function FamilySection() {
           </div>
 
           <div className="relative max-w-md mx-auto w-full">
+            <div className="relative rounded-[2rem] overflow-hidden border border-goldlight/30 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.4)] mb-8">
+              <img
+                src="/images/family-illustration.jpg"
+                alt="A family — mother, father, son and daughter — gazing together at a glowing golden Destiny Matrix star"
+                className="w-full h-auto block"
+                loading="lazy"
+              />
+              <span className="absolute bottom-3.5 left-3.5 flex items-center gap-2 bg-night/85 backdrop-blur border border-goldlight/30 rounded-full px-4 py-2 text-xs font-medium text-cream">
+                <Heart className="w-3.5 h-3.5 text-goldlight" /> One family — one map
+              </span>
+            </div>
             <svg viewBox="0 0 400 300" className="w-full h-auto" role="img" aria-label="A family connection map">
               {members.map((m) => (
                 <line key={m.label} x1="200" y1="150" x2={m.x} y2={m.y} stroke="#7C6BD9" strokeOpacity="0.55" strokeWidth="1.4" />
@@ -870,8 +906,9 @@ function Faq() {
   ];
   const [open, setOpen] = useState(0);
   return (
-    <section className="py-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 relative overflow-hidden">
+      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[38rem] h-[26rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-10">
           <Eyebrow>Frequently asked</Eyebrow>
           <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mt-5">
@@ -880,7 +917,14 @@ function Faq() {
         </div>
         <div className="space-y-3.5">
           {faqs.map((f, i) => (
-            <div key={f.q} className="bg-white/[0.04] border border-white/10 rounded-3xl overflow-hidden">
+            <div
+              key={f.q}
+              className={`bg-white/[0.04] border rounded-3xl overflow-hidden transition-all ${
+                open === i
+                  ? 'border-goldlight/45 shadow-[0_24px_55px_-20px_rgba(231,200,115,0.5)] bg-white/[0.05]'
+                  : 'border-white/10'
+              }`}
+            >
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}
                 className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"

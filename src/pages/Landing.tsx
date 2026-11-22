@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Sparkles, ArrowRight, Heart, Coins, Compass,
   ChevronDown, ChevronLeft, ChevronRight, Menu, X, Star, HeartHandshake,
-  CalendarClock, Baby, Moon, Check, Minus, RefreshCcw, Users, FileText,
+  CalendarClock, Baby, Moon, Check, Minus, RefreshCcw, Users,
   ShieldCheck, Zap, Eye, Gem, MessagesSquare,
 } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
@@ -256,11 +256,31 @@ function Nav() {
   );
 }
 
+function ShootingStars() {
+  const stars = [
+    { cls: 'top-[10%] right-[6%]', delay: '1.2s', dur: '9s' },
+    { cls: 'top-[3%] right-[36%]', delay: '5.8s', dur: '12s' },
+    { cls: 'top-[24%] right-[1%]', delay: '9.4s', dur: '10.5s' },
+  ];
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {stars.map((s, i) => (
+        <span
+          key={i}
+          className={`absolute ${s.cls} block w-[130px] h-[2px] rounded-full bg-gradient-to-r from-goldlight via-goldlight/60 to-transparent shadow-[0_0_8px_rgba(231,200,115,0.9)] opacity-0 animate-shoot`}
+          style={{ animationDelay: s.delay, animationDuration: s.dur }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function Hero() {
   const ticks = ['Free full chart', 'No credit card', 'Instant reading', 'Private — demo stores nothing'];
   return (
     <section className="relative pt-32 pb-16 overflow-hidden">
       <Stars />
+      <ShootingStars />
       <CelestialAccents
         items={[
           { kind: 'sun', cls: 'top-24 right-[6%] opacity-80 hidden sm:block', size: 30, delay: '0.4s', dur: '9s' },
@@ -306,38 +326,22 @@ function Hero() {
           </ul>
         </div>
 
-        <div className="relative animate-fadeIn max-w-md mx-auto w-full lg:max-w-none">
-          <GlowChart result={SAMPLE_RESULT} />
-          <div className="absolute top-[6%] -left-2 sm:left-[2%] animate-float">
-            <span className="flex items-center gap-2 bg-night2/90 backdrop-blur border border-goldlight/30 rounded-full px-4 py-2 text-xs font-medium text-cream shadow-xl">
-              <RefreshCcw className="w-3.5 h-3.5 text-goldlight" /> Karmic Tail — revealed
-            </span>
-          </div>
-          <div className="absolute top-[46%] -left-2 sm:left-[1%] animate-float-delayed">
-            <span className="flex items-center gap-2 bg-night2/90 backdrop-blur border border-white/15 rounded-full px-4 py-2 text-xs font-medium text-cream shadow-xl">
-              <Heart className="w-3.5 h-3.5 text-goldlight" /> Love & Money lines
-            </span>
-          </div>
-          <div className="absolute bottom-[8%] left-[4%] animate-float">
-            <span className="flex items-center gap-2 bg-night2/90 backdrop-blur border border-white/15 rounded-full px-4 py-2 text-xs font-medium text-cream shadow-xl">
-              <Users className="w-3.5 h-3.5 text-goldlight" /> Family lines — mapped
-            </span>
-          </div>
-          <div className="absolute -bottom-3 right-0 w-[58%] sm:w-[54%] animate-breathe z-10">
-            <div className="animate-float relative">
-              <img
-                src="/images/gaia-character.webp"
-                alt="Gaia — your guide to the Destiny Matrix"
-                className="w-full h-auto rounded-[1.75rem] border border-goldlight/60 shadow-[0_30px_70px_-20px_rgba(231,200,115,0.65)]"
-                loading="lazy"
-                decoding="async"
-              />
-              <span className="absolute -top-3 left-4 whitespace-nowrap bg-night2/90 backdrop-blur border border-goldlight/40 rounded-full px-3.5 py-1.5 text-[11px] font-medium text-cream shadow-lg">
-                Gaia · your guide
-              </span>
-            </div>
-          </div>
-          <p className="text-center text-xs text-lavdim mt-6">A sample chart — yours is drawn from your own birth date</p>
+        <div className="relative animate-fadeIn animate-breathe max-w-md mx-auto w-full lg:max-w-none">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
+          <img
+            src="/images/hero-gaia-scene.webp"
+            alt="Gaia presenting your glowing Destiny Matrix chart, one hand open in welcome"
+            className="relative w-full h-auto"
+            style={{
+              WebkitMaskImage: 'radial-gradient(ellipse 88% 88% at 50% 46%, black 58%, transparent 99%)',
+              maskImage: 'radial-gradient(ellipse 88% 88% at 50% 46%, black 58%, transparent 99%)',
+            }}
+            loading="eager"
+            decoding="async"
+          />
+          <span className="absolute bottom-[5%] left-[5%] whitespace-nowrap bg-night2/85 backdrop-blur border border-goldlight/35 rounded-full px-3.5 py-1.5 text-[11px] font-medium text-cream shadow-lg animate-float">
+            Gaia · your guide
+          </span>
         </div>
       </div>
 
@@ -377,9 +381,30 @@ function Demo() {
           <p className="text-lav/80">No account, no email. Your birth date never leaves your browser in this demo.</p>
         </div>
 
-        <div className="relative">
+        <div className="relative max-w-2xl mx-auto">
           <div className="absolute -inset-6 bg-gold/[0.22] rounded-[2.5rem] blur-2xl pointer-events-none" />
-          <div className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] text-text-primary">
+          <div
+            className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] ring-1 ring-[#D4A574]/60 text-text-primary overflow-hidden"
+            style={{
+              backgroundImage:
+                'radial-gradient(rgba(201,150,60,0.13) 1px, transparent 1.6px), radial-gradient(rgba(124,92,191,0.10) 1px, transparent 1.6px)',
+              backgroundSize: '26px 26px, 34px 34px',
+              backgroundPosition: '0 0, 13px 17px',
+            }}
+          >
+          <div className="text-center mb-6 relative">
+            <img
+              src="/images/gaia-character.webp"
+              alt="Gaia"
+              className="w-14 h-14 rounded-full object-cover object-top border-2 border-[#D4A574]/70 shadow-md mx-auto mb-3"
+              loading="lazy"
+              decoding="async"
+            />
+            <p className="font-serif text-xl text-text-primary">Begin your reading</p>
+            <p className="text-[11px] tracking-[0.18em] uppercase text-text-primary/50 mt-1.5">
+              Enter your date · See your chart · Read your story
+            </p>
+          </div>
           {!matrixResult ? (
             <ChartCalculator onCalculate={handleCalculate} />
           ) : (
@@ -452,21 +477,29 @@ function WhyCards() {
   const cards = [
     {
       icon: Eye,
+      img: '/images/why-self.webp',
+      alt: 'A woman gazing into a glowing golden orb with a star inside',
       title: 'Understand yourself',
       text: 'See how your inner nature, needs and gifts meet the person the world thinks you are — and where the two pull apart.',
     },
     {
       icon: HeartHandshake,
+      img: '/images/why-love.webp',
+      alt: 'A couple connected by a golden thread of light shaped like a heart',
       title: 'Strengthen relationships',
       text: 'Soft, specific guidance for the bonds that hold you: partners, parents, children — the dynamics, named plainly.',
     },
     {
       icon: RefreshCcw,
+      img: '/images/why-patterns.webp',
+      alt: 'A golden labyrinth cracking open with light escaping',
       title: 'Break repeating patterns',
       text: 'Follow a recurring lesson from its root in your karmic tail, through the challenge it keeps setting you, to its resolution.',
     },
     {
       icon: Gem,
+      img: '/images/why-strengths.webp',
+      alt: 'A dark stone blossom opening to reveal glowing golden gems',
       title: 'Discover hidden strengths',
       text: 'Reveal the quiet gifts in your chart — talents so natural to you that you may mistake them for ordinary.',
     },
@@ -491,13 +524,25 @@ function WhyCards() {
           {cards.map((c) => (
             <div
               key={c.title}
-              className="bg-white/[0.04] border border-white/10 rounded-3xl p-7 shadow-[0_18px_45px_-22px_rgba(231,200,115,0.35)] hover:border-goldlight/40 hover:bg-white/[0.06] hover:shadow-[0_24px_55px_-20px_rgba(231,200,115,0.5)] transition-all"
+              className="bg-white/[0.04] border border-white/10 rounded-3xl overflow-hidden shadow-[0_22px_55px_-20px_rgba(231,200,115,0.45)] hover:border-goldlight/50 hover:bg-white/[0.06] hover:shadow-[0_30px_65px_-18px_rgba(231,200,115,0.6)] transition-all group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-goldlight/25 to-purple/25 border border-goldlight/20 flex items-center justify-center mb-5">
-                <c.icon className="w-6 h-6 text-goldlight" />
+              <div className="relative h-36 overflow-hidden">
+                <img
+                  src={c.img}
+                  alt={c.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A0C33] via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-4 w-9 h-9 rounded-xl bg-night/70 backdrop-blur border border-goldlight/30 flex items-center justify-center">
+                  <c.icon className="w-4 h-4 text-goldlight" />
+                </div>
               </div>
-              <h3 className="font-serif text-xl text-cream mb-2.5">{c.title}</h3>
-              <p className="text-sm text-lav/75 leading-relaxed">{c.text}</p>
+              <div className="p-6">
+                <h3 className="font-serif text-xl text-cream mb-2.5">{c.title}</h3>
+                <p className="text-sm text-lav/75 leading-relaxed">{c.text}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -595,6 +640,49 @@ function ArcanaCarousel() {
   );
 }
 
+function ChartFan() {
+  const cards = [
+    { img: '/images/fan-staircase.webp', alt: 'A golden staircase rising through night clouds toward a bright star', cls: '-rotate-[13deg] translate-y-6 z-0' },
+    { img: '/images/fan-crystal.webp', alt: 'A hand holding a glowing golden crystal', cls: '-rotate-[6deg] translate-y-2 z-10' },
+    { img: '/images/fan-moonwave.webp', alt: 'A golden crescent moon above curling ocean waves', cls: 'rotate-[6deg] translate-y-2 z-10' },
+    { img: '/images/fan-meditate.webp', alt: 'Gaia meditating peacefully on soft clouds', cls: 'rotate-[13deg] translate-y-6 z-0' },
+  ];
+  return (
+    <div className="mt-16">
+      <div className="flex justify-center items-start">
+        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -mr-4 sm:-mr-5 ${cards[0].cls}`}>
+          <img src={cards[0].img} alt={cards[0].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+        </div>
+        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -mr-4 sm:-mr-5 ${cards[1].cls}`}>
+          <img src={cards[1].img} alt={cards[1].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+        </div>
+        <div className="relative z-20 w-36 sm:w-48 aspect-[3/4.3] rounded-2xl bg-[#FAF5EA] border border-goldlight/70 shadow-[0_30px_60px_-18px_rgba(231,200,115,0.6)] p-3 flex flex-col items-center transition-all duration-500 hover:scale-[1.04]">
+          <p className="text-[8px] sm:text-[9px] tracking-[0.28em] text-[#8a6d3b] font-semibold">THE MATRIX</p>
+          <div className="w-full max-w-[9.5rem]">
+            <GlowChart result={SAMPLE_RESULT} />
+          </div>
+          <p className="font-serif text-[#3D3D3D] text-sm sm:text-base text-center leading-tight">Your chart, at the centre of it all</p>
+        </div>
+        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -ml-4 sm:-ml-5 ${cards[2].cls}`}>
+          <img src={cards[2].img} alt={cards[2].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+        </div>
+        <div className={`relative w-32 sm:w-44 aspect-[3/4.3] rounded-2xl overflow-hidden border border-goldlight/40 shadow-[0_24px_50px_-18px_rgba(231,200,115,0.5)] transition-all duration-500 hover:rotate-0 hover:scale-[1.05] hover:z-30 -ml-4 sm:-ml-5 ${cards[3].cls}`}>
+          <img src={cards[3].img} alt={cards[3].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+        </div>
+      </div>
+      <div className="text-center mt-10">
+        <a
+          href="#demo"
+          className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-full hover:shadow-[0_0_28px_rgba(231,200,115,0.5)] transition-all"
+        >
+          Calculate your personal chart — free
+          <ArrowRight className="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function WhatIs() {
   return (
     <section className="py-20 relative overflow-hidden">
@@ -654,6 +742,7 @@ function WhatIs() {
           <p className="text-center text-xs text-lavdim mt-4">Your energetic blueprint — every point holds an arcana</p>
         </div>
       </div>
+      <ChartFan />
     </section>
   );
 }
@@ -844,25 +933,46 @@ function ReceiveSection() {
         ]}
       />
       <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="relative order-2 lg:order-1">
-          <div className="bg-gradient-to-br from-night3 to-night2 border border-goldlight/25 rounded-[1.75rem] p-8 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.35)] rotate-[-2deg] max-w-sm mx-auto">
-            <div className="flex items-center gap-3 mb-4">
-              <img
-                src="/images/gaia-character.webp"
-                alt="Gaia"
-                className="w-11 h-11 rounded-full object-cover object-top border border-goldlight/50"
-                loading="lazy"
-                decoding="async"
-              />
-              <p className="text-[10px] tracking-[0.3em] text-lavdim">GAIA VESTA · FULL READING</p>
-            </div>
-            <p className="font-serif text-2xl text-cream mb-2">Your Destiny Matrix Report</p>
-            <p className="text-sm text-lav/70 mb-6">Chart, lines, karmic tail, family lines & purposes — in one keepsake document.</p>
-            <p className="font-serif italic text-goldlight text-lg leading-snug">
+        <div className="relative order-2 lg:order-1 h-[400px] sm:h-[440px] max-w-md mx-auto w-full">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[26rem] h-[18rem] bg-gold/[0.17] rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute left-0 sm:left-1 top-8 w-44 sm:w-52 aspect-[3/4.2] bg-[#FAF5EA] rounded-xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.65)] border border-gold/40 rotate-[-8deg] p-3">
+            <p className="text-[8px] tracking-[0.25em] text-[#8a6d3b] font-semibold mb-1.5">YOUR DESTINY MATRIX</p>
+            <GlowChart result={SAMPLE_RESULT} />
+            <p className="text-center font-serif text-[#3D3D3D] text-[13px] mt-1">Your chart</p>
+          </div>
+          <div className="absolute right-0 sm:right-1 top-8 w-44 sm:w-52 aspect-[3/4.2] bg-[#FAF5EA] rounded-xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.65)] border border-gold/40 rotate-[7deg] p-4 hidden sm:block">
+            <p className="text-[8px] tracking-[0.25em] text-[#8a6d3b] font-semibold mb-3">INSIDE YOUR READING</p>
+            {[
+              { label: 'Love line', w: 'w-4/5', c: '#C4557A' },
+              { label: 'Money line', w: 'w-3/5', c: '#C9963C' },
+              { label: 'Life path', w: 'w-5/6', c: '#7C5CBF' },
+              { label: 'Karmic tail', w: 'w-2/3', c: '#3E7C59' },
+              { label: 'Family lines', w: 'w-3/4', c: '#4A6FA5' },
+            ].map((r) => (
+              <div key={r.label} className="mb-3">
+                <p className="flex items-center gap-1.5 text-[11px] font-medium text-[#3D3D3D]">
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: r.c }} />
+                  {r.label}
+                </p>
+                <div className={`h-1.5 rounded-full bg-[#3D3D3D]/10 mt-1.5 ${r.w}`} />
+              </div>
+            ))}
+            <p className="font-serif italic text-[#8a6d3b] text-[12px] mt-4 leading-snug">
               "The pattern is not your prison. Read clearly, it is your map."
             </p>
-            <div className="flex items-center gap-2 mt-7 text-goldlight text-sm font-medium">
-              <FileText className="w-4 h-4" /> Free PDF — no card, no catch
+          </div>
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-52 sm:w-60 aspect-[3/4.2] bg-[#FAF5EA] rounded-xl shadow-[0_35px_70px_-20px_rgba(231,200,115,0.5)] border border-goldlight/60 overflow-hidden rotate-[-1.5deg]">
+            <img
+              src="/images/gaia-character.webp"
+              alt="Gaia on the cover of your Destiny Matrix report"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-[64%] object-cover object-top"
+            />
+            <div className="p-4 text-center">
+              <p className="text-[9px] tracking-[0.3em] text-[#8a6d3b] font-semibold">GAIA VESTA</p>
+              <p className="font-serif text-[#3D3D3D] text-lg leading-tight mt-1">Your Destiny Matrix Report</p>
+              <p className="text-[11px] text-[#3D3D3D]/60 mt-1">Free · Instant · Yours to keep</p>
             </div>
           </div>
         </div>
@@ -881,6 +991,82 @@ function ReceiveSection() {
               </li>
             ))}
           </ul>
+          <a
+            href="#demo"
+            className="inline-flex items-center gap-2 mt-8 px-7 py-3 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-full hover:shadow-[0_0_24px_rgba(231,200,115,0.45)] transition-all"
+          >
+            Get my free reading <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TransformSection() {
+  const cards = [
+    {
+      img: '/images/spot-break.webp',
+      alt: 'A golden chain breaking into butterflies and stars',
+      title: 'Break free from repeating patterns',
+      text: 'Do you feel like life keeps throwing the same challenge at you — in love, in work, in growth? Your chart reveals the deep-rooted pattern and the karmic lesson beneath it, so you can finally choose a different ending.',
+    },
+    {
+      img: '/images/spot-embrace.webp',
+      alt: 'A woman opening her arms to a golden sunrise',
+      title: 'Embrace your authentic self',
+      text: "So many of us live by everyone else's expectations, quietly doubting our own nature. Your matrix uncovers the qualities you were born with — so you can step into your power and live a life that feels natural.",
+    },
+    {
+      img: '/images/spot-peace.webp',
+      alt: 'Hands releasing a glowing golden bird over calm water',
+      title: 'Make peace with your past',
+      text: "The experiences you've been through shaped your journey — but they don't have to write your future. See the influences behind past events clearly, release the old weight, and move forward lighter.",
+    },
+    {
+      img: '/images/spot-intuition.webp',
+      alt: 'A golden lotus opening beneath a crescent moon and star',
+      title: 'Tap into your intuition & inner wisdom',
+      text: 'Have you ever ignored a gut feeling, only to regret it later? Your chart strengthens your connection to that quiet inner knowing — helping you trust yourself and navigate life with a deeper sense of direction.',
+    },
+  ];
+  return (
+    <section className="py-20 relative overflow-hidden">
+      <CelestialAccents
+        items={[
+          { kind: 'moon', cls: 'top-12 right-[6%] opacity-70 hidden sm:block', size: 24, delay: '0.9s', dur: '8.5s' },
+          { kind: 'star', cls: 'bottom-16 left-[5%] opacity-80 hidden md:block', size: 16, delay: '0.4s', dur: '7s' },
+        ]}
+      />
+      <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <Eyebrow>The transformation</Eyebrow>
+          <h2 className="text-3xl sm:text-4xl font-serif font-medium text-cream mt-5">
+            How the Destiny Matrix <em className="italic text-goldlight">transforms</em> your life
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {cards.map((c) => (
+            <div
+              key={c.title}
+              className="bg-white/[0.04] rounded-3xl overflow-hidden border border-white/10 shadow-[0_22px_55px_-20px_rgba(231,200,115,0.45)] hover:border-goldlight/50 hover:shadow-[0_30px_65px_-18px_rgba(231,200,115,0.6)] transition-all group"
+            >
+              <div className="relative h-36 overflow-hidden">
+                <img
+                  src={c.img}
+                  alt={c.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A0C33] via-transparent to-transparent" />
+              </div>
+              <div className="p-6">
+                <h3 className="font-serif text-lg text-goldlight mb-2.5 leading-snug">{c.title}</h3>
+                <p className="text-sm text-lav/80 leading-relaxed">{c.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -1172,6 +1358,7 @@ export function Landing() {
           <FamilySection />
           <ToolsSection />
           <ReceiveSection />
+          <TransformSection />
           <WhyGaia />
           <Pricing />
           <Faq />

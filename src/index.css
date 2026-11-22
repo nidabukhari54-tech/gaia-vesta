@@ -172,3 +172,15 @@
     animation: none;
   }
 }
+
+/* Shooting stars — a gold streak falls diagonally, then rests invisible */
+@keyframes shoot {
+  0% { transform: rotate(24deg) translateX(0); opacity: 0; }
+  5% { opacity: 1; }
+  20% { transform: rotate(24deg) translateX(-34vw); opacity: 0; }
+  100% { transform: rotate(24deg) translateX(-34vw); opacity: 0; }
+}
+.animate-shoot { animation: shoot 9s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-shoot { animation: none !important; }
+}

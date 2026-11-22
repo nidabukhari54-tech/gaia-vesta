@@ -88,8 +88,15 @@ export function ToolHero({
 
   return (
     <section className="pt-14 pb-10 relative overflow-hidden">
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[36rem] h-[16rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[46rem] h-[20rem] bg-gold/[0.19] rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+        <img
+          src="/images/gaia-character.webp"
+          alt="Gaia, your Destiny Matrix guide"
+          className="w-16 h-16 rounded-full object-cover object-top border border-goldlight/50 shadow-[0_0_24px_rgba(231,200,115,0.45)] mx-auto mb-4"
+          loading="lazy"
+          decoding="async"
+        />
         <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">{eyebrow}</p>
         <h1 className="text-3xl sm:text-5xl font-serif font-bold text-cream mb-4">{title}</h1>
         <p className="text-lav/80 max-w-2xl mx-auto">{subtitle}</p>

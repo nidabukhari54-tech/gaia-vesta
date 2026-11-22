@@ -119,6 +119,39 @@ function Eyebrow({ children }: { children: string }) {
   );
 }
 
+type Accent = { kind: 'star' | 'sun' | 'moon'; cls: string; size: number; delay: string; dur: string };
+
+function CelestialAccents({ items }: { items: Accent[] }) {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+      {items.map((a, i) => (
+        <span
+          key={i}
+          className={`absolute ${a.cls} animate-float`}
+          style={{ animationDelay: a.delay, animationDuration: a.dur }}
+        >
+          {a.kind === 'star' && (
+            <svg width={a.size} height={a.size} viewBox="0 0 24 24" fill="#E7C873">
+              <path d="M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z" />
+            </svg>
+          )}
+          {a.kind === 'moon' && (
+            <svg width={a.size} height={a.size} viewBox="0 0 24 24" fill="#C9BEE3">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+            </svg>
+          )}
+          {a.kind === 'sun' && (
+            <svg width={a.size} height={a.size} viewBox="0 0 24 24" fill="none" stroke="#E7C873" strokeWidth="1.7" strokeLinecap="round">
+              <circle cx="12" cy="12" r="4.2" fill="#E7C873" stroke="none" />
+              <path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3L19 19M19 5l-1.7 1.7M6.7 17.3L5 19" />
+            </svg>
+          )}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function Marquee() {
   const items = [
     'Destiny Matrix Chart', 'Karmic Tail', 'Compatibility', 'Family Lines', 'Angel Numbers',
@@ -228,6 +261,13 @@ function Hero() {
   return (
     <section className="relative pt-32 pb-16 overflow-hidden">
       <Stars />
+      <CelestialAccents
+        items={[
+          { kind: 'sun', cls: 'top-24 right-[6%] opacity-80 hidden sm:block', size: 30, delay: '0.4s', dur: '9s' },
+          { kind: 'moon', cls: 'top-40 left-[3%] opacity-70 hidden md:block', size: 24, delay: '1.2s', dur: '8s' },
+          { kind: 'star', cls: 'bottom-16 right-[38%] opacity-80 hidden lg:block', size: 18, delay: '0.8s', dur: '7s' },
+        ]}
+      />
       <div className="absolute -top-32 right-0 w-[34rem] h-[34rem] bg-purple/25 rounded-full blur-3xl pointer-events-none animate-drift" />
       <div className="absolute top-72 -left-40 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -283,6 +323,18 @@ function Hero() {
               <Users className="w-3.5 h-3.5 text-goldlight" /> Family lines — mapped
             </span>
           </div>
+          <div className="absolute -bottom-2 -left-3 sm:-left-8 w-28 sm:w-36 animate-float z-10">
+            <img
+              src="/images/gaia-character.webp"
+              alt="Gaia — your guide to the Destiny Matrix"
+              className="w-full h-auto rounded-2xl border border-goldlight/50 shadow-[0_20px_45px_-15px_rgba(231,200,115,0.55)]"
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-night2/90 border border-goldlight/30 rounded-full px-3 py-1 text-[10px] font-medium text-cream">
+              Gaia · your guide
+            </span>
+          </div>
           <p className="text-center text-xs text-lavdim mt-3">A sample chart — yours is drawn from your own birth date</p>
         </div>
       </div>
@@ -324,7 +376,7 @@ function Demo() {
         </div>
 
         <div className="relative">
-          <div className="absolute -inset-6 bg-gold/15 rounded-[2.5rem] blur-2xl pointer-events-none" />
+          <div className="absolute -inset-6 bg-gold/[0.22] rounded-[2.5rem] blur-2xl pointer-events-none" />
           <div className="relative bg-[#FAF5EA] rounded-[1.75rem] p-5 sm:p-8 shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)] text-text-primary">
           {!matrixResult ? (
             <ChartCalculator onCalculate={handleCalculate} />
@@ -418,7 +470,14 @@ function WhyCards() {
     },
   ];
   return (
-    <section className="py-20">
+    <section className="py-20 relative overflow-hidden">
+      <CelestialAccents
+        items={[
+          { kind: 'moon', cls: 'top-10 right-[7%] opacity-70 hidden sm:block', size: 24, delay: '0.3s', dur: '8.5s' },
+          { kind: 'star', cls: 'top-28 left-[4%] opacity-80 hidden md:block', size: 16, delay: '1s', dur: '7s' },
+          { kind: 'sun', cls: 'bottom-12 right-[5%] opacity-70 hidden lg:block', size: 26, delay: '0.6s', dur: '9.5s' },
+        ]}
+      />
       <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <Eyebrow>Why people choose Gaia Vesta</Eyebrow>
@@ -498,7 +557,7 @@ function ArcanaCarousel() {
       </div>
 
       <div className="relative">
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[20rem] bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[20rem] bg-gold/[0.16] rounded-full blur-3xl pointer-events-none" />
         <div
           ref={trackRef}
           onMouseEnter={() => setPaused(true)}
@@ -536,7 +595,14 @@ function ArcanaCarousel() {
 
 function WhatIs() {
   return (
-    <section className="py-20">
+    <section className="py-20 relative overflow-hidden">
+      <CelestialAccents
+        items={[
+          { kind: 'star', cls: 'top-14 left-[46%] opacity-80 hidden lg:block', size: 18, delay: '0.5s', dur: '7.5s' },
+          { kind: 'moon', cls: 'bottom-16 left-[5%] opacity-70 hidden sm:block', size: 22, delay: '1.4s', dur: '8s' },
+          { kind: 'sun', cls: 'top-10 right-[9%] opacity-60 hidden md:block', size: 24, delay: '0.9s', dur: '9s' },
+        ]}
+      />
       <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
         <div>
           <Eyebrow>What is the Destiny Matrix</Eyebrow>
@@ -686,15 +752,22 @@ function FamilySection() {
 function ToolsSection() {
   const todayArcana = getArcana(dailyArcana(new Date()));
   const tools = [
-    { icon: HeartHandshake, title: 'Compatibility Matrix', text: 'Two birth dates, one shared chart — with love, money and purpose scores.', to: '/tools/compatibility' },
-    { icon: RefreshCcw, title: 'Karmic Tail Calculator', text: 'Why does the same pattern keep returning? Your three-number tail: root, repetition, resolution.', to: '/tools/karmic-tail' },
-    { icon: Users, title: 'Family & Talent Lines', text: "Your father's line, your mother's line, the parent–child pattern — plus your gifts and missing numbers.", to: '/tools/family-lines' },
-    { icon: CalendarClock, title: 'Year Forecast', text: 'Your matrix for any year, plus your Personal Year theme and lessons.', to: '/tools/year-forecast' },
-    { icon: Baby, title: "Children's Matrix", text: "Your child's talents, emotional needs and learning style, decoded for parents.", to: '/tools/child-matrix' },
-    { icon: Moon, title: "Today's Arcana", text: `${todayArcana.id} · ${todayArcana.name} — "${todayArcana.description}"`, to: '/tools/daily-arcana' },
+    { icon: HeartHandshake, img: '/images/compatibility-illustration.webp', alt: 'A couple beneath two overlapping golden rings of light', title: 'Compatibility Matrix', text: 'Two birth dates, one shared chart — with love, money and purpose scores.', to: '/tools/compatibility' },
+    { icon: RefreshCcw, img: '/images/karmic-tail-illustration.webp', alt: 'A golden thread knot loosening into light', title: 'Karmic Tail Calculator', text: 'Why does the same pattern keep returning? Your three-number tail: root, repetition, resolution.', to: '/tools/karmic-tail' },
+    { icon: Users, img: '/images/family-illustration.jpg', alt: 'A family gazing at a glowing golden matrix star', title: 'Family & Talent Lines', text: "Your father's line, your mother's line, the parent–child pattern — plus your gifts and missing numbers.", to: '/tools/family-lines' },
+    { icon: CalendarClock, img: '/images/year-forecast-illustration.webp', alt: 'A golden wheel of the year with moon phases', title: 'Year Forecast', text: 'Your matrix for any year, plus your Personal Year theme and lessons.', to: '/tools/year-forecast' },
+    { icon: Baby, img: '/images/child-matrix-illustration.webp', alt: 'A mother and child reading a glowing star chart together', title: "Children's Matrix", text: "Your child's talents, emotional needs and learning style, decoded for parents.", to: '/tools/child-matrix' },
+    { icon: Moon, img: '/images/moon-phase-illustration.webp', alt: 'A glowing full moon rising over an indigo sea', title: "Today's Arcana", text: `${todayArcana.id} · ${todayArcana.name} — "${todayArcana.description}"`, to: '/tools/daily-arcana' },
   ];
   return (
-    <section id="tools" className="py-20">
+    <section id="tools" className="py-20 relative overflow-hidden">
+      <CelestialAccents
+        items={[
+          { kind: 'sun', cls: 'top-12 left-[6%] opacity-70 hidden sm:block', size: 26, delay: '0.2s', dur: '9s' },
+          { kind: 'star', cls: 'top-24 right-[6%] opacity-80 hidden md:block', size: 16, delay: '1.1s', dur: '7s' },
+          { kind: 'moon', cls: 'bottom-14 left-[44%] opacity-60 hidden lg:block', size: 22, delay: '0.7s', dur: '8.5s' },
+        ]}
+      />
       <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <Eyebrow>The toolkit</Eyebrow>
@@ -711,16 +784,28 @@ function ToolsSection() {
             <Link
               key={t.title}
               to={t.to}
-              className="bg-white/[0.04] rounded-3xl p-7 border border-white/10 shadow-[0_18px_45px_-22px_rgba(231,200,115,0.35)] hover:border-goldlight/50 hover:bg-white/[0.06] hover:shadow-[0_24px_55px_-20px_rgba(231,200,115,0.5)] transition-all group"
+              className="bg-white/[0.04] rounded-3xl overflow-hidden border border-white/10 shadow-[0_22px_55px_-20px_rgba(231,200,115,0.5)] hover:border-goldlight/60 hover:bg-white/[0.06] hover:shadow-[0_30px_65px_-18px_rgba(231,200,115,0.65)] transition-all group"
             >
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-goldlight/25 to-purple/25 border border-goldlight/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <t.icon className="w-6 h-6 text-goldlight" />
+              <div className="relative h-36 overflow-hidden">
+                <img
+                  src={t.img}
+                  alt={t.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A0C33] via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-4 w-9 h-9 rounded-xl bg-night/70 backdrop-blur border border-goldlight/30 flex items-center justify-center">
+                  <t.icon className="w-4 h-4 text-goldlight" />
+                </div>
               </div>
+              <div className="p-6">
               <h3 className="font-serif text-xl text-cream mb-2">{t.title}</h3>
               <p className="text-sm text-lav/75 leading-relaxed">{t.text}</p>
               <span className="inline-flex items-center gap-1 text-sm font-medium text-goldlight mt-4">
                 Try it free <ArrowRight className="w-4 h-4" />
               </span>
+              </div>
             </Link>
           ))}
         </div>
@@ -749,11 +834,26 @@ function ReceiveSection() {
     'AI guidance — 5 deep readings free monthly',
   ];
   return (
-    <section className="py-20">
+    <section className="py-20 relative overflow-hidden">
+      <CelestialAccents
+        items={[
+          { kind: 'star', cls: 'top-12 right-[10%] opacity-80 hidden sm:block', size: 18, delay: '0.4s', dur: '7s' },
+          { kind: 'moon', cls: 'bottom-14 right-[5%] opacity-70 hidden md:block', size: 22, delay: '1.3s', dur: '8s' },
+        ]}
+      />
       <div data-reveal className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
         <div className="relative order-2 lg:order-1">
           <div className="bg-gradient-to-br from-night3 to-night2 border border-goldlight/25 rounded-[1.75rem] p-8 shadow-[0_30px_70px_-25px_rgba(231,200,115,0.35)] rotate-[-2deg] max-w-sm mx-auto">
-            <p className="text-[10px] tracking-[0.3em] text-lavdim mb-3">GAIA VESTA · FULL READING</p>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/images/gaia-character.webp"
+                alt="Gaia"
+                className="w-11 h-11 rounded-full object-cover object-top border border-goldlight/50"
+                loading="lazy"
+                decoding="async"
+              />
+              <p className="text-[10px] tracking-[0.3em] text-lavdim">GAIA VESTA · FULL READING</p>
+            </div>
             <p className="font-serif text-2xl text-cream mb-2">Your Destiny Matrix Report</p>
             <p className="text-sm text-lav/70 mb-6">Chart, lines, karmic tail, family lines & purposes — in one keepsake document.</p>
             <p className="font-serif italic text-goldlight text-lg leading-snug">
@@ -795,7 +895,13 @@ function WhyGaia() {
     { label: 'Angel numbers, moon phase, forecasts & 10+ more tools', gaia: 'All free', others: '€9–14 each, or weekly plans' },
   ];
   return (
-    <section className="py-20">
+    <section className="py-20 relative overflow-hidden">
+      <CelestialAccents
+        items={[
+          { kind: 'sun', cls: 'top-10 right-[9%] opacity-70 hidden sm:block', size: 26, delay: '0.5s', dur: '9s' },
+          { kind: 'star', cls: 'bottom-14 left-[6%] opacity-80 hidden md:block', size: 16, delay: '1.2s', dur: '7.5s' },
+        ]}
+      />
       <div data-reveal className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <Eyebrow>The honest comparison</Eyebrow>
@@ -835,7 +941,14 @@ function WhyGaia() {
 
 function Pricing() {
   return (
-    <section id="pricing" className="py-20">
+    <section id="pricing" className="py-20 relative overflow-hidden">
+      <CelestialAccents
+        items={[
+          { kind: 'moon', cls: 'top-12 left-[7%] opacity-70 hidden sm:block', size: 24, delay: '0.6s', dur: '8.5s' },
+          { kind: 'star', cls: 'top-24 right-[8%] opacity-80 hidden md:block', size: 16, delay: '1s', dur: '7.5s' },
+          { kind: 'sun', cls: 'bottom-12 left-[42%] opacity-60 hidden lg:block', size: 26, delay: '0.2s', dur: '9.5s' },
+        ]}
+      />
       <div data-reveal className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <Eyebrow>Access</Eyebrow>
@@ -934,7 +1047,13 @@ function Faq() {
   const [open, setOpen] = useState(0);
   return (
     <section className="py-20 relative overflow-hidden">
-      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[38rem] h-[26rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[38rem] h-[26rem] bg-gold/[0.19] rounded-full blur-3xl pointer-events-none" />
+      <CelestialAccents
+        items={[
+          { kind: 'star', cls: 'top-16 left-[10%] opacity-80 hidden md:block', size: 16, delay: '0.8s', dur: '7s' },
+          { kind: 'moon', cls: 'bottom-20 right-[9%] opacity-70 hidden sm:block', size: 22, delay: '0.3s', dur: '8s' },
+        ]}
+      />
       <div data-reveal className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-10">
           <Eyebrow>Frequently asked</Eyebrow>

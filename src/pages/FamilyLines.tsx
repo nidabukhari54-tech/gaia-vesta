@@ -247,7 +247,7 @@ export function FamilyLines() {
           </Link>{' '}
           — or read the{' '}
           <Link to="/tools/how-to-read-destiny-matrix" className="text-goldlight font-medium hover:underline inline-flex items-center gap-1">
-            guide to your full chart <ArrowRight className="w-3.5 h-3.5" />
+            how to read your full chart <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </p>
       </section>

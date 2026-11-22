@@ -146,8 +146,8 @@ export function Compatibility() {
         image="/images/compatibility-illustration.webp"
         imageAlt="A couple holding hands beneath two overlapping golden rings of light merging into one glowing chart in an indigo night sky"
         eyebrow="Destiny Matrix · Compatibility"
-        title="Are your charts written for each other?"
-        subtitle="Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."
+        title="Destiny Matrix Compatibility Calculator"
+        subtitle="Are your charts written for each other? Enter two birth dates — Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."
         schema={[webAppSchema('Destiny Matrix Compatibility Calculator', '/tools/compatibility', "Enter two birth dates. Gaia Vesta merges both Destiny Matrices into one combined chart and reads the couple's love, money and shared purpose."), faqPageSchema(FAQS), toolBreadcrumb('Compatibility Matrix', '/tools/compatibility')]}
       />
 

@@ -443,8 +443,9 @@ function Hero() {
           </h1>
           <p className="text-lg text-lav/90 mb-8 max-w-lg leading-relaxed">
             Why do you keep falling for the same kind of person? Why does money arrive — then quietly
-            disappear? Your personal Destiny Matrix chart maps the pattern: soul purpose, love, money,
-            and the karmic tail beneath it all. Read it for yourself — or for the people you love most.
+            disappear? Your Destiny Matrix chart maps the pattern — your personal blueprint of soul
+            purpose, love, money, and the karmic tail beneath it all. Read it for yourself — or for
+            the people you love most.
           </p>
           <HeroCalculator />
           <p className="mt-4 text-sm text-lavdim">

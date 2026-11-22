@@ -60,9 +60,9 @@ export function DailyArcana() {
         image="/images/daily-arcana-illustration.webp"
         imageAlt="An ornate tarot-like card with a golden eight-pointed star on its face, standing among the stars"
         eyebrow="Daily tarot · Guidance"
-        title="Daily Tarot Card — Arcana of the Day"
-        subtitle="Every date carries an arcana of its own — your daily tarot draw. This is today's card, drawn from the date itself, the same for everyone, and different tomorrow."
-        schema={[webAppSchema('Daily Tarot Card — Arcana of the Day', '/tools/daily-arcana', "Every date carries an arcana of its own — your daily tarot draw. This is today's card, drawn from the date itself, the same for everyone, and different tomorrow."), faqPageSchema(FAQS), toolBreadcrumb('Daily Tarot Card', '/tools/daily-arcana')]}
+        title="Daily Tarot Card — Your Card for Today"
+        subtitle="Every date carries an arcana of its own. This is today's card, drawn from the date itself — the same for everyone, and different tomorrow."
+        schema={[webAppSchema('Daily Tarot Card — Your Card for Today', '/tools/daily-arcana', "Every date carries an arcana of its own. This is today's card, drawn from the date itself — the same for everyone, and different tomorrow."), faqPageSchema(FAQS), toolBreadcrumb('Daily Tarot Card', '/tools/daily-arcana')]}
       />
 
 

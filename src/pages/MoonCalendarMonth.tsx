@@ -116,6 +116,11 @@ export function MoonCalendarMonthPage() {
       />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <p className="text-lav/85 leading-relaxed mb-6">
+          The Full Moon in {monthName} 2027 is the {fullMoonName} on{' '}
+          {joinDates(2027, monthIndex, moons.fullMoons)}; the New Moon falls on{' '}
+          {joinDates(2027, monthIndex, moons.newMoons)}.
+        </p>
         <div className="grid sm:grid-cols-2 gap-4">
           <div className={cardCls}>
             <p className={cardLabel}>

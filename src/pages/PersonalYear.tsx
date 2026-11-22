@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: 'When does my Personal Year actually start?',
-    a: 'Two schools exist. The calendar school runs every Personal Year from 1 January. The birthday school runs it from birthday to birthday, arguing the cycle is personal, not calendrical. This calculator uses the calendar year, the more common convention — if you were born late in the year, read the closing months with a flavour of the year ahead.',
+    a: 'Two schools exist. The calendar school runs every Personal Year from 1 January. The birthday school runs it from birthday to birthday, arguing the cycle is personal, not calendrical. This personal year calculator uses the calendar year, the more common convention — if you were born late in the year, read the closing months with a flavour of the year ahead.',
   },
   {
     q: 'What if I am in a difficult year, like 4 or 9?',
@@ -44,9 +44,9 @@ export function PersonalYear() {
         image="/images/personal-year-illustration.webp"
         imageAlt="A golden sunrise cresting indigo hills, encircled by a thin ring of light"
         eyebrow="Numerology · Cycles"
-        title="Personal Year, Month & Day"
-        subtitle="Life moves in 9-year cycles. Find the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."
-        schema={[webAppSchema('Personal Year, Month & Day', '/tools/personal-year', "Life moves in 9-year cycles. Find the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."), faqPageSchema(FAQS), toolBreadcrumb('Personal Year', '/tools/personal-year')]}
+        title="Personal Year Calculator — Month & Day"
+        subtitle="Life moves in 9-year cycles. This personal year calculator finds the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."
+        schema={[webAppSchema('Personal Year Calculator — Month & Day', '/tools/personal-year', "Life moves in 9-year cycles. This personal year calculator finds the year you are in right now, the theme of this month inside it, and the energy of today — all from your birth date."), faqPageSchema(FAQS), toolBreadcrumb('Personal Year', '/tools/personal-year')]}
       />
 
 

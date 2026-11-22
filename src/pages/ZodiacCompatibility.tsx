@@ -55,6 +55,17 @@ export function ZodiacCompatibility() {
 
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="max-w-3xl mx-auto mb-10">
+          <p className="text-lav/85 leading-relaxed">
+            Zodiac compatibility is the oldest shortcut in astrology: two sun signs, one honest
+            question — do these two temperaments help or hinder each other? The score above is built
+            the way astrologers actually judge a pairing: the elements first (fire feeds air, earth
+            holds water), then the ruling planets, then the temperament each sign brings to
+            conflict, affection and everyday life. It is a first lens, not a verdict — which is why
+            every one of the 144 pairings below has its own page, with the score, the strengths and
+            the friction points in full. Check your pair above, then read its whole story.
+          </p>
+        </div>
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-purple/20 text-text-primary">
             <SignPicker label="First sign" value={a} onChange={setA} />

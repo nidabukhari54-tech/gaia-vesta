@@ -102,7 +102,7 @@ const INTENTS: Intent[] = [
     answer:
       'A Destiny Matrix is a chart drawn from your birth date: sixteen points, each holding one of the 22 Major Arcana. Read together, they map your soul purpose, your love and money lines, your karmic tail and your family patterns. Our guide walks you through reading your own chart, point by point — and the calculator itself is free.',
     links: [
-      { label: 'Read the guide', to: '/tools/how-to-read-destiny-matrix' },
+      { label: 'How to read your chart', to: '/tools/how-to-read-destiny-matrix' },
       { label: 'Draw my chart — free', to: '/#demo' },
     ],
   },

@@ -72,9 +72,9 @@ export function YearForecast() {
         image="/images/year-forecast-illustration.webp"
         imageAlt="A circular golden wheel of twelve glowing segments ringed by moon phases in an indigo night sky"
         eyebrow="Destiny Matrix · Forecast"
-        title="What does this year hold for you?"
-        subtitle="Your birth matrix recalculated with the target year — see the energies, lessons and opportunities a specific year activates for you."
-        schema={[webAppSchema('Destiny Matrix Year Forecast', '/tools/year-forecast', "Your birth matrix recalculated with the target year — see the energies, lessons and opportunities a specific year activates for you."), faqPageSchema(FAQS), toolBreadcrumb('Year Forecast', '/tools/year-forecast')]}
+        title="Destiny Matrix Year Forecast — What This Year Activates for You"
+        subtitle="A destiny matrix year forecast recalculates your birth matrix with the target year — see the energies, lessons and opportunities a specific year activates for you."
+        schema={[webAppSchema('Destiny Matrix Year Forecast', '/tools/year-forecast', "A destiny matrix year forecast recalculates your birth matrix with the target year — see the energies, lessons and opportunities a specific year activates for you."), faqPageSchema(FAQS), toolBreadcrumb('Year Forecast', '/tools/year-forecast')]}
       />
 
 

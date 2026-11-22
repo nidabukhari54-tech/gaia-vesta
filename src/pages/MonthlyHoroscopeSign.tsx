@@ -16,7 +16,7 @@ function signFaqs(sign: HoroscopeSign, monthName: string) {
       a: `${sign.name} (${sign.dates}) is a ${sign.element} sign ruled by ${sign.ruler}, and this reading is written for that character — ${sign.traits.join(', ').toLowerCase()} — then chosen for ${monthName} by a sign-and-month seed. Every ${sign.name} reader sees the same reading all month, and a new one on the first of next month. It follows the tropical zodiac, the system used by Western astrology.`,
     },
     {
-      q: `When does the ${sign.name} monthly horoscope update?`,
+      q: `When does the monthly reading update?`,
       a: `At midnight on the first of each month. The monthly reading is the slow lens — the season ${sign.name} is moving through rather than the weather of a single day — so it is written to be read at the month's start and revisited as the weeks unfold. For faster guidance, ${sign.name}'s weekly horoscope turns every Monday and the daily horoscope every midnight.`,
     },
     {
@@ -97,6 +97,10 @@ export function MonthlyHoroscopeSignPage() {
       />
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <p className="text-lav/85 leading-relaxed mb-6">
+          Your {sign.name} monthly horoscope for {monthly.monthYear} — the month&rsquo;s theme, love,
+          money, growth, lucky days and moons, gathered in one reading.
+        </p>
         <div className="relative bg-gradient-to-b from-night3 to-night2 rounded-3xl border border-goldlight/50 p-7 sm:p-9 mb-6 overflow-hidden">
           <div className="absolute -top-10 -right-6 text-[11rem] leading-none text-goldlight/[0.08] select-none pointer-events-none">
             {sign.glyph}
@@ -215,14 +219,14 @@ export function MonthlyHoroscopeSignPage() {
             to="/"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-full hover:shadow-[0_0_28px_rgba(231,200,115,0.5)] transition-all"
           >
-            Calculate your Destiny Matrix — free <ArrowRight className="w-5 h-5" />
+            Calculate your Destiny Matrix chart — free <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
         <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">
-          {sign.name} monthly horoscope questions
+          Questions for {sign.name} this month
         </h2>
         <div className="space-y-4 mb-12">
           {faqs.map((f) => (

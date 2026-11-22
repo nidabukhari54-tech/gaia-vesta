@@ -122,7 +122,7 @@ export function ChineseZodiac2027AnimalPage() {
             to="/#demo"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-full hover:shadow-[0_0_28px_rgba(231,200,115,0.5)] transition-all"
           >
-            Calculate your Destiny Matrix — free <ArrowRight className="w-5 h-5" />
+            Calculate your Destiny Matrix chart — free <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>

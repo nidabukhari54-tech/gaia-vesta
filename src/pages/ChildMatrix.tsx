@@ -85,7 +85,7 @@ export function ChildMatrix() {
         image="/images/child-matrix-illustration.webp"
         imageAlt="A mother and young child sitting together at night, reading a small glowing golden star chart"
         eyebrow="Destiny Matrix · For parents"
-        title="Your child's cosmic blueprint"
+        title="Children's Destiny Matrix — Your Child's Chart, Translated"
         subtitle="A child's Destiny Matrix, translated into what parents actually need: innate talents, emotional needs, learning style, and how to support who they already are."
         schema={[webAppSchema("Children's Destiny Matrix Calculator", '/tools/child-matrix', "A child's Destiny Matrix, translated into what parents actually need: innate talents, emotional needs, learning style, and how to support who they already are."), faqPageSchema(FAQS), toolBreadcrumb("Children's Destiny Matrix", '/tools/child-matrix')]}
       />

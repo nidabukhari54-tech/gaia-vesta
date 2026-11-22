@@ -32,6 +32,69 @@ const FAQS = [
   },
 ];
 
+const COMMON_TAILS = [
+  {
+    code: '9-10-5',
+    points: [
+      {
+        role: 'The Root',
+        label: '9 · The Hermit',
+        text: 'The pattern you carried in is wisdom kept private. The Hermit\u2019s karmic lesson is sharing inner light with others; carried in unresolved, it arrives as isolation, loneliness and withdrawal — a child who learned to disappear into their own inner world.',
+      },
+      {
+        role: 'The Repetition',
+        label: '10 · Wheel of Fortune',
+        text: 'It returns as fate. The Wheel keeps spinning the same seasons past you — luck that arrives and leaves on its own schedule — and the temptation is passivity: waiting for the wheel to turn instead of turning it. Fortune favours this tail at key moments, but only when it moves.',
+      },
+      {
+        role: 'The Resolution',
+        label: '5 · The Hierophant',
+        text: 'The way through is teaching. When the Hermit\u2019s private wisdom is given structure and spoken aloud — a tradition honoured, a student guided — the wheel stops being something that simply happens to you. \u201CI honor wisdom from all traditions.\u201D',
+      },
+    ],
+  },
+  {
+    code: '12-4-11',
+    points: [
+      {
+        role: 'The Root',
+        label: '12 · The Hanged Man',
+        text: 'The pattern you carried in is the pause that never ends. The Hanged Man\u2019s lesson is letting go to receive a greater good; unresolved, it shows up as martyrdom, indecision and delay — waiting for a permission that never comes.',
+      },
+      {
+        role: 'The Repetition',
+        label: '4 · The Emperor',
+        text: 'It returns as control. To escape the helplessness of the root, this tail builds walls: structure, rules, dominance — order imposed on everyone nearby, because order feels safer than surrender. Rigidity is the tell.',
+      },
+      {
+        role: 'The Resolution',
+        label: '11 · Justice',
+        text: 'The way through is fairness. Structure that serves truth instead of fear: clear agreements, honest ledgers, mercy balanced with justice. \u201CI act with fairness and integrity.\u201D',
+      },
+    ],
+  },
+  {
+    code: '11-3-9',
+    points: [
+      {
+        role: 'The Root',
+        label: '11 · Justice',
+        text: 'The pattern you carried in is the ledger. Justice\u2019s lesson is balancing mercy with justice; unresolved, it arrives as judgment and coldness — a strict inner accountant who scores everyone, including you.',
+      },
+      {
+        role: 'The Repetition',
+        label: '3 · The Empress',
+        text: 'It returns through care. The debt gets repaid in over-giving: nurturing everyone, smothering a little, and quietly depleting yourself — love offered as a way of settling accounts that no one else can see.',
+      },
+      {
+        role: 'The Resolution',
+        label: '9 · The Hermit',
+        text: 'The way through is solitude, chosen on purpose. Withdrawing to refill rather than to hide — and then sharing the light that comes back with you. \u201CI find wisdom in my solitude.\u201D',
+      },
+    ],
+  },
+];
+
 export function KarmicTail() {
   const [result, setResult] = useState<DestinyMatrixResult | null>(null);
   const [name, setName] = useState('');
@@ -143,6 +206,34 @@ export function KarmicTail() {
         )}
 
         <div className="mt-16">
+          <h2 className="text-2xl font-serif font-bold text-cream mb-3 text-center">Common karmic tails, worked through</h2>
+          <p className="text-lav/75 leading-relaxed max-w-2xl mx-auto text-center mb-8">
+            Certain chains appear again and again across thousands of charts. Here are three of the
+            most frequent tails, read exactly the way your own result is read above — root,
+            repetition, resolution.
+          </p>
+          <div className="space-y-5">
+            {COMMON_TAILS.map((t) => (
+              <div key={t.code} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6 sm:p-7">
+                <p className="text-3xl font-serif font-bold bg-gradient-to-r from-gold to-purple bg-clip-text text-transparent mb-4">
+                  {t.code}
+                </p>
+                <div className="space-y-4">
+                  {t.points.map((p) => (
+                    <div key={p.role}>
+                      <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-1">
+                        {p.role} · {p.label}
+                      </p>
+                      <p className="text-lav/85 leading-relaxed">{p.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16">
           <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">Karmic tail questions</h2>
           <div className="space-y-4">
             {FAQS.map((f) => (
@@ -157,7 +248,7 @@ export function KarmicTail() {
         <p className="text-center text-sm text-lavdim mt-10">
           New to the matrix? Read the{' '}
           <Link to="/tools/how-to-read-destiny-matrix" className="text-goldlight font-medium hover:underline">
-            guide to reading your full chart
+            how to read your full chart
           </Link>{' '}
           — or calculate the{' '}
           <Link to="/#demo" className="text-goldlight font-medium hover:underline inline-flex items-center gap-1">

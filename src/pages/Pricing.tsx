@@ -46,6 +46,10 @@ export function Pricing() {
   const isPremium = plan === 'premium';
 
   useEffect(() => {
+    document.title = 'Pricing — Free & Cosmic | Gaia Vesta';
+  }, []);
+
+  useEffect(() => {
     if (!configured || !user) return;
     let cancelled = false;
     (async () => {

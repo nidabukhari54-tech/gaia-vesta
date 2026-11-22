@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Heart, Coins, Compass, Sparkles } from 'lucide-react';
 import { PublicLayout } from '../components/PublicLayout';
@@ -15,6 +16,10 @@ export function ArcanaDetail() {
   const a = getArcana(num);
   const prev = num > 1 ? getArcana(num - 1) : null;
   const next = num < 22 ? getArcana(num + 1) : null;
+
+  useEffect(() => {
+    document.title = `${a.name} Tarot Meaning — In the Destiny Matrix | Gaia Vesta`;
+  }, [a.name]);
 
   return (
     <PublicLayout
@@ -47,6 +52,32 @@ export function ArcanaDetail() {
         </div>
 
         <div className="space-y-5">
+          <div className="bg-white/80 rounded-2xl p-6 border border-gold/25 text-text-primary">
+            <h2 className="font-serif font-semibold text-lg mb-2">The {a.name} tarot meaning</h2>
+            <p className="text-text-primary/75 leading-relaxed mb-4">
+              In tarot, {a.name} is the card of {a.description.charAt(0).toLowerCase() + a.description.slice(1)}.
+              The {a.name} tarot meaning centres on {a.strengths[0].toLowerCase()} and{' '}
+              {a.strengths[1].toLowerCase()} — the upright message readers look for when this card
+              turns up in a spread, and the energy it asks the querent to work with.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 text-sm mb-4">
+              <p className="bg-green-50 rounded-lg p-3">
+                <span className="font-semibold text-green-700">Upright keywords:</span>{' '}
+                {a.strengths.join(' · ')}
+              </p>
+              <p className="bg-red-50 rounded-lg p-3">
+                <span className="font-semibold text-red-600">Shadow keywords:</span>{' '}
+                {a.challenges.join(' · ')}
+              </p>
+            </div>
+            <p className="text-text-primary/75 leading-relaxed">
+              The Destiny Matrix reads the same arcana through a different lens: not as an answer
+              drawn for a question, but as one of the 22 arcana fixed in the chart calculated from
+              your birth date — where {a.name} colours your personality, your love line and your
+              money line for life. The sections below give that reading.
+            </p>
+          </div>
+
           <div className="bg-white/80 rounded-2xl p-6 border border-purple/20 text-text-primary">
             <div className="flex items-center gap-2 mb-2">
               <Compass className="w-5 h-5 text-purple" />

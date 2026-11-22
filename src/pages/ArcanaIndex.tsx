@@ -16,6 +16,22 @@ export function ArcanaIndex() {
         subtitle="Every number in your Destiny Matrix is one of these 22 archetypes. Read them all — personality, love, money, karmic lessons, strengths and shadows."
         schema={[webPageSchema('The 22 Major Arcana, explained', '/arcana', "Every number in your Destiny Matrix is one of these 22 archetypes. Read them all — personality, love, money, karmic lessons, strengths and shadows."), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Arcana Guide', path: '/arcana' }])]}
       />
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <p className="text-lav/85 leading-relaxed mb-4">
+          These are the major arcana meanings as two traditions read them. In tarot, the 22 Major
+          Arcana are the great turning points of a reading — the cards of fate, character and life
+          lessons, and the heart of every guide to tarot card meanings. In the Destiny Matrix, the
+          same 22 arcana are the building blocks of the chart calculated from your birth date: every
+          point in your matrix — centre, love line, money line, karmic tail — is one of these
+          archetypes, fixed for life.
+        </p>
+        <p className="text-lav/85 leading-relaxed">
+          Open any card for its full meaning: what it says about personality, how it behaves in love
+          and with money, the karmic lesson it carries, and the strengths and shadows it brings with
+          it. If you already know your chart, start with the arcana at your centre. If you
+          don&rsquo;t, calculate it free and come back to read yourself, point by point.
+        </p>
+      </section>
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {all.map((a) => (

@@ -10,7 +10,7 @@ import { getArcana } from '../lib/arcana-meanings';
 
 const TOOLS = [
   {
-    to: '/', hash: '#demo', icon: Sparkles, title: 'Destiny Matrix Calculator',
+    to: '/', hash: '#demo', icon: Sparkles, title: 'Destiny Matrix Chart Calculator',
     img: '/images/gaia-character.webp', alt: 'Gaia, the Destiny Matrix guide, holding a glowing golden star',
     text: 'Your full 22-arcana chart from your birth date — soul purpose, love, money, life path.', tag: 'Flagship',
   },
@@ -131,8 +131,8 @@ export function ToolsHub() {
       <ToolHero
         eyebrow="Free tools"
         title="Every calculator, one home"
-        subtitle="Destiny Matrix charts, compatibility, forecasts and classic numerology — all free, all instant, no account needed."
-        schema={[webPageSchema('Every calculator, one home', '/tools', "Destiny Matrix charts, compatibility, forecasts and classic numerology — all free, all instant, no account needed."), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Tools', path: '/tools' }])]}
+        subtitle="One home for every Destiny Matrix calculator — begin with your destiny matrix chart, then explore compatibility, karmic tails, forecasts and classic numerology. All free, all instant, no account needed."
+        schema={[webPageSchema('Every calculator, one home', '/tools', "One home for every Destiny Matrix calculator — begin with your destiny matrix chart, then explore compatibility, karmic tails, forecasts and classic numerology. All free, all instant, no account needed."), breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Tools', path: '/tools' }])]}
       />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">

@@ -15,7 +15,7 @@ function signFaqs(sign: HoroscopeSign) {
       a: `${sign.name} (${sign.dates}) is a ${sign.element} sign ruled by ${sign.ruler}, and this reading is written for that character — ${sign.traits.join(', ').toLowerCase()} — then chosen for this week by a sign-and-week seed. Every ${sign.name} reader sees the same reading from Monday to Sunday, and a new one next week. It follows the tropical zodiac, the system used by Western astrology.`,
     },
     {
-      q: `When does the ${sign.name} weekly horoscope update?`,
+      q: `When does the weekly reading update?`,
       a: `At midnight between Sunday and Monday. The weekly reading is the middle lens — longer than a day's weather, shorter than a season — so it is written to be read on Monday and carried through the week. For faster guidance, ${sign.name}'s daily horoscope turns every midnight; for the slower view, the monthly horoscope turns on the first of the month.`,
     },
     {
@@ -186,14 +186,14 @@ export function WeeklyHoroscopeSignPage() {
             to="/"
             className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-goldlight to-[#C9963C] text-night3 font-semibold rounded-full hover:shadow-[0_0_28px_rgba(231,200,115,0.5)] transition-all"
           >
-            Calculate your Destiny Matrix — free <ArrowRight className="w-5 h-5" />
+            Calculate your Destiny Matrix chart — free <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
       </section>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
         <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">
-          {sign.name} weekly horoscope questions
+          Questions for {sign.name} this week
         </h2>
         <div className="space-y-4 mb-12">
           {faqs.map((f) => (

@@ -32,6 +32,19 @@ export function AngelNumbers() {
 
 
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="max-w-3xl mx-auto mb-10">
+          <p className="text-lav/85 leading-relaxed mb-4">
+            Angel numbers are the repeating sequences — 111 on the clock, 444 on a receipt, 1111 on
+            a number plate — that seem to follow you until you stop and ask what they mean. Each
+            sequence carries its own theme: beginnings, protection, change, completion. The library
+            below covers the angel numbers people meet most often, each with its meaning in love, in
+            money and in the quieter, spiritual sense — plus what to actually do when you see it.
+          </p>
+          <p className="text-lav/85 leading-relaxed">
+            And one number is not ambient at all: the personal angel number written into your birth
+            date itself. Find yours under the library — it takes ten seconds, and it is free.
+          </p>
+        </div>
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow border border-purple/20 mb-8">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-primary/40" />

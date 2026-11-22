@@ -87,8 +87,9 @@ export function ToolHero({
   }, [title]);
 
   return (
-    <section className="pt-14 pb-10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="pt-14 pb-10 relative overflow-hidden">
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[36rem] h-[16rem] bg-gold/[0.13] rounded-full blur-3xl pointer-events-none" />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
         <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">{eyebrow}</p>
         <h1 className="text-3xl sm:text-5xl font-serif font-bold text-cream mb-4">{title}</h1>
         <p className="text-lav/80 max-w-2xl mx-auto">{subtitle}</p>

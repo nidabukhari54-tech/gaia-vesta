@@ -430,7 +430,7 @@ function WhyCards() {
           {cards.map((c) => (
             <div
               key={c.title}
-              className="bg-white/[0.04] border border-white/10 rounded-3xl p-7 hover:border-goldlight/40 hover:bg-white/[0.06] transition-all"
+              className="bg-white/[0.04] border border-white/10 rounded-3xl p-7 shadow-[0_18px_45px_-22px_rgba(231,200,115,0.35)] hover:border-goldlight/40 hover:bg-white/[0.06] hover:shadow-[0_24px_55px_-20px_rgba(231,200,115,0.5)] transition-all"
             >
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-goldlight/25 to-purple/25 border border-goldlight/20 flex items-center justify-center mb-5">
                 <c.icon className="w-6 h-6 text-goldlight" />
@@ -620,7 +620,7 @@ function FamilySection() {
             </p>
             <div className="grid sm:grid-cols-2 gap-3 mb-9">
               {pairs.map((p) => (
-                <div key={p.pair} className="bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-4">
+                <div key={p.pair} className="bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-4 shadow-[0_16px_40px_-20px_rgba(231,200,115,0.35)]">
                   <p className="font-serif text-cream">{p.pair}</p>
                   <p className="text-xs text-lavdim mt-0.5">{p.note}</p>
                 </div>
@@ -711,7 +711,7 @@ function ToolsSection() {
             <Link
               key={t.title}
               to={t.to}
-              className="bg-white/[0.04] rounded-3xl p-7 border border-white/10 hover:border-goldlight/50 hover:bg-white/[0.06] transition-all group"
+              className="bg-white/[0.04] rounded-3xl p-7 border border-white/10 shadow-[0_18px_45px_-22px_rgba(231,200,115,0.35)] hover:border-goldlight/50 hover:bg-white/[0.06] hover:shadow-[0_24px_55px_-20px_rgba(231,200,115,0.5)] transition-all group"
             >
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-goldlight/25 to-purple/25 border border-goldlight/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <t.icon className="w-6 h-6 text-goldlight" />
@@ -771,7 +771,7 @@ function ReceiveSection() {
           </h2>
           <ul className="grid sm:grid-cols-2 gap-3.5">
             {items.map((i) => (
-              <li key={i} className="flex items-center gap-3 bg-white/[0.04] border border-white/10 rounded-2xl px-4 py-3.5 text-sm text-cream/90">
+              <li key={i} className="flex items-center gap-3 bg-white/[0.04] border border-white/10 rounded-2xl px-4 py-3.5 text-sm text-cream/90 shadow-[0_16px_40px_-22px_rgba(231,200,115,0.35)]">
                 <span className="w-6 h-6 rounded-full bg-goldlight/20 border border-goldlight/30 flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5 text-goldlight" />
                 </span>
@@ -807,7 +807,7 @@ function WhyGaia() {
             Gaia Vesta gives you the answers too.
           </p>
         </div>
-        <div className="bg-white/[0.04] rounded-3xl border border-white/10 overflow-hidden">
+        <div className="bg-white/[0.04] rounded-3xl border border-white/10 overflow-hidden shadow-[0_30px_70px_-30px_rgba(231,200,115,0.35)]">
           <div className="grid grid-cols-[1.2fr_1fr_1fr] text-sm font-semibold bg-white/[0.05] px-5 py-3.5 text-cream">
             <span></span>
             <span className="text-center text-goldlight">Gaia Vesta</span>
@@ -843,7 +843,7 @@ function Pricing() {
           <p className="text-lav/80">Start free. Go deeper when you're ready — for less than one paid reading elsewhere.</p>
         </div>
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto items-stretch">
-          <div className="bg-white/[0.04] rounded-3xl p-8 border border-white/10 flex flex-col">
+          <div className="bg-white/[0.04] rounded-3xl p-8 border border-white/10 flex flex-col shadow-[0_25px_60px_-25px_rgba(124,92,191,0.4)]">
             <h3 className="font-serif text-2xl text-cream mb-1">Starseed</h3>
             <p className="text-lavdim text-sm mb-5">For the curious</p>
             <p className="text-5xl font-serif text-cream mb-7">Free</p>

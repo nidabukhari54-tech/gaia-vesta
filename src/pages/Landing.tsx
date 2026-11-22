@@ -306,14 +306,14 @@ function Hero() {
           </ul>
         </div>
 
-        <div className="relative animate-fadeIn animate-breathe max-w-md mx-auto w-full lg:max-w-none">
+        <div className="relative animate-fadeIn max-w-md mx-auto w-full lg:max-w-none">
           <GlowChart result={SAMPLE_RESULT} />
           <div className="absolute top-[6%] -left-2 sm:left-[2%] animate-float">
             <span className="flex items-center gap-2 bg-night2/90 backdrop-blur border border-goldlight/30 rounded-full px-4 py-2 text-xs font-medium text-cream shadow-xl">
               <RefreshCcw className="w-3.5 h-3.5 text-goldlight" /> Karmic Tail — revealed
             </span>
           </div>
-          <div className="absolute top-[38%] -right-2 sm:right-[1%] animate-float-delayed">
+          <div className="absolute top-[46%] -left-2 sm:left-[1%] animate-float-delayed">
             <span className="flex items-center gap-2 bg-night2/90 backdrop-blur border border-white/15 rounded-full px-4 py-2 text-xs font-medium text-cream shadow-xl">
               <Heart className="w-3.5 h-3.5 text-goldlight" /> Love & Money lines
             </span>
@@ -323,19 +323,21 @@ function Hero() {
               <Users className="w-3.5 h-3.5 text-goldlight" /> Family lines — mapped
             </span>
           </div>
-          <div className="absolute -bottom-2 -left-3 sm:-left-8 w-28 sm:w-36 animate-float z-10">
-            <img
-              src="/images/gaia-character.webp"
-              alt="Gaia — your guide to the Destiny Matrix"
-              className="w-full h-auto rounded-2xl border border-goldlight/50 shadow-[0_20px_45px_-15px_rgba(231,200,115,0.55)]"
-              loading="lazy"
-              decoding="async"
-            />
-            <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-night2/90 border border-goldlight/30 rounded-full px-3 py-1 text-[10px] font-medium text-cream">
-              Gaia · your guide
-            </span>
+          <div className="absolute -bottom-3 right-0 w-[58%] sm:w-[54%] animate-breathe z-10">
+            <div className="animate-float relative">
+              <img
+                src="/images/gaia-character.webp"
+                alt="Gaia — your guide to the Destiny Matrix"
+                className="w-full h-auto rounded-[1.75rem] border border-goldlight/60 shadow-[0_30px_70px_-20px_rgba(231,200,115,0.65)]"
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="absolute -top-3 left-4 whitespace-nowrap bg-night2/90 backdrop-blur border border-goldlight/40 rounded-full px-3.5 py-1.5 text-[11px] font-medium text-cream shadow-lg">
+                Gaia · your guide
+              </span>
+            </div>
           </div>
-          <p className="text-center text-xs text-lavdim mt-3">A sample chart — yours is drawn from your own birth date</p>
+          <p className="text-center text-xs text-lavdim mt-6">A sample chart — yours is drawn from your own birth date</p>
         </div>
       </div>
 

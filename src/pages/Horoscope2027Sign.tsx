@@ -3,6 +3,7 @@ import {
   ArrowRight, Briefcase, CalendarDays, Hash, Heart, Moon, Sparkles, Sprout, Sun,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { sign2027Desc, sign2027PageTitle } from '../lib/meta';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SIGNS, getSignBySlug, type HoroscopeSign } from '../lib/horoscope';
 import {
@@ -44,6 +45,8 @@ export function Horoscope2027SignPage() {
   return (
     <PublicLayout>
       <ToolHero
+        description={sign2027Desc(sign.name, year.powerWord)}
+        pageTitle={sign2027PageTitle(sign.name)}
         image="/images/zodiac-illustration.webp"
         imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}

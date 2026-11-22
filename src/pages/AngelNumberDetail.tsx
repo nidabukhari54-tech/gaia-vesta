@@ -4,6 +4,7 @@ import { PublicLayout } from '../components/PublicLayout';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ANGEL_NUMBERS, ANGEL_NUMBER_LIST } from '../lib/numerology-meanings';
+import { angelPageTitle, angelDesc } from '../lib/meta';
 import { useEffect } from 'react';
 
 export function AngelNumberDetail() {
@@ -12,7 +13,7 @@ export function AngelNumberDetail() {
 
   useEffect(() => {
     if (meaning) {
-      document.title = `${meaning.number} Angel Number Meaning — ${meaning.title} | Gaia Vesta`;
+      document.title = angelPageTitle(meaning.number, meaning.title);
     }
   }, [meaning]);
 
@@ -43,6 +44,7 @@ export function AngelNumberDetail() {
 
   return (
     <PublicLayout
+      description={angelDesc(meaning)}
       schema={[
         webAppSchema(
           `${meaning.number} Angel Number Meaning`,

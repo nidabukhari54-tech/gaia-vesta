@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { HoroscopeLinks } from '../components/HoroscopeLinks';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SIGNS } from '../lib/horoscope';
@@ -45,10 +46,12 @@ export function WeeklyHoroscope() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.weeklyHoroscope}
         image="/images/zodiac-illustration.webp"
         imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow="Weekly Horoscope · Free"
         title={`Weekly Horoscope — ${range}`}
+        pageTitle="Weekly Horoscope"
         subtitle="The week's theme for all twelve signs — love, money, mood, your best day, and the moon's arc from Monday to Sunday. Choose your sign."
         schema={[webAppSchema('Weekly Horoscope', '/tools/weekly-horoscope', "The week's theme for all twelve signs — love, money, mood, your best day, and the moon's arc from Monday to Sunday. Choose your sign."), faqPageSchema(FAQS), toolBreadcrumb('Weekly Horoscope', '/tools/weekly-horoscope')]}
       />

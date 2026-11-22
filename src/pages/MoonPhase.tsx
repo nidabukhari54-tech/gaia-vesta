@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Moon } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { moonPhase, zodiacSign } from '../lib/numerology';
 
@@ -113,6 +114,7 @@ export function MoonPhase() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.moonPhase}
         image="/images/moon-phase-illustration.webp"
         imageAlt="A large glowing full moon rising over a calm indigo sea, with a gentle arc of moon phases above it"
         eyebrow="Lunar · Daily"

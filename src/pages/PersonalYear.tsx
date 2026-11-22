@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SunMoon } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { personalYearNumber, personalMonthNumber, personalDayNumber } from '../lib/numerology';
@@ -41,6 +42,7 @@ export function PersonalYear() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.personalYear}
         image="/images/personal-year-illustration.webp"
         imageAlt="A golden sunrise cresting indigo hills, encircled by a thin ring of light"
         eyebrow="Numerology · Cycles"

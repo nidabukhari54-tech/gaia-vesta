@@ -4,6 +4,7 @@ import {
   ArrowRight, Briefcase, Hash, Heart, HeartHandshake, Moon, Palette, Sparkles,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { dailySignDesc, dailySignPageTitle } from '../lib/meta';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SIGNS, getDailyHoroscope, getSignBySlug, type HoroscopeSign } from '../lib/horoscope';
 
@@ -43,6 +44,8 @@ export function HoroscopeSignPage() {
   return (
     <PublicLayout>
       <ToolHero
+        description={dailySignDesc(sign.name)}
+        pageTitle={dailySignPageTitle(sign.name)}
         image="/images/zodiac-illustration.webp"
         imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}

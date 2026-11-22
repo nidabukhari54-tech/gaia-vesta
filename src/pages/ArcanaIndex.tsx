@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { webPageSchema, breadcrumbSchema } from '../lib/schema';
 import { arcanaMeanings } from '../lib/arcana-meanings';
 
@@ -11,6 +12,7 @@ export function ArcanaIndex() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.arcanaIndex}
         eyebrow="The guide"
         title="The 22 Major Arcana, explained"
         subtitle="Every number in your Destiny Matrix is one of these 22 archetypes. Read them all — personality, love, money, karmic lessons, strengths and shadows."
@@ -40,6 +42,15 @@ export function ArcanaIndex() {
               to={`/arcana/${a.id}`}
               className="bg-white/[0.04] backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-goldlight/50 hover:shadow-lg transition-all group"
             >
+              <div className="-mx-6 -mt-6 mb-5 overflow-hidden rounded-t-2xl">
+                <img
+                  src={`/images/arcana-${a.id}.webp`}
+                  alt={a.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-gold to-purple rounded-full flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform">
                   {a.id}

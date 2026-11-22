@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Sparkles, Loader2, ArrowRight, Lock } from 'lucide-react';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
+import { usePageMeta, DESC } from '../lib/meta';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ArcanaModal, SelectedArcana } from '../components/chart/ArcanaModal';
 import { getArcana } from '../lib/arcana-meanings';
@@ -15,6 +16,7 @@ type SharedChartData = {
 };
 
 export function SharedChart() {
+  usePageMeta('Shared Destiny Matrix Chart | Gaia Vesta', DESC.sharedChart);
   const { token } = useParams<{ token: string }>();
   const [chart, setChart] = useState<SharedChartData | null>(null);
   const [loading, setLoading] = useState(true);

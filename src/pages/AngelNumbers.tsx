@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, Search } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { personalAngelNumber } from '../lib/numerology';
@@ -22,6 +23,7 @@ export function AngelNumbers() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.angelNumbers}
         image="/images/angel-numbers-illustration.webp"
         imageAlt="Three glowing golden orbs of light with soft halos floating in indigo mist"
         eyebrow="Angel numbers · Meanings"

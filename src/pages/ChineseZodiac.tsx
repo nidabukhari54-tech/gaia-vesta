@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CalendarDays, Search, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import {
   ANIMALS, YEAR_2027, animalForBirthDate, type BirthAnimalResult,
@@ -44,6 +45,7 @@ export function ChineseZodiac() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.chineseZodiac}
         image="/images/chinese-zodiac-illustration.webp"
         imageAlt="A golden celestial wheel of the twelve Chinese zodiac animals around a radiant star, on a deep indigo night sky"
         eyebrow="Chinese Zodiac · Year Animals & Elements"

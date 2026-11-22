@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, BarChart3, Trash2, Eye, Plus, Loader2 } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
+import { usePageMeta, DESC } from '../lib/meta';
 import { requireSupabase, type ChartRow } from '../lib/supabase';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ArcanaModal, SelectedArcana } from '../components/chart/ArcanaModal';
@@ -10,6 +11,7 @@ import { getArcana } from '../lib/arcana-meanings';
 import type { DestinyMatrixResult } from '../lib/matrix-calculator';
 
 export function MyCharts() {
+  usePageMeta('My Saved Charts | Gaia Vesta', DESC.myCharts);
   const { user, configured } = useAuth();
   const navigate = useNavigate();
   const [charts, setCharts] = useState<ChartRow[]>([]);

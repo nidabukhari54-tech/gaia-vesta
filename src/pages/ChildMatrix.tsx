@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, Sparkles, GraduationCap, Heart, Compass } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
@@ -82,6 +83,8 @@ export function ChildMatrix() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.childMatrix}
+        pageTitle="Children's Destiny Matrix — For Parents"
         image="/images/child-matrix-illustration.webp"
         imageAlt="A mother and young child sitting together at night, reading a small glowing golden star chart"
         eyebrow="Destiny Matrix · For parents"

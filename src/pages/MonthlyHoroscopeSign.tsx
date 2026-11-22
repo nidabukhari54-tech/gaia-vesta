@@ -4,6 +4,7 @@ import {
   ArrowRight, Briefcase, CalendarHeart, Hash, Heart, Moon, Sparkles, Sprout,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { monthlySignDesc } from '../lib/meta';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { SIGNS, formatDate, getSignBySlug, type HoroscopeSign } from '../lib/horoscope';
 import { getMonthlyHoroscope } from '../lib/horoscope-monthly';
@@ -75,6 +76,7 @@ export function MonthlyHoroscopeSignPage() {
   return (
     <PublicLayout>
       <ToolHero
+        description={monthlySignDesc(sign.name, monthly.monthName)}
         image="/images/zodiac-illustration.webp"
         imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow={`${sign.glyph} ${sign.element} sign · Ruled by ${sign.ruler} · ${sign.dates}`}

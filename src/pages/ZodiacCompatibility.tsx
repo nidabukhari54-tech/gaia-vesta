@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ZODIAC_SIGNS, zodiacCompatibility, type ZodiacSign } from '../lib/numerology';
 
@@ -45,6 +46,7 @@ export function ZodiacCompatibility() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.zodiacCompatibility}
         image="/images/zodiac-illustration.webp"
         imageAlt="Two overlapping golden rings studded with star dots turning in an indigo night sky"
         eyebrow="Astrology · Compatibility"

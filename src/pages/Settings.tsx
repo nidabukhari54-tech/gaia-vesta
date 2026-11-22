@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { ArrowLeft, Settings as SettingsIcon, LogOut, Loader2, Crown, PartyPopper, ExternalLink } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
+import { usePageMeta, DESC } from '../lib/meta';
 import { requireSupabase, type Profile } from '../lib/supabase';
 import { fetchLatestSubscription, type SubscriptionRow } from '../lib/payments';
 import { ConfigNotice } from '../components/ConfigNotice';
 
 export function Settings() {
+  usePageMeta('Settings | Gaia Vesta', DESC.settings);
   const { user, signOut, configured } = useAuth();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();

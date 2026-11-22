@@ -3,16 +3,20 @@ import { Link } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
 import { JsonLd } from './JsonLd';
+import { useMetaDescription } from '../lib/meta';
 
 /** Shared header + footer for the public tools and guide pages. */
 export function PublicLayout({
   children,
   schema,
+  description,
 }: {
   children: ReactNode;
   schema?: object | object[];
+  description?: string;
 }) {
   const { user } = useAuth();
+  useMetaDescription(description);
 
   return (
     <div className="min-h-screen bg-night text-lav flex flex-col relative overflow-x-clip">
@@ -111,6 +115,8 @@ export function ToolHero({
   schema,
   image,
   imageAlt,
+  description,
+  pageTitle,
 }: {
   eyebrow?: string;
   title: string;
@@ -118,10 +124,15 @@ export function ToolHero({
   schema?: object | object[];
   image?: string;
   imageAlt?: string;
+  /** Unique meta description for this page (140–154 chars). */
+  description?: string;
+  /** Optional document.title override (pre-suffix) when the visible H1 is too long for a ≤60-char title. */
+  pageTitle?: string;
 }) {
   useEffect(() => {
-    document.title = `${title} | Gaia Vesta`;
-  }, [title]);
+    document.title = `${pageTitle ?? title} | Gaia Vesta`;
+  }, [title, pageTitle]);
+  useMetaDescription(description);
 
   const eyebrowChip = eyebrow ? (
     <p className="inline-flex items-center gap-2 rounded-full border border-goldlight/40 bg-gold/10 px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-goldlight shadow-[0_0_18px_rgba(231,200,115,0.18)]">

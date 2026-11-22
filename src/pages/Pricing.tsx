@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Star, Check, Sparkles } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
+import { useMetaDescription, DESC } from '../lib/meta';
 import { requireSupabase } from '../lib/supabase';
 import { isPayPalConfigured } from '../lib/payments';
 import { PayPalSubscribe } from '../components/PayPalSubscribe';
@@ -39,6 +40,7 @@ const TIERS = [
 ];
 
 export function Pricing() {
+  useMetaDescription(DESC.pricing);
   const { user, configured } = useAuth();
   const navigate = useNavigate();
   const [plan, setPlan] = useState<string | null>(null);

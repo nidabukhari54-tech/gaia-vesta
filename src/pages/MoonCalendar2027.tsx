@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { HoroscopeLinks } from '../components/HoroscopeLinks';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { moonsInYear } from '../lib/moons';
@@ -57,6 +58,7 @@ export function MoonCalendar2027() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.moonCalendar2027}
         image="/images/moon-phase-illustration.webp"
         imageAlt="A glowing full moon rising over a calm indigo sea beneath an arc of moon phases"
         eyebrow="Moon Calendar · 2027 · Free"

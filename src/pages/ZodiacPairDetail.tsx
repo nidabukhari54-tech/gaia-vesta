@@ -5,6 +5,7 @@ import { PublicLayout } from '../components/PublicLayout';
 import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ZODIAC_SIGNS, zodiacCompatibility, type ZodiacSign } from '../lib/numerology';
+import { pairPageTitle, pairDesc } from '../lib/meta';
 
 const ELEMENT_DYNAMICS: Record<string, { strengths: string; watchOut: string }> = {
   'Fire|Fire': {
@@ -73,7 +74,7 @@ export function ZodiacPairDetail() {
 
   useEffect(() => {
     if (a && b) {
-      document.title = `${a.name} and ${b.name} Compatibility — Love Match, Score & Meaning | Gaia Vesta`;
+      document.title = pairPageTitle(a.name, b.name);
     }
   }, [a, b]);
 
@@ -105,6 +106,7 @@ export function ZodiacPairDetail() {
 
   return (
     <PublicLayout
+      description={pairDesc(a.name, b.name, match.score)}
       schema={[
         articleSchema(
           `${a.name} and ${b.name} Compatibility — Love Match, Score & Meaning`,

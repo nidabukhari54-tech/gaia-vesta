@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowRight, Briefcase, Heart, Sparkles, Sprout } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { chinese2027Desc } from '../lib/meta';
 import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { ANIMALS, YEAR_2027, getAnimalBySlug, getOutlook2027 } from '../lib/chinese-zodiac';
 
@@ -33,6 +34,7 @@ export function ChineseZodiac2027AnimalPage() {
   return (
     <PublicLayout>
       <ToolHero
+        description={chinese2027Desc(animal)}
         image="/images/chinese-zodiac-illustration.webp"
         imageAlt="A golden celestial wheel of the twelve Chinese zodiac animals around a radiant star, on a deep indigo night sky"
         eyebrow={`Chinese Zodiac · ${animal.glyph} ${animal.name} · 2027 Fire Goat Year`}

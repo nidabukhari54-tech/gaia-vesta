@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { HoroscopeLinks } from '../components/HoroscopeLinks';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SIGNS, getDailyHoroscope, getSignForDate } from '../lib/horoscope';
@@ -46,6 +47,7 @@ export function DailyHoroscope() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.dailyHoroscope}
         image="/images/zodiac-illustration.webp"
         imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow="Daily Horoscope · Free"

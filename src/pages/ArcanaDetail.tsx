@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Heart, Coins, Compass, Sparkles } from 'lucide-r
 import { PublicLayout } from '../components/PublicLayout';
 import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { getArcana, arcanaMeanings } from '../lib/arcana-meanings';
+import { arcanaPageTitle, arcanaDesc } from '../lib/meta';
 
 export function ArcanaDetail() {
   const { id } = useParams<{ id: string }>();
@@ -18,11 +19,12 @@ export function ArcanaDetail() {
   const next = num < 22 ? getArcana(num + 1) : null;
 
   useEffect(() => {
-    document.title = `${a.name} Tarot Meaning — In the Destiny Matrix | Gaia Vesta`;
+    document.title = arcanaPageTitle(a.name);
   }, [a.name]);
 
   return (
     <PublicLayout
+      description={arcanaDesc(a)}
       schema={[
         articleSchema(a.name, `/arcana/${a.id}`, a.description),
         breadcrumbSchema([

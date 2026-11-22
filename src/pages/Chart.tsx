@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../lib/AuthContext';
+import { usePageMeta, DESC } from '../lib/meta';
 import { requireSupabase } from '../lib/supabase';
 import { calculateDestinyMatrix, DestinyMatrixResult } from '../lib/matrix-calculator';
 import { getArcana, Arcana } from '../lib/arcana-meanings';
@@ -19,6 +20,7 @@ import { ZoneCards } from '../components/ZoneCards';
 import { Sparkles, ArrowLeft, Save, Heart, Coins, Compass, Share2, Copy, Check, Download, FileText } from 'lucide-react';
 
 export function Chart() {
+  usePageMeta('Your Destiny Matrix Chart | Gaia Vesta', DESC.chart);
   const { user, configured } = useAuth();
   const navigate = useNavigate();
   const [matrixResult, setMatrixResult] = useState<DestinyMatrixResult | null>(null);

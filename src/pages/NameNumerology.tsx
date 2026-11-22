@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Type, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { nameNumbers } from '../lib/numerology';
 import { NAME_NUMBER_TITLES, nameNumberBlurb, LIFE_PATH_MEANINGS } from '../lib/numerology-meanings';
@@ -55,6 +56,7 @@ export function NameNumerology() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.nameNumerology}
         image="/images/name-numerology-illustration.webp"
         imageAlt="An open ancient book with golden light and sparkles swirling up from its glowing pages"
         eyebrow="Numerology · Name numbers"

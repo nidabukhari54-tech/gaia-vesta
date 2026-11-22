@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Moon } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { moonMonthDesc } from '../lib/meta';
 import { faqPageSchema, webAppSchema, breadcrumbSchema } from '../lib/schema';
 import { moonsInMonth } from '../lib/moons';
 import { moonPhase } from '../lib/numerology';
@@ -94,6 +95,7 @@ export function MoonCalendarMonthPage() {
   return (
     <PublicLayout>
       <ToolHero
+        description={moonMonthDesc(monthName, fullMoonName, moons.newMoons[0], moons.fullMoons[0])}
         image="/images/moon-phase-illustration.webp"
         imageAlt="A glowing full moon rising over a calm indigo sea beneath an arc of moon phases"
         eyebrow="Moon Calendar · 2027"

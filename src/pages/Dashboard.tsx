@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../lib/AuthContext';
+import { usePageMeta, DESC } from '../lib/meta';
 import { Sparkles, LogOut, User, Plus, BarChart3, Settings as SettingsIcon, Crown, HeartHandshake, Wrench } from 'lucide-react';
 
 export function Dashboard() {
+  usePageMeta('Dashboard | Gaia Vesta', DESC.dashboard);
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 

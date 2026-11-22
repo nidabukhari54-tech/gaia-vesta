@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
@@ -57,6 +58,7 @@ export function DailyArcana() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.dailyArcana}
         image="/images/daily-arcana-illustration.webp"
         imageAlt="An ornate tarot-like card with a golden eight-pointed star on its face, standing among the stars"
         eyebrow="Daily tarot · Guidance"

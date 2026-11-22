@@ -4,6 +4,7 @@ import {
   Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users, Sun, Compass,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { webPageSchema, breadcrumbSchema } from '../lib/schema';
 import { dailyArcana, moonPhase } from '../lib/numerology';
 import { getArcana } from '../lib/arcana-meanings';
@@ -129,6 +130,7 @@ export function ToolsHub() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.tools}
         eyebrow="Free tools"
         title="Every calculator, one home"
         subtitle="One home for every Destiny Matrix calculator — begin with your destiny matrix chart, then explore compatibility, karmic tails, forecasts and classic numerology. All free, all instant, no account needed."

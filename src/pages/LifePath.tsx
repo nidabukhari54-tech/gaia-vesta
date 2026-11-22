@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Hash, Heart, Briefcase } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
@@ -37,6 +38,7 @@ export function LifePath() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.lifePath}
         image="/images/life-path-illustration.webp"
         imageAlt="A winding golden path of light climbing through indigo hills toward one bright guiding star"
         eyebrow="Numerology · Core number"

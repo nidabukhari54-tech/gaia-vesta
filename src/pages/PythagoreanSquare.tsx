@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { pythagoreanSquare } from '../lib/numerology';
@@ -96,6 +97,7 @@ export function PythagoreanSquare() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.pythagoreanSquare}
         image="/images/pythagoras-illustration.webp"
         imageAlt="A glowing three-by-three grid of golden light dots joined by fine lines in indigo darkness"
         eyebrow="Numerology · Psychomatrix"

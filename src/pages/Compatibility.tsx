@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Coins, Compass, Download, Sparkles, HeartHandshake } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { PersonForm } from '../components/chart/PersonForm';
@@ -143,6 +144,7 @@ export function Compatibility() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.compatibility}
         image="/images/compatibility-illustration.webp"
         imageAlt="A couple holding hands beneath two overlapping golden rings of light merging into one glowing chart in an indigo night sky"
         eyebrow="Destiny Matrix · Compatibility"

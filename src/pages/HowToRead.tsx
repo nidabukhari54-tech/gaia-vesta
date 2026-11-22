@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, MousePointerClick } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { articleSchema, faqPageSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 
@@ -50,6 +51,7 @@ export function HowToRead() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.howToRead}
         image="/images/how-to-read-illustration.webp"
         imageAlt="An unrolled parchment scroll bearing a golden geometric chart of lines and glowing nodes, beside a candle"
         eyebrow="Guide · Start here"

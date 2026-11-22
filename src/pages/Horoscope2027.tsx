@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Moon, Sparkles } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { YEAR_2027_READINGS, MOON_CALENDAR_2027, ordinal } from '../lib/horoscope-2027';
 
@@ -29,6 +30,7 @@ export function Horoscope2027() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.horoscope2027}
         image="/images/zodiac-illustration.webp"
         imageAlt="Two overlapping golden rings studded with star dots in an indigo night sky"
         eyebrow="2027 Horoscope · Free"

@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '../components/auth/LoginForm';
 import { SignupForm } from '../components/auth/SignupForm';
 import { useAuth } from '../lib/AuthContext';
+import { usePageMeta, DESC } from '../lib/meta';
 import { ConfigNotice } from '../components/ConfigNotice';
 
 export function Auth() {
+  usePageMeta('Sign In | Gaia Vesta', DESC.auth);
   const [isLogin, setIsLogin] = useState(true);
   const { user, loading } = useAuth();
   const navigate = useNavigate();

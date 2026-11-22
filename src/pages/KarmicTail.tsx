@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sprout, RefreshCcw, KeyRound, ArrowRight } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
@@ -106,6 +107,7 @@ export function KarmicTail() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.karmicTail}
         image="/images/karmic-tail-illustration.webp"
         imageAlt="A single golden thread of light looping in a spiral knot that is beginning to loosen and untie against indigo darkness"
         eyebrow="Destiny Matrix · Karmic Tail"

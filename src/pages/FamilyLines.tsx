@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, FileText, ArrowRight, Repeat, CircleDashed } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { SalesCTA } from '../components/SalesCTA';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
@@ -101,6 +102,7 @@ export function FamilyLines() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.familyLines}
         image="/images/family-illustration.webp"
         imageAlt="A family gazing together at a glowing golden Destiny Matrix star"
         eyebrow="Destiny Matrix · Family Lines"

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Download, Sparkles, CalendarClock } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { DESC } from '../lib/meta';
 import { faqPageSchema, webAppSchema, toolBreadcrumb } from '../lib/schema';
 import { ChartCalculator } from '../components/chart/ChartCalculator';
 import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
@@ -69,6 +70,8 @@ export function YearForecast() {
   return (
     <PublicLayout>
       <ToolHero
+        description={DESC.yearForecast}
+        pageTitle="Destiny Matrix Year Forecast — Your Year Ahead"
         image="/images/year-forecast-illustration.webp"
         imageAlt="A circular golden wheel of twelve glowing segments ringed by moon phases in an indigo night sky"
         eyebrow="Destiny Matrix · Forecast"

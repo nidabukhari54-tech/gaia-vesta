@@ -7,6 +7,7 @@ import {
   ShieldCheck, Zap, Eye, Gem, MessagesSquare,
 } from 'lucide-react';
 import { useAuth } from '../lib/AuthContext';
+import { usePageMeta, DESC } from '../lib/meta';
 import {
   calculateDestinyMatrix,
   getChartPositions,
@@ -1552,6 +1553,7 @@ function Footer() {
 }
 
 export function Landing() {
+  usePageMeta('Gaia Vesta — Destiny Matrix Calculator & Cosmic Blueprint', DESC.landing);
   useEffect(() => {
     const els = document.querySelectorAll('[data-reveal]');
     const obs = new IntersectionObserver(

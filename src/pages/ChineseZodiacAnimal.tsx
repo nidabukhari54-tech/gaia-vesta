@@ -3,6 +3,7 @@ import {
   ArrowRight, CalendarDays, Heart, HeartCrack, Hash, Palette, Sparkles, Sprout, AlertTriangle,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
+import { chineseAnimalDesc } from '../lib/meta';
 import { articleSchema, breadcrumbSchema } from '../lib/schema';
 import { ANIMALS, elementForYear, getAnimalBySlug, type ChineseAnimal } from '../lib/chinese-zodiac';
 
@@ -54,6 +55,7 @@ export function ChineseZodiacAnimalPage() {
   return (
     <PublicLayout>
       <ToolHero
+        description={chineseAnimalDesc(animal)}
         image="/images/chinese-zodiac-illustration.webp"
         imageAlt="A golden celestial wheel of the twelve Chinese zodiac animals around a radiant star, on a deep indigo night sky"
         eyebrow={`Chinese Zodiac · ${animal.glyph} · ${animal.branchElement} branch`}

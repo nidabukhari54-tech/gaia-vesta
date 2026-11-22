@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
   Heart, CalendarClock, Baby, BookOpen, Hash, Type, SunMoon, Grid3X3,
-  Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw,
+  Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
 import { dailyArcana, moonPhase } from '../lib/numerology';
@@ -19,6 +19,10 @@ const TOOLS = [
   {
     to: '/tools/karmic-tail', icon: RefreshCcw, title: 'Karmic Tail Calculator',
     text: 'Why does the same pattern keep returning? Your three-number karmic tail — root, repetition, and the lesson that breaks the cycle.', tag: 'New',
+  },
+  {
+    to: '/tools/family-lines', icon: Users, title: 'Family & Talent Lines',
+    text: 'Your father\u2019s line, your mother\u2019s line, the parent–child pattern where they meet in you — plus your talent line and a full repeated/missing numbers analysis. Free PDF report included.', tag: 'New',
   },
   {
     to: '/tools/year-forecast', icon: CalendarClock, title: 'Year Forecast',

@@ -12,7 +12,9 @@ import { SalesCTA } from '../components/SalesCTA';
 import { ChakraMap } from '../components/chart/ChakraMap';
 import { reduceToArcana } from '../lib/matrix-calculator';
 import { exportChartPng } from '../lib/export-chart';
-import { Sparkles, ArrowLeft, Save, Heart, Coins, Compass, Share2, Copy, Check, Download, Target } from 'lucide-react';
+import { openPdfReport } from '../lib/report';
+import { analyzeNumbers } from '../lib/lines';
+import { Sparkles, ArrowLeft, Save, Heart, Coins, Compass, Share2, Copy, Check, Download, Target, FileText, Repeat, CircleDashed } from 'lucide-react';
 
 export function Chart() {
   const { user, configured } = useAuth();
@@ -33,6 +35,23 @@ export function Chart() {
   const [isSharing, setIsSharing] = useState(false);
   const [shareLink, setShareLink] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [pdfNote, setPdfNote] = useState('');
+
+  const analysis = matrixResult ? analyzeNumbers(matrixResult) : null;
+
+  const handlePdf = () => {
+    if (!matrixResult || !birthDate) return;
+    const ok = openPdfReport(
+      personName || 'Your',
+      birthDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+      matrixResult,
+    );
+    setPdfNote(
+      ok
+        ? 'Your report opened in a new tab — choose "Save as PDF" in the print dialog. The complete reading, free.'
+        : 'Your browser blocked the new tab. Allow pop-ups for this site, then press the button again.',
+    );
+  };
 
   const handleCalculate = (date: Date, name: string) => {
     const result = calculateDestinyMatrix(date);
@@ -44,6 +63,7 @@ export function Chart() {
     setSavedChartId(null);
     setShareLink(null);
     setCopied(false);
+    setPdfNote('');
   };
 
   const handleNodeClick = (position: string, arcana: Arcana) => {
@@ -350,6 +370,49 @@ export function Chart() {
               </div>
             </div>
 
+            {/* Your Numbers, Analysed */}
+            {analysis && (
+              <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple/20 p-6 mb-6">
+                <h3 className="font-serif font-semibold text-xl text-text-primary mb-1">Your Numbers, Analysed</h3>
+                <p className="text-sm text-text-primary/60 mb-5">
+                  Across all sixteen points of your chart, some arcana speak more than once — and some never appear. Both facts mean something.
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-gradient-to-br from-gold/5 to-purple/5 rounded-xl p-5 border border-gold/20">
+                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-purple mb-3">
+                      <Repeat className="w-4 h-4" /> Repeated — your loud energies
+                    </p>
+                    {analysis.repeated.length ? (
+                      <ul className="space-y-2.5">
+                        {analysis.repeated.map((r) => (
+                          <li key={r.arcana.id} className="text-sm text-text-primary/75 leading-relaxed">
+                            <strong className="text-text-primary">{r.arcana.id} — {r.arcana.name}</strong> × {r.count} ({r.positions.join(', ').toLowerCase()}): {r.arcana.description.toLowerCase()}.
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-sm text-text-primary/70">No arcana repeats in your chart — your energies are spread evenly, with no single number dominating.</p>
+                    )}
+                  </div>
+                  <div className="bg-gradient-to-br from-purple/5 to-gold/5 rounded-xl p-5 border border-purple/15">
+                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-purple mb-3">
+                      <CircleDashed className="w-4 h-4" /> Missing — your growth edges
+                    </p>
+                    <p className="text-sm text-text-primary/75 leading-relaxed mb-3">
+                      {analysis.missing.length} of the 22 arcana do not appear in your chart — qualities you meet through other people and build deliberately:
+                    </p>
+                    <p className="flex flex-wrap gap-1.5">
+                      {analysis.missing.map((a) => (
+                        <span key={a.id} className="text-xs font-medium bg-purple/10 text-text-primary/75 rounded-full px-2.5 py-1">
+                          {a.id} · {a.name}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Chakra Health Map */}
             <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-purple/20 p-6 mb-6">
               <h3 className="font-serif font-semibold text-xl text-text-primary mb-1">Chakra Health Map</h3>
@@ -421,7 +484,21 @@ export function Chart() {
                   <Download className="w-5 h-5" />
                   Download PNG (free)
                 </button>
+
+                <button
+                  onClick={handlePdf}
+                  className="px-6 py-3 rounded-lg font-medium transition-all duration-200
+                             flex items-center gap-2 bg-gradient-to-r from-gold to-purple text-white
+                             hover:shadow-lg"
+                >
+                  <FileText className="w-5 h-5" />
+                  Free PDF Report
+                </button>
               </div>
+
+              {pdfNote && (
+                <p className="text-sm text-text-primary/55 mt-3 max-w-md mx-auto">{pdfNote}</p>
+              )}
 
               {!configured && (
                 <p className="text-sm text-text-primary/50 mt-3">

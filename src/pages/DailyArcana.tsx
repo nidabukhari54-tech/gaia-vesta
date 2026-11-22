@@ -7,10 +7,47 @@ import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModa
 import { dailyArcana, moonPhase } from '../lib/numerology';
 import { getArcana } from '../lib/arcana-meanings';
 
+const FAQS = [
+  {
+    q: 'Is the daily tarot card the same for everyone?',
+    a: 'Yes. The Arcana of the Day is drawn from the calendar date itself, so everyone who visits today meets the same card. That is the point of it — a shared weather report for the day. Your personal numbers (your Personal Day, your own chart) are where the reading becomes yours alone.',
+  },
+  {
+    q: 'How is the daily card chosen?',
+    a: 'By arithmetic, not by shuffle. The digits of today\'s day, month and year are added together and reduced into the 1–22 range of the Major Arcana — the worked example below shows today\'s exact sums. The same date always produces the same card, anywhere in the world.',
+  },
+  {
+    q: 'When does the daily card change?',
+    a: 'At midnight, with the date. Yesterday\'s and tomorrow\'s cards are shown beside today\'s so you can feel the sequence — practitioners often notice that a difficult card makes more sense once you see what it was following, and what it is preparing.',
+  },
+  {
+    q: 'How is this different from a tarot reading?',
+    a: 'A tarot reading draws cards in response to a question, and the reader interprets their positions and combinations. The Arcana of the Day is a single date-derived card — closer to a daily theme or meditation than to a reading. Use it as a lens for the day: a quality to lean into, a trap to watch for, and one honest question to carry.',
+  },
+];
+
+function digitSum(n: number): number {
+  return String(n).split('').reduce((a, c) => a + Number(c), 0);
+}
+
+function reductionChain(total: number): number[] {
+  const chain = [total];
+  let x = total;
+  while (x > 22) {
+    x = digitSum(x);
+    chain.push(x);
+  }
+  return chain;
+}
+
 export function DailyArcana() {
   const today = new Date();
   const arcana = getArcana(dailyArcana(today));
   const moon = moonPhase(today);
+  const daySum = digitSum(today.getDate());
+  const monthSum = digitSum(today.getMonth() + 1);
+  const yearSum = digitSum(today.getFullYear());
+  const chain = reductionChain(daySum + monthSum + yearSum);
   const [selected, setSelected] = useState<SelectedArcana | null>(null);
 
   const yesterday = getArcana(dailyArcana(new Date(today.getTime() - 86400000)));
@@ -66,6 +103,36 @@ export function DailyArcana() {
           </button>
         </div>
 
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+          <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+            <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">Theme</p>
+            <p className="text-lav/85 leading-relaxed">
+              <strong className="text-cream">{arcana.description}.</strong> {arcana.personality}
+            </p>
+          </div>
+          <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+            <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">Lean into</p>
+            <ul className="text-lav/85 leading-relaxed space-y-1.5">
+              {arcana.strengths.map((s) => <li key={s}>• {s}</li>)}
+            </ul>
+            <p className="text-lav/70 text-sm mt-3">These are the qualities today's card rewards when you use them deliberately.</p>
+          </div>
+          <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+            <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">Be careful</p>
+            <ul className="text-lav/85 leading-relaxed space-y-1.5">
+              {arcana.challenges.map((c) => <li key={c}>• {c}</li>)}
+            </ul>
+            <p className="text-lav/70 text-sm mt-3">Every card has a shadow side. Today, these are the forms it is most likely to take.</p>
+          </div>
+          <div className="bg-white/[0.04] rounded-2xl border border-goldlight/30 p-6">
+            <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-2">Reflection</p>
+            <p className="text-lav/85 leading-relaxed mb-3">{arcana.karmicLesson}</p>
+            <p className="text-lav/85 leading-relaxed">
+              Carry one sentence with you today: <em className="text-cream">“{arcana.affirmation}”</em>
+            </p>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 gap-4 mb-10">
           <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-5 text-center">
             <p className="text-xs font-semibold tracking-widest uppercase text-lavdim mb-1.5">Yesterday</p>
@@ -92,6 +159,48 @@ export function DailyArcana() {
             </Link>
           </div>
         </div>
+        <div className="mt-14">
+          <h2 className="text-2xl font-serif font-bold text-cream mb-3 text-center">How your daily card is chosen</h2>
+          <p className="text-lav/75 leading-relaxed max-w-2xl mx-auto text-center mb-6">
+            No shuffle, no randomness — the card is hidden inside the date itself. The digits of the day, the month and
+            the year are each added up, the three sums are combined, and the total is reduced, digit by digit, until it
+            lands in the 1–22 range of the Major Arcana. Because the arithmetic never changes, the same date always
+            draws the same card — for everyone, all day, until midnight turns the page.
+          </p>
+          <div className="bg-white/[0.04] rounded-2xl border border-white/10 p-6 max-w-2xl mx-auto">
+            <p className="text-xs font-semibold tracking-widest uppercase text-goldlight mb-3 text-center">Today's working, live</p>
+            <ul className="space-y-2.5 text-lav/85 leading-relaxed">
+              <li>
+                <strong className="text-cream">Day:</strong> {today.getDate()} → digit sum {daySum}.{' '}
+                <strong className="text-cream">Month:</strong> {today.getMonth() + 1} → digit sum {monthSum}.{' '}
+                <strong className="text-cream">Year:</strong> {today.getFullYear()} → digit sum {yearSum}.
+              </li>
+              <li>
+                <strong className="text-cream">Combined:</strong> {daySum} + {monthSum} + {yearSum} = {chain[0]}
+                {chain.length > 1 && (
+                  <> → reduced digit by digit: {chain.slice(1).join(' → ')}</>
+                )}
+                .
+              </li>
+              <li>
+                <strong className="text-cream">Card {arcana.id}:</strong> {arcana.name} — {arcana.description.toLowerCase()}. That is today's theme, from sunrise to midnight.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <h2 className="text-2xl font-serif font-bold text-cream mb-6 text-center">Daily card questions</h2>
+          <div className="space-y-4">
+            {FAQS.map((f) => (
+              <div key={f.q} className="bg-white/[0.04] rounded-2xl border border-white/10 p-6">
+                <h3 className="font-serif font-semibold text-lg text-cream mb-2">{f.q}</h3>
+                <p className="text-lav/80 leading-relaxed">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <SalesCTA
           headline="Today's card is a hint. Your chart is the whole message."
           context="The daily tarot card speaks to everyone. Your AI deep reading speaks only to you — your love line, money line and karmic pattern, read from your own birth date."

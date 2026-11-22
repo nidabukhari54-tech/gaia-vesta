@@ -30,6 +30,8 @@ import { ZodiacPairDetail } from './pages/ZodiacPairDetail';
 import { DailyArcana } from './pages/DailyArcana';
 import { DailyHoroscope } from './pages/DailyHoroscope';
 import { HoroscopeSignPage } from './pages/HoroscopeSign';
+import { Horoscope2027 } from './pages/Horoscope2027';
+import { Horoscope2027SignPage } from './pages/Horoscope2027Sign';
 import GaiaChat from './components/GaiaChat';
 
 function App() {
@@ -58,6 +60,8 @@ function App() {
           <Route path="/tools/daily-arcana" element={<DailyArcana />} />
           <Route path="/tools/daily-horoscope" element={<DailyHoroscope />} />
           <Route path="/tools/daily-horoscope/:sign" element={<HoroscopeSignPage />} />
+          <Route path="/tools/horoscope-2027" element={<Horoscope2027 />} />
+          <Route path="/tools/horoscope-2027/:sign" element={<Horoscope2027SignPage />} />
           <Route path="/tools/how-to-read-destiny-matrix" element={<HowToRead />} />
           <Route path="/tools/karmic-tail" element={<KarmicTail />} />
           <Route path="/tools/family-lines" element={<FamilyLines />} />

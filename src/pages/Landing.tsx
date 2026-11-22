@@ -155,7 +155,7 @@ function CelestialAccents({ items }: { items: Accent[] }) {
 function Marquee() {
   const items = [
     'Destiny Matrix Chart', 'Karmic Tail', 'Compatibility', 'Family Lines', 'Angel Numbers',
-    'Year Forecast', "Children's Matrix", 'Moon Phase', 'Life Path Number', 'Free PDF Report', 'Daily Horoscope',
+    'Year Forecast', "Children's Matrix", 'Moon Phase', 'Life Path Number', 'Free PDF Report', 'Daily Horoscope', '2027 Horoscope',
   ];
   const row = [...items, ...items];
   return (

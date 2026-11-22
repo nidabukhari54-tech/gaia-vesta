@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
-  Heart, CalendarClock, Baby, BookOpen, Hash, Type, SunMoon, Grid3X3,
+  Heart, CalendarClock, CalendarDays, Baby, BookOpen, Hash, Type, SunMoon, Grid3X3,
   Sparkles, Moon, HeartHandshake, Download, Shapes, RefreshCcw, Users, Sun,
 } from 'lucide-react';
 import { PublicLayout, ToolHero } from '../components/PublicLayout';
@@ -82,6 +82,11 @@ const TOOLS = [
     to: '/tools/daily-horoscope', icon: Sun, title: 'Daily Horoscope',
     img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
     text: 'Today\u2019s reading for all twelve signs — theme, love, money, mood and lucky number, refreshed every midnight.', tag: 'Daily',
+  },
+  {
+    to: '/tools/horoscope-2027', icon: CalendarDays, title: '2027 Horoscope',
+    img: '/images/zodiac-illustration.webp', alt: 'Two overlapping golden rings studded with star dots in an indigo night sky',
+    text: 'Your year ahead, sign by sign — the theme, love, money and best months of 2027, plus all twelve months one by one and the real 2027 moon calendar.', tag: 'New',
   },
   {
     to: '/tools/daily-arcana', icon: Shapes, title: 'Daily Tarot Card',

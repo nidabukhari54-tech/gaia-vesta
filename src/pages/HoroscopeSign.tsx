@@ -125,6 +125,24 @@ export function HoroscopeSignPage() {
       </section>
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <Link
+          to={`/tools/horoscope-2027/${sign.slug}`}
+          className="flex items-center gap-4 bg-gradient-to-b from-night3 to-night2 rounded-2xl border border-goldlight/40 hover:border-goldlight/70 hover:shadow-[0_20px_50px_-20px_rgba(231,200,115,0.35)] transition-all px-6 py-5"
+        >
+          <span className="text-4xl text-goldlight leading-none shrink-0">{sign.glyph}</span>
+          <div className="flex-1">
+            <p className="font-serif text-xl text-cream">
+              {sign.name} in 2027 — your whole year
+            </p>
+            <p className="text-sm text-lav/75">
+              The year&rsquo;s theme, love, money and best months — plus all twelve months, one by one.
+            </p>
+          </div>
+          <ArrowRight className="w-5 h-5 text-goldlight shrink-0" />
+        </Link>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-cream mb-4">
           The {sign.name} profile
         </h2>

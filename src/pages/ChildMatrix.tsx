@@ -8,6 +8,8 @@ import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChakraMap } from '../components/chart/ChakraMap';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
 import { calculateDestinyMatrix, type DestinyMatrixResult } from '../lib/matrix-calculator';
+import { childZones } from '../lib/zones';
+import { ZoneCards } from '../components/ZoneCards';
 import { getArcana, type Arcana } from '../lib/arcana-meanings';
 import { exportChartPng } from '../lib/export-chart';
 
@@ -100,6 +102,15 @@ export function ChildMatrix() {
                   met with patience, these become strengths.
                 </p>
               </div>
+            </div>
+
+            <div className="mb-8">
+              <ZoneCards
+                zones={childZones(result)}
+                heading="Your Child — 7 Zones"
+                sub="The full reading, zone by zone — written for parents: what to nurture, what to make room for, and where your patience will matter most."
+                variant="light"
+              />
             </div>
 
             <div className="bg-[#FAF5EA] rounded-[1.75rem] border border-purple/20 p-5 sm:p-8 mb-8 text-text-primary shadow-[0_30px_80px_-20px_rgba(124,92,191,0.45)]">

@@ -12,11 +12,11 @@ import { SalesCTA } from '../components/SalesCTA';
 import { JsonLd } from '../components/JsonLd';
 import { webAppSchema } from '../lib/schema';
 import { ChakraMap } from '../components/chart/ChakraMap';
-import { reduceToArcana } from '../lib/matrix-calculator';
 import { exportChartPng } from '../lib/export-chart';
 import { openPdfReport } from '../lib/report';
-import { analyzeNumbers } from '../lib/lines';
-import { Sparkles, ArrowLeft, Save, Heart, Coins, Compass, Share2, Copy, Check, Download, Target, FileText, Repeat, CircleDashed } from 'lucide-react';
+import { personalZones } from '../lib/zones';
+import { ZoneCards } from '../components/ZoneCards';
+import { Sparkles, ArrowLeft, Save, Heart, Coins, Compass, Share2, Copy, Check, Download, FileText } from 'lucide-react';
 
 export function Chart() {
   const { user, configured } = useAuth();
@@ -27,10 +27,6 @@ export function Chart() {
   const [selectedArcana, setSelectedArcana] = useState<SelectedArcana | null>(null);
   const chartRef = useRef<HTMLDivElement>(null);
 
-  // Purpose by life stage (Destiny Matrix method)
-  const purpose20_40 = matrixResult ? reduceToArcana(matrixResult.A + matrixResult.C) : 0;
-  const purpose40_60 = matrixResult ? reduceToArcana(matrixResult.B + matrixResult.D) : 0;
-  const purpose60plus = matrixResult ? reduceToArcana(purpose20_40 + purpose40_60) : 0;
   const [isSaving, setIsSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [savedChartId, setSavedChartId] = useState<string | null>(null);
@@ -39,7 +35,9 @@ export function Chart() {
   const [copied, setCopied] = useState(false);
   const [pdfNote, setPdfNote] = useState('');
 
-  const analysis = matrixResult ? analyzeNumbers(matrixResult) : null;
+  const zones = matrixResult
+    ? personalZones(matrixResult, undefined, { birthDate: birthDate ?? undefined, name: personName })
+    : null;
 
   const handlePdf = () => {
     if (!matrixResult || !birthDate) return;
@@ -47,6 +45,7 @@ export function Chart() {
       personName || 'Your',
       birthDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
       matrixResult,
+      birthDate,
     );
     setPdfNote(
       ok
@@ -349,86 +348,14 @@ export function Chart() {
               </div>
             </div>
 
-            {/* Purpose by life stage */}
-            <div className="bg-night2 backdrop-blur-sm rounded-2xl border border-lav/15 p-6 mb-6">
-              <div className="flex items-center gap-3 mb-1">
-                <div className="w-10 h-10 bg-goldlight/15 rounded-full flex items-center justify-center">
-                  <Target className="w-5 h-5 text-goldlight" />
-                </div>
-                <h3 className="font-serif font-semibold text-xl text-cream">Your Purpose, by Life Stage</h3>
-              </div>
-              <p className="text-sm text-lavdim mb-5">
-                In the Destiny Matrix method, your mission unfolds in chapters — each stage of life has its own guiding arcana.
-              </p>
-              <div className="grid md:grid-cols-3 gap-4">
-                {[
-                  { stage: 'Ages 20–40', label: 'Personal purpose', value: purpose20_40, hint: 'Sky + Earth: who you are becoming' },
-                  { stage: 'Ages 40–60', label: 'Social purpose', value: purpose40_60, hint: 'Male + female lines: what you give the world' },
-                  { stage: 'Ages 60+', label: 'Spiritual purpose', value: purpose60plus, hint: 'The general mission of the soul' },
-                ].map((p) => {
-                  const arcana = getArcana(p.value);
-                  return (
-                    <button
-                      key={p.stage}
-                      onClick={() => handleNodeClick(p.label, arcana)}
-                      className="text-left bg-white/[0.04] rounded-xl p-5 border border-lav/15 hover:border-goldlight/40 transition-all"
-                    >
-                      <p className="text-xs font-semibold tracking-widest uppercase text-goldlight">{p.stage}</p>
-                      <p className="text-xs text-lavdim mb-2">{p.label}</p>
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="w-11 h-11 bg-gradient-to-r from-goldlight to-[#C9963C] rounded-full flex items-center justify-center text-night3 font-bold">
-                          {p.value}
-                        </span>
-                        <span className="font-serif font-semibold text-lg">{arcana.name}</span>
-                      </div>
-                      <p className="text-sm text-lav">{arcana.karmicLesson}</p>
-                      <p className="text-[11px] text-lavdim mt-2">{p.hint}</p>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Your Numbers, Analysed */}
-            {analysis && (
-              <div className="bg-night2 backdrop-blur-sm rounded-2xl border border-lav/15 p-6 mb-6">
-                <h3 className="font-serif font-semibold text-xl text-cream mb-1">Your Numbers, Analysed</h3>
-                <p className="text-sm text-lavdim mb-5">
-                  Across all sixteen points of your chart, some arcana speak more than once — and some never appear. Both facts mean something.
-                </p>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-white/[0.04] rounded-xl p-5 border border-goldlight/25">
-                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">
-                      <Repeat className="w-4 h-4" /> Repeated — your loud energies
-                    </p>
-                    {analysis.repeated.length ? (
-                      <ul className="space-y-2.5">
-                        {analysis.repeated.map((r) => (
-                          <li key={r.arcana.id} className="text-sm text-lav leading-relaxed">
-                            <strong className="text-cream">{r.arcana.id} — {r.arcana.name}</strong> × {r.count} ({r.positions.join(', ').toLowerCase()}): {r.arcana.description.toLowerCase()}.
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-sm text-lav">No arcana repeats in your chart — your energies are spread evenly, with no single number dominating.</p>
-                    )}
-                  </div>
-                  <div className="bg-white/[0.04] rounded-xl p-5 border border-lav/15">
-                    <p className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-goldlight mb-3">
-                      <CircleDashed className="w-4 h-4" /> Missing — your growth edges
-                    </p>
-                    <p className="text-sm text-lav leading-relaxed mb-3">
-                      {analysis.missing.length} of the 22 arcana do not appear in your chart — qualities you meet through other people and build deliberately:
-                    </p>
-                    <p className="flex flex-wrap gap-1.5">
-                      {analysis.missing.map((a) => (
-                        <span key={a.id} className="text-xs font-medium bg-goldlight/10 text-lav rounded-full px-2.5 py-1">
-                          {a.id} · {a.name}
-                        </span>
-                      ))}
-                    </p>
-                  </div>
-                </div>
+            {/* Your Reading — 12 Zones */}
+            {zones && (
+              <div className="mb-6">
+                <ZoneCards
+                  zones={zones}
+                  heading="Your Reading — 12 Zones"
+                  sub="Your whole chart, read zone by zone — the same named chapters other sites sell, free here in full. Tap a zone to open or close it."
+                />
               </div>
             )}
 

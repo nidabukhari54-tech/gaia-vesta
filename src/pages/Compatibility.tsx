@@ -9,6 +9,9 @@ import { DestinyMatrixChart } from '../components/chart/DestinyMatrixChart';
 import { ChartLines } from '../components/chart/ChartLines';
 import { ArcanaModal, type SelectedArcana } from '../components/chart/ArcanaModal';
 import { calculateCompatibility, type CompatibilityResult } from '../lib/compatibility';
+import { calculateDestinyMatrix, type DestinyMatrixResult } from '../lib/matrix-calculator';
+import { compatibilityZones } from '../lib/zones';
+import { ZoneCards } from '../components/ZoneCards';
 import { getArcana, type Arcana } from '../lib/arcana-meanings';
 import { exportChartPng } from '../lib/export-chart';
 
@@ -37,12 +40,14 @@ export function Compatibility() {
   const [dateB, setDateB] = useState<Date | null>(null);
   const [nameB, setNameB] = useState('Partner Two');
   const [result, setResult] = useState<CompatibilityResult | null>(null);
+  const [pair, setPair] = useState<{ r1: DestinyMatrixResult; r2: DestinyMatrixResult } | null>(null);
   const [selected, setSelected] = useState<SelectedArcana | null>(null);
   const chartRef = useRef<HTMLDivElement>(null);
 
   const handleCalculate = () => {
     if (!dateA || !dateB) return;
     setResult(calculateCompatibility(dateA, dateB));
+    setPair({ r1: calculateDestinyMatrix(dateA), r2: calculateDestinyMatrix(dateB) });
     setSelected(null);
   };
 
@@ -60,7 +65,10 @@ export function Compatibility() {
     if (q.get('n2')) setNameB(q.get('n2') as string);
     if (a) setDateA(a);
     if (b) setDateB(b);
-    if (a && b) setResult(calculateCompatibility(a, b));
+    if (a && b) {
+      setResult(calculateCompatibility(a, b));
+      setPair({ r1: calculateDestinyMatrix(a), r2: calculateDestinyMatrix(b) });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -148,6 +156,17 @@ export function Compatibility() {
                 </div>
               ))}
             </div>
+
+            {pair && (
+              <div className="mb-8">
+                <ZoneCards
+                  zones={compatibilityZones(pair.r1, pair.r2, result.combined, { name: nameA, partnerName: nameB })}
+                  heading="Your Compatibility — 9 Zones"
+                  sub="Both charts read together, zone by zone — including the friction patterns most readings leave out."
+                  variant="light"
+                />
+              </div>
+            )}
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button

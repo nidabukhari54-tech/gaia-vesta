@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Send, Volume2, Crown } from 'lucide-react';
+import { isSupabaseConfigured, supabaseUrl, supabaseAnonKey } from '../lib/supabase';
 
 type ChatLink = { label: string; to: string };
 type Msg = { from: 'gaia' | 'user'; text: string; links?: ChatLink[] };
@@ -166,6 +167,40 @@ function answerFor(raw: string): Msg {
   return FALLBACK;
 }
 
+// Tries the live gaia-chat edge function first (works for logged-out
+// visitors too — the anon key is the bearer). Returns null on ANY
+// failure or timeout so the caller silently falls back to the built-in
+// keyword answers above. Skipped entirely when Supabase is not
+// configured on this deployment.
+async function askGaiaLive(
+  message: string,
+  history: { from: 'gaia' | 'user'; text: string }[],
+): Promise<string | null> {
+  if (!isSupabaseConfigured || !supabaseUrl || !supabaseAnonKey) return null;
+  const ctrl = new AbortController();
+  const timer = window.setTimeout(() => ctrl.abort(), 12000);
+  try {
+    const res = await fetch(`${supabaseUrl}/functions/v1/gaia-chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${supabaseAnonKey}`,
+        apikey: supabaseAnonKey,
+      },
+      body: JSON.stringify({ message, history }),
+      signal: ctrl.signal,
+    });
+    if (!res.ok) return null;
+    const data = await res.json().catch(() => null);
+    const reply = typeof data?.reply === 'string' ? data.reply.trim() : '';
+    return reply || null;
+  } catch {
+    return null;
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
 export default function GaiaChat() {
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState<Msg[]>([GREETING]);
@@ -213,12 +248,19 @@ export default function GaiaChat() {
     window.speechSynthesis.speak(u);
   };
 
-  const send = (raw?: string) => {
+  const send = async (raw?: string) => {
     const text = (raw ?? input).trim();
     if (!text || typing) return;
     setInput('');
+    const history = msgs.slice(-8).map((m) => ({ from: m.from, text: m.text }));
     setMsgs((m) => [...m, { from: 'user', text }]);
     setTyping(true);
+    const liveReply = await askGaiaLive(text, history);
+    if (liveReply) {
+      setMsgs((m) => [...m, { from: 'gaia', text: liveReply }]);
+      setTyping(false);
+      return;
+    }
     timerRef.current = window.setTimeout(() => {
       setMsgs((m) => [...m, answerFor(text)]);
       setTyping(false);
